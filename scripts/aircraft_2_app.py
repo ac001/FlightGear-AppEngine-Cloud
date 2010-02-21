@@ -73,7 +73,7 @@ def generate_aircraft_minidom(xml_file_path):
 		
 
 
-def generate_aircraft_yaml(xml_contents):
+def generate_aircraft_yaml(xml_contents, file_name):
 
 		## convert string to dictionary
 		try:
@@ -86,15 +86,15 @@ def generate_aircraft_yaml(xml_contents):
 			print "ERROR: Something not parsable"
 			return
 		## include
-		print xml_dic
+		#print xml_dic
 
 		## construct yaml dictionary and check for basic values (non conformists ignored for now)
 		yaml_dic = {}
 		if not 'sim' in xml_dic:
-			print "ERROR: no <sim> tag"
+			print "ERROR: no <sim> tag", file_name
 			return
 		if not 'aero' in xml_dic['sim'][0]:
-			print "ERROR: no <aero> tag"
+			print "ERROR: no <aero> tag", file_name
 			return
 
 		## map xml to yaml
@@ -102,18 +102,23 @@ def generate_aircraft_yaml(xml_contents):
 		if 'description' in xml_dic['sim'][0]:
 			yaml_dic['description'] = str(xml_dic['sim'][0]['description'][0])
 
+		if 'author' in xml_dic['sim'][0]:
+			yaml_dic['author'] = str(xml_dic['sim'][0]['author'][0])
+		if 'status' in xml_dic['sim'][0]:
+			yaml_dic['status'] = str(xml_dic['sim'][0]['status'][0])
+
 		## create yaml string
 		#yaml_string = yaml.dump(yaml_dic)
 		print "yaml_dic=", yaml_dic
 		## write yaml_string to file
-		file_to_write = YAML_PATH + "/" + str(yaml_dic['aero']) + ".yaml"
+		#file_to_write = YAML_PATH + "/" + str(yaml_dic['aero']) + ".yaml"
 		# TODO - catch error
-		file_handle = file(file_to_write, 'w')
-		yaml.dump(yaml_dic, file_handle,  default_flow_style=False, explicit_start=True)
+		#file_handle = file(file_to_write, 'w')
+		#yaml.dump(yaml_dic, file_handle,  default_flow_style=False, explicit_start=True)
 		#file_handle.write(yaml_string)
-		file_handle.close()
+		#file_handle.close()
 
-		sys.exit(0)
+		#sys.exit(0)
 
 
 ##########################################################################################
@@ -133,21 +138,21 @@ for air_dir in directories:
 	#print aircraft_set_files
 
 	c = 0
-	print "###############"
+	#print "###############"
 	## Loop thru each xml -set.xml file
 	for xml_file_path in aircraft_set_files:
-		print "->>xml >>", xml_file_path
+		#print "\nfile=", xml_file_path
 		#print xml_file_path
 
 		## read the file contents 
 		# TODO - error handler of file read 
-		#xml_contents =  open(xml_file_path).read()
+		xml_contents =  open(xml_file_path).read()
 		#print xml_contents
 		#try:
 		## parse xml to python dict
 		# TODO catch error
-		#generate_aircraft_yaml(xml_contents)
+		generate_aircraft_yaml(xml_contents, xml_file_path)
 
-		generate_aircraft_minidom(xml_file_path)
+		#generate_aircraft_minidom(xml_file_path)
 		
 

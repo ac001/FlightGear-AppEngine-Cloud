@@ -1,0 +1,12 @@
+<html>
+  <body>
+	<h1>Pilots Online</h1>
+	{% if pilots_online.loaded %}<b>Loaded</b>{% endif %}
+	<ul>
+    {% for pilot in pilots_online.pilots %}
+		<li>{{ pilot }}</li>
+	{% endfor %}
+	<ul>
+	
+  </body>
+</html>
