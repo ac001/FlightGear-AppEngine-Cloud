@@ -1,0 +1,31 @@
+
+/*============================================*/
+/* Icons */
+/*============================================*/
+.iconMap {background-image: url('../images/icons/map.png') !important;}
+.iconNav {background-image: url('../images/icons/transmit.png') !important;}
+
+.iconPilots {background-image: url('../images/icons/group.png') !important;}
+.iconPilot {background-image: url('../images/icons/user_suit.png') !important;}
+
+.iconRefresh {background-image: url('../images/icons/arrow_refresh.png') !important;}
+
+.iconServerStatus {background-image: url('../images/icons/cog.png') !important;}
+
+.iconVor {background-image: url('../../images/nav_icons/vor.png') !important;}
+.iconNdb {background-image: url('../../images/nav_icons/ndb.png') !important;}
+
+
+/*============================================*/
+/* Pilots call sign in grid */
+/*============================================*/
+.fg_pilot_dead{
+	border-left: 5px solid red;
+	
+}
+.fg_pilot_new{
+	border-left: 5px solid orange;
+}
+.fg_pilot_fly{
+	border-left: 5px solid green;
+}
