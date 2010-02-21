@@ -1,0 +1,11 @@
+{% extends "main.html" %}
+
+{% block content %}
+		<table>
+		<tr><td><a href="/aero/{{ aero.aero }}/">{{ aero.aero }}</td></tr>
+		<tr><td>{{ aero.description }}</td></tr>
+		<tr><td>{{ aero.author }}</td></tr>
+		<tr><td>{{ aero.fdm }}</td></tr>
+		<tr><td>{{ aero.version }}</td></tr>
+		</table>
+{% endblock %}

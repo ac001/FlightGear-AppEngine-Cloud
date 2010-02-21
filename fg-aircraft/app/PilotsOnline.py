@@ -69,11 +69,10 @@ class PilotsOnlineRpc(webapp.RequestHandler):
 		template_values = {
 			'pilots_online': self.get_pilots()
 		}
-		#print 'Content-Type: text/plain'
-		#print ''
-		print json.dumps(self.get_pilots())
-		#path = os.path.join(os.path.dirname(__file__), 'templates/pilots_online.html')
+		self.response.headers['Content-Type'] = 'text/plain'
 		self.response.out.write(json.dumps(self.get_pilots()))
+
+
 """	
 class PilotsOnlineCron(webapp.RequestHandler):
 

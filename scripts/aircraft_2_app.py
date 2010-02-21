@@ -91,10 +91,10 @@ def generate_aircraft_yaml(xml_contents, file_name):
 		## construct yaml dictionary and check for basic values (non conformists ignored for now)
 		yaml_dic = {}
 		if not 'sim' in xml_dic:
-			print "ERROR: no <sim> tag", file_name
+			#print "ERROR: no <sim> tag", file_name
 			return
 		if not 'aero' in xml_dic['sim'][0]:
-			print "ERROR: no <aero> tag", file_name
+			#print "ERROR: no <aero> tag", file_name
 			return
 
 		## map xml to yaml
@@ -107,9 +107,17 @@ def generate_aircraft_yaml(xml_contents, file_name):
 		if 'status' in xml_dic['sim'][0]:
 			yaml_dic['status'] = str(xml_dic['sim'][0]['status'][0])
 
+		yaml_dic = {}
+		flds = [ 'aero', 'description', 'flight-model', 'author', 'status' ]
+		for fld in flds:
+			if fld in xml_dic['sim'][0]:
+				yaml_dic[fld] = str(xml_dic['sim'][0][fld][0])
+
+
 		## create yaml string
 		#yaml_string = yaml.dump(yaml_dic)
-		print "yaml_dic=", yaml_dic
+		#print "yaml_dic=", yaml_dic
+		return yaml_dic
 		## write yaml_string to file
 		#file_to_write = YAML_PATH + "/" + str(yaml_dic['aero']) + ".yaml"
 		# TODO - catch error
@@ -130,6 +138,8 @@ print "FG_DATA_AIRCRAFT_PATH =", FG_DATA_AIRCRAFT_PATH
 directories = sorted(os.listdir(FG_DATA_AIRCRAFT_PATH))
 
 # Loop though each subdir
+c = 0
+print "--------------------------------------------"
 for air_dir in directories:
 
 	##  list the *-set.xml files (maybe more than one eg different liveries)
@@ -137,7 +147,7 @@ for air_dir in directories:
 	aircraft_set_files = glob.glob(aircraft_wildpath)
 	#print aircraft_set_files
 
-	c = 0
+	
 	#print "###############"
 	## Loop thru each xml -set.xml file
 	for xml_file_path in aircraft_set_files:
@@ -151,8 +161,28 @@ for air_dir in directories:
 		#try:
 		## parse xml to python dict
 		# TODO catch error
-		generate_aircraft_yaml(xml_contents, xml_file_path)
-
+		dic = generate_aircraft_yaml(xml_contents, xml_file_path)
+		import urllib
+		import urllib2
+		print "dic=", dic
+		if dic == None:
+			pass
+		else:
+			url = 'http://localhost:8080/rpc/aircraft'
+			values = {'name' : 'Michael Foord',
+					'location' : 'Northampton',
+					'language' : 'Python' }
+			if 1 == 1:
+				data = urllib.urlencode(dic)
+				print url + "?" + data
+				req = urllib2.Request(url + "?" + data) #, data)
+				#req = urllib2.Request(url, data)
+				response = urllib2.urlopen(req)
+				the_page = response.read()
+				print the_page
+			c  +=  1
+			if c == 20: 
+				sys.exit(1)
 		#generate_aircraft_minidom(xml_file_path)
 		
 

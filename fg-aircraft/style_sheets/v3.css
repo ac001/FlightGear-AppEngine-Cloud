@@ -29,3 +29,116 @@
 .fg_pilot_fly{
 	border-left: 5px solid green;
 }
+
+
+
+
+#container
+{
+width: 90%;
+margin: 10px auto;
+background-color: #fff;
+color: #333;
+border: 0px solid gray;
+line-height: 130%;
+}
+
+#top
+{
+padding: .5em;
+background-color: #ddd;
+border-bottom: 1px solid gray;
+}
+
+#top h1
+{
+padding: 0px;
+margin: 0px;
+}
+
+#leftnav
+{
+float: left;
+width: 160px;
+margin: 0px;
+padding: 1em;
+}
+
+
+
+#content
+{
+margin-left: 200px;
+border-left: 1px solid gray;
+border-right: 1px solid gray;
+padding: 1em;
+
+}
+
+#footer
+{
+clear: both;
+margin: 0;
+padding: .5em;
+color: #333;
+background-color: #ddd;
+border-top: 1px solid gray;
+}
+
+#leftnav p, #rightnav p { margin: 0 0 1em 0; }
+#content h2 { margin: 0 0 .5em 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#navlist
+{
+padding: 3px 0;
+margin-left: 0;
+border-bottom: 1px solid #778;
+font: bold 12px Verdana, sans-serif;
+}
+
+#navlist li
+{
+list-style: none;
+margin: 0;
+display: inline;
+}
+
+#navlist li a
+{
+padding: 3px 0.5em;
+margin-left: 3px;
+border: 1px solid #778;
+border-bottom: none;
+background: #DDE;
+text-decoration: none;
+}
+
+#navlist li a:link { color: #448; }
+#navlist li a:visited { color: #667; }
+
+#navlist li a:hover
+{
+color: #000;
+background: #AAE;
+border-color: #227;
+}
+
+#navlist li a#current
+{
+background: white;
+border-bottom: 1px solid white;
+}
+
