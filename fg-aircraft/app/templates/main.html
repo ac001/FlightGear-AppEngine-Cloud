@@ -38,8 +38,13 @@
 </div>
 
 <table class="toolbar">
-<th>Last Updated:</th><td>{{ conf.app_vars.pilots_info.updated }}</td>
-<th>Pilots Online:</th><td>{{ conf.app_vars.pilots_info.count }}</td>
+<th><b>Pilots</b>:</th>
+<th>Updated:</th><td>{{ conf.app_vars.pilots_info.updated|date:"H:i:s" }}</td>
+<th>Online:</th><td>{{ conf.app_vars.pilots_info.count }}</td>
+<th><b>Servers</b>:</th>
+<th>Updated:</th><td>{{ conf.app_vars.mpservers_info.updated|date:"H:i:s" }}</td>
+<th>Up:</th><td>{{ conf.app_vars.mpservers_info.up }}</td>
+<th>Down:</th><td>{{ conf.app_vars.mpservers_info.down }}</td>
 </table>
 
 </div>

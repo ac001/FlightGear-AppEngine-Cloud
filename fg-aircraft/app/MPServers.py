@@ -22,7 +22,7 @@ import app.fetch
 class MPServersPage(webapp.RequestHandler):
 
 	def get(self, action=None):
-		servers = app.fetch.mp_servers()
+		servers = app.fetch.mpservers()
 		for srv in servers:
 			v = memcache.get("server_count_%s" % srv.server)
 			srv.pilots_count = "-" if v == None else v
@@ -79,6 +79,10 @@ class MPServerImport(webapp.RequestHandler):
 class MPServersUpdateStatus(webapp.RequestHandler):
 
 	def get(self, action=None):
+
+		app.fetch.mpservers_status_update()
+		self.redirect("/mpservers/")
+		return
 		""" Paarses out the http://mpmap01.flightgear.org/mpstatus/ page """
 		from BeautifulSoup import BeautifulSoup 
 		

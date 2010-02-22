@@ -57,11 +57,6 @@ class DDOnline:
 			#data['loaded'] = True
 			return pilots_sorted
 
-	def Ddget_pilots(self, client="cron"):
-		data = memcache.get("pilots_online")
-		if data is not None:
-			return data
-		return self.get_feed(client)
 
 class OnlinePage(webapp.RequestHandler):
 

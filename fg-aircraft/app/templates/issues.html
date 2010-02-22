@@ -1,7 +1,10 @@
 {% extends "main.html" %}
 
-{% block left %}
-<a href="http://code.google.com/p/support/wiki/IssueTrackerAPIReference">Issues API</a>
+{% block left_box %}
+<ul>
+<li><a href="http://code.google.com/p/flightgear-bugs/issues/list">flightgear-bugs</a></li>
+<li><a href="http://code.google.com/p/support/wiki/IssueTrackerAPIReference">Issues API</a></li>
+</ul>
 {% endblock %}
 
 
@@ -9,7 +12,7 @@
 
 {% block content %}
 
-{% if cached %}cash{% else %}live{% endif %}
+
 {% include "issues_table.html" %}
 
 {% endblock %}

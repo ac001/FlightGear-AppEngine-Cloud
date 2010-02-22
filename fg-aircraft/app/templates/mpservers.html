@@ -1,15 +1,17 @@
 {% extends "main.html" %}
 
-{% block left %}
-left MP
+{% block left_box %}
+<a href="/mpservers/update/">Update Now</a>
+<h2>Links</h2>
+<ul>
+	<li><a href="http://fgms.sourceforge.net/">fgms Project</a></li>
+	<li><a href="http://fgms.sourceforge.net/download.php">Download</a></li>
+</ul>
 {% endblock %}
 
 
 {% block content %}
-<pre>#
-{{ conf.app_vars.pilots_info.count }}
-{{ conf.app_vars.pilots_info.updated }}
-</pre>
+
 <table>
 <tr>
 	<th>No</th>

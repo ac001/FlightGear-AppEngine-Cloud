@@ -8,6 +8,8 @@ from google.appengine.api import memcache
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
+from BeautifulSoup import BeautifulSoup 
+
 import conf
 from models.models import MPServer
 
@@ -15,7 +17,6 @@ from models.models import MPServer
 ## Pilots Online
 ####################################################
 def pilots_online():
-	return update_pilots_feed()
 	data = memcache.get("pilots_online")
 	if data is not None:
 		return data
@@ -69,28 +70,28 @@ def update_pilots_feed():
 				if not memcache.set("server_count_%s" % server, player_ips[server]):
 					print "fail"
 			
-			pilots_sorted = []
-			callsigns =  sorted(pilots.keys())
 
+
+			callsigns =  sorted(pilots.keys())
 			if not memcache.set("callsigns", callsigns, 10):
 				print "error"
 			info = {'count': len(callsigns), 'updated': datetime.datetime.now()}
 			if not memcache.set("pilots_info", info, 10):
 				print "error"
 
+			pilots_sorted = []
 			for ki in callsigns:
 				pilots_sorted.append( pilots[ki] )
-			if not memcache.set("pilots_online", pilots_sorted, 5):
+			if not memcache.set("pilots_online", pilots_sorted, 20):
 				print "error"
 
 			return pilots_sorted
 
 
-
 ####################################################
 ## MP Server
 ####################################################
-def mp_servers():
+def mpservers():
 	data = memcache.get("mp_servers")
 	if data is not None:
 		return data
@@ -100,9 +101,15 @@ def mp_servers():
 		print "error"
 	return data
 
+def mpservers_info():
+	info =	memcache.get("mpservers_info")
+	last = info['updated']	
+	current = datetime.datetime.now()
+	info['ago'] =  last - current
+	return info
 
 def server_ip_lookup():
-	servers = mp_servers()
+	servers = mpservers()
 	ret = {}
 	local = ''
 	for server in servers:
@@ -113,8 +120,44 @@ def server_ip_lookup():
 			ret[server.ip] = server.server
 	return ret
 
-def servers_up():
-	return 20
+def mpservers_status_update():
+	""" Parses out the http://mpmap01.flightgear.org/mpstatus/ page """
 
-def servers_down():
-	return 1
+	## fetch content 
+	result = urlfetch.fetch(conf.MP_STATUS_URL)
+	if result.status_code == 200:
+			
+		soup = BeautifulSoup.BeautifulSoup(result.content)
+		
+		## find all tables
+		tables = soup.findAll('table')
+
+		## Parse the MP status ie first table.. 3 cols = descripioon, "-" and OK or Down
+		rows =  tables[0].findAll(['tr'])
+
+		## Loop rows and update local store
+		up = 0
+		down = 0
+		for row in rows:			
+			cells = row.findAll('td')
+			server_name = cells[0].text.split(" ", 1)[0] 
+			status = cells[2].text  
+
+			query = db.GqlQuery("SELECT * FROM  MPServer where host = :1", server_name) 
+			server = query.get()
+			if not server:
+				print "NOT= server error"
+			else:
+				server.status = status
+				if status == "OK":
+					up += 1
+					server.status_updated = datetime.datetime.now()
+					server.put()
+				else:
+					down += 1
+				
+		info = {'updated': datetime.datetime.now(), 'up': up, 'down': down, 'total': up + down}
+		memcache.set("mpservers_info", info)
+		return True
+
+

@@ -26,7 +26,6 @@ import app.fetch
 
 app_vars = { 'foo': 'bar',
 			'pilots_info': app.fetch.pilots_info(),
-			'servers_up': app.fetch.servers_up(),
-			'servers_down': app.fetch.servers_down()
+			'mpservers_info': app.fetch.mpservers_info()
 }
 
