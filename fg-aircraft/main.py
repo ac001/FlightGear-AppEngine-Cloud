@@ -24,13 +24,15 @@ application = webapp.WSGIApplication([	('/', app.Index.Index),
 
 										('/mpservers/', app.MPServers.MPServersPage),
 										('/mpservers/import/', app.MPServers.MPServerImport),
-										('/mpservers/update_status/', app.MPServers.MPServersUpdateStatus),
+										('/mpservers/update/', app.MPServers.MPServersUpdateStatus),
 										('/mpserver/(.*)/', app.MPServers.MPServerPage),
 										('/rpc/mpservers', app.MPServers.MPServersRpc),
 
 										('/aircraft/', app.Aircraft.AircraftPage),
 										('/aircraft/(.*)/', app.Aircraft.AircraftPage),
-										('/rpc/aircraft', app.Aircraft.AircraftRpc),
+
+										('/import/aircraft/', app.Aircraft.AircraftImport),
+										('/import/revisions/', app.Aircraft.AircraftImportRevisions),
 
 										('/feeds', app.Feeds.FeedsPage),
 

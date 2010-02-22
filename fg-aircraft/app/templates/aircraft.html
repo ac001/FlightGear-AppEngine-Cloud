@@ -28,24 +28,9 @@ aero info
 {% if aero %}
 
 
-<table>
-<tr><td><a href="/arcraft/{{ aero.aero }}/">{{ aero.aero }}</td></tr>
-<tr><td>{{ aero.description }}</td></tr>
-<tr><td>{{ aero.author }}</td></tr>
-<tr><td>{{ aero.fdm }}</td></tr>
-<tr><td>{{ aero.version }}</td></tr>
-</table>
 
-<img width="400" height="400" 
-	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
-	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f={{ aero.splash }};hb=HEAD"
->
-	#{{ aero.splash }}#
-</table>
 
-<h3>Issues</h3>
-{% include "issues_table.html" %}
-
+{% include "aero_include.html" %}
 
 {% else %}
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 ## Global Config uration for script execution
@@ -10,22 +11,12 @@ import yaml
 import urllib
 import urllib2
 
+import conf
 
-## TODO make this either env or command line or error
-FG_ROOT = '/home/flight-sim/flight-gear-9/data'
-FG_DATA_AIRCRAFT_PATH = '%s/Aircraft/' % FG_ROOT
-
-FGMAP_ROOT ='/home/flight-sim/public_html/fgmap'
-
-
-##########################################################################################
-print "FGMAP_ROOT =", FGMAP_ROOT
-
-## Get a list of sub directories of aircraft in FG_ROOT/Aircraft/
-
-content = open(FGMAP_ROOT + "/fgmap.servers").read()
+## Ooen files from mpmap
+content = open(conf.FG_MAP_ROOT + "/fgmap.servers").read()
 lines = content.split("\n")
-print lines
+
 
 devel = False
 for line in lines:
@@ -41,7 +32,7 @@ for line in lines:
 			devel = True
 			print "tipped devel"
 	else:
-		print "mp=", line
+		#print "mp=", line
 		parts = line.split("::")
 
 		"""
@@ -66,16 +57,17 @@ for line in lines:
 		#print dic
 		
 		#sys.exit(1)
-		url = "http://localhost:8080/mpservers/import/"
+		url = conf.WWW + "/mpservers/import/"
 		if 1 == 1:
 			data = urllib.urlencode(dic)
-			print url + "?" + data
+			#print url + "?" + data
+			#print dic
 			req = urllib2.Request(url + "?" + data) #, data)
 			#req = urllib2.Request(url, data)
 			response = urllib2.urlopen(req)
 			the_page = response.read()
-			print the_page
-
+			#print the_page
+print "done"
 
 		#sys.exit(1)
 #generate_aircraft_minidom(xml_file_path)
