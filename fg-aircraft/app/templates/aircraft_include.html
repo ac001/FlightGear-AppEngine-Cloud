@@ -1,0 +1,22 @@
+
+
+<table>
+<tr>
+	<th>Aero</th>
+	<th>Description</th>
+	<th>Authors</th>
+	<th>FDM</th>
+	<th>Version</th>
+</tr>
+{% for aero in aircraft %}
+	<tr>
+		<td><a href="/aircraft/{{ aero.aero }}/">{{ aero.aero }}</td>
+		<td>{{ aero.description }}</td>
+		<td>{{ aero.author }}</td>
+		<td>{{ aero.fdm }}</td>
+		<td>{{ aero.version }}</td>
+		<td>{{ aero.splash }}</td>
+    </tr>
+{% endfor %}
+</table>
+

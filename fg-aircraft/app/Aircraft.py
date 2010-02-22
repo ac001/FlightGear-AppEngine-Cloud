@@ -13,11 +13,18 @@ from google.appengine.ext import db
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
+import gdata.youtube.service
+#import gdata.projecthosting.data
+#import gdata.gauth
+#import gdata.client
+#import gdata.data
+import atom.http_core
+import atom.core
+
 
 from models.models import Aero
 from models.models import AeroFile
 from models.models import Developer
-from models.models import Revision
 
 import app.Issues
 
@@ -60,7 +67,32 @@ class Aircraft:
 				aircraft_list.append(aero)
 			#print aero
 		return aircraft_list, False
-	
+
+	def get_videos(self, aero):
+		client = gdata.youtube.service.YouTubeService()
+		query = gdata.youtube.service.YouTubeVideoQuery()
+		query.vq = "flightgear " + aero
+		query.max_results = 10
+		#query.order_by = "rating"
+		feed = client.YouTubeQuery(query)	
+		videos = []
+		for entry in feed.entry:
+			v = self.process_entry(entry)
+			videos.append(v)
+		#print videos
+		return videos
+
+	def process_entry(self, entry):
+		dic = {}
+		dic['id'] = entry.id.text.split("/")[-1]
+		dic['title'] = entry.title.text
+		dic['thumbnail'] = entry.media.thumbnail[0].url
+		#print dic
+		#dic['stars'] = issue.stars.text
+		#dic['state'] = issue.state.text
+		#dic['status'] = issue.status.text
+		return dic
+
 
 class AircraftPage(webapp.RequestHandler):
 
@@ -75,6 +107,7 @@ class AircraftPage(webapp.RequestHandler):
 			aero = query.get()
 			#print "aero=", aero
 			if aero:
+				airdb = Aircraft()
 				template_values['title'] = aero.aero
 				template_values['aero'] = aero
 				template_values['content_template'] = 'aero_include.html'
@@ -86,7 +119,9 @@ class AircraftPage(webapp.RequestHandler):
 				query = db.GqlQuery("SELECT * FROM  AeroFile where directory = :1", aero.directory) 
 				aero_files = query.fetch(1000)
 				template_values['aero_files'] = aero_files
-				
+
+				template_values['videos'] = airdb.get_videos(selected_aircraft)
+				print template_values
 
 		else:
 			""" Show all aircraft or searched"""
@@ -159,18 +194,23 @@ class AircraftImportRevisions(webapp.RequestHandler):
 		c = 0
 		for dic in revisions:
 			cfile = dic['file']
+			rev_dic = dic['revision']
+
 			query = db.GqlQuery("SELECT * FROM  AeroFile where directory = :1 and file_name = :2", cfile['directory'], cfile['file_name'])
 			fileOb = query.get()
 			if not fileOb:
+
+				dated = time.strptime(rev_dic['date'], "%Y/%m/%h %H:%M:%S") #"date": "2008/09/22 23:08:47"
 				fileOb = AeroFile()
 				fileOb.file_name = cfile['file_name']
 				fileOb.directory = cfile['directory']
-				fileOb.rcs = cfile['rcs']
-				fileOb.head = cfile['head']
+				fileOb.revision = rev_dic['revision']
+				fileOb.message = rev_dic['message']
+				fileOb.updated = dated
 				fileOb.put()
 
 			#### revision
-			rev_dic = dic['revision']
+			
 
 			## check author
 			query = db.GqlQuery("SELECT * FROM  Developer where cvs = :1", rev_dic['author'])
@@ -181,26 +221,25 @@ class AircraftImportRevisions(webapp.RequestHandler):
 				devOb.put()
 
 			
-			query = db.GqlQuery("SELECT * FROM  Revision where aero_file = :parent", parent=fileOb.key())
-			revOb = query.get()
-			create_rev = False
-			if revOb:
-				if revOb.revision == rev_dic['revision']:
-					print "skip"
-					create_rev = False
-				else:
-					create_rev = True
+			#query = db.GqlQuery("SELECT * FROM  Revision where aero_file = :parent", parent=fileOb.key())
+			#revOb = query.get()
+			#create_rev = False
+			#if revOb:
+				#if revOb.revision == rev_dic['revision']:
+					#print "skip"
+					#create_rev = False
+				#else:
+					#create_rev = True
 					#revOb.revision == rev_dic['revision']
-			else:
-				create_rev = True
+			#else:
+				#create_rev = True
 
-			if create_rev:
-				revOb = Revision(parent=fileOb)	
+			#if create_rev:
+				#revOb = Revision(parent=fileOb)	
 				#revOb.aero_file = fileOb
-				revOb.dev = devOb
-				revOb.revision = rev_dic['revision']
-				revOb.message = rev_dic['message']
-				revOb.put()		
+				#revOb.dev = devOb
+
+				#revOb.put()		
 			c += 1
 			#if c == 8:
 				#sys.exit(0)

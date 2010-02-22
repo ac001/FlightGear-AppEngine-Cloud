@@ -26,17 +26,11 @@ lambda x: datetime.datetime.strptime(x, '%m/%d/%Y').date()),
 class AeroFile(db.Model):
 	file_name = db.StringProperty(indexed=True)
 	directory = db.StringProperty(indexed=True)
-	head = db.StringProperty()
 	rcs = db.StringProperty()
-	revision = db.StringProperty()
-	last_update = db.DateTimeProperty(indexed=True)
-	
-class Revision(db.Model):
-	aero_file = db.ReferenceProperty(AeroFile)
-	dev = db.ReferenceProperty(Developer)
+	revision = db.FloatProperty(indexed=True)
+	updated = db.DateTimeProperty(indexed=True)
 	message = db.TextProperty()
-	revision = db.StringProperty(indexed=True)
-	dated = db.DateTimeProperty()
+
 	
 
 class MPServer(db.Model):

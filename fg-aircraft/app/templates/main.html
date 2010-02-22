@@ -42,12 +42,12 @@
 </div>
 
 
-<div id="left">
-{% block left %}
+<div id="left_box">
+{% block left_box %}
 <p>
 left 
 </p>
-{% endblock %}
+{% endblock left_box %}
 </div>
 
 <div id="content">
@@ -65,6 +65,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 </div>
 <div id="footer">
 <a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a>
+Pilots ONline={{ app_vars.pilots_count }}
 </div>
 </div>
 

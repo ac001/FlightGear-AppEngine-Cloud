@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+	##{% if pilots_online.loaded %}<b>Loaded</b>{% endif %}<br>
+	##{% if pilots_online.client %}<b>{{ pilots_online.client }}</b>{% endif %}
+
+{{ conf.app_vars.pilots_count }}
+<table>
+<tr>
+	<th>Callsign</th>
+	<th>Aircraft</th>
+	<th>Lat</th>
+	<th>Lng</th>
+	<th>Altitude</th>
+	<th>Heading</th>
+	<th>Server</th>
+</tr>
+{% for pilot in pilots_online %}
+	<tr>
+		<td><a href="/aircraft/{{ aero.aero }}/">{{ pilot.callsign }}</a></td>
+		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
+		<td>{{ pilot.lat }}</td>
+		<td>{{ pilot.alt }}</td>	
+		<td>{{ pilot.heading }}</td>
+		<td>{{ pilot.lat }}</td>
+		<td>{{ pilot.server }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+	
+{% endblock %}

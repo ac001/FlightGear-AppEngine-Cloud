@@ -14,13 +14,12 @@ import conf
 class Index(webapp.RequestHandler):
 
 
-	
 	def get(self):
 
 
 
 		template_values = {
-			'title': 'Index', 'conf': conf, 'path': self.request.path
+			'title': 'Index', 'conf': conf, 'path': self.request.path,
 			}
 		#print template_values
 		path = os.path.join(os.path.dirname(__file__), 'templates/index.html')

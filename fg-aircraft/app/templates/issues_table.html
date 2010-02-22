@@ -1,0 +1,20 @@
+<table width="100%">
+<tr>
+	<th>Issue</th>
+	<th>Title</th>
+	<th>Owner</th>
+	<th>Status</th>
+	<th>State</th>
+	<th>Stars</th>
+</tr>
+{% for issue in issues %}
+	<tr>
+		<td align="right"><a class="link" href="/issue/{{ issue.id }}/">{{ issue.id }}</td>
+		<td>{{ issue.title }}</td>
+		<td>{{ issue.owner }}</td>
+		<td>{{ issue.status }}</td>
+		<td>{{ issue.state }}</td>
+		<td>{{ issue.stars }}</td>
+    </tr>
+{% endfor %}
+</table>

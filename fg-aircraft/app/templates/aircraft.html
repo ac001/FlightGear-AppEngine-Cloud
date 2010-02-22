@@ -4,10 +4,18 @@
 ## left ################################################
 {% endcomment %}
 
-{% block left %}
+{% block left_box %}
 
 {% if aero %}
-aero info
+
+<h2>Videos</h2>
+
+{% for vid in videos %}
+<div class="video_box">
+<img src="{{ vid.thumbnail }}">
+</div>
+{% endfor %}
+
 
 {% else %}
 <form action="/aircraft/" method="get">
@@ -17,7 +25,7 @@ aero info
 
 {% endif %}
 
-{% endblock %}
+{% endblock left_box %}
 
 
 

@@ -58,7 +58,7 @@ text-align: right;
 }
 
 
-#left
+#left_box
 {
 float: left;
 width: 160px;
@@ -66,6 +66,20 @@ margin: 0px;
 padding: 1em;
 }
 
+#left_box h2{
+ font-size: 10pt;
+}
+
+#left_box h4{
+font-size: 8pt;
+}
+
+.video_box{
+	background-color: black;
+	padding: 2px;
+	margin-bottom: 5px;
+	text-align: center;
+}
 
 
 #content

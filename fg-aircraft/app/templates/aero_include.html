@@ -1,0 +1,24 @@
+
+<table>
+<tr><th>Name</th><td><a href="/arcraft/{{ aero.aero }}/">{{ aero.aero }}</td></tr>
+<tr><th>Description</th><td>{{ aero.description }}</td></tr>
+<tr><th>Authors</th><td>{{ aero.authors }}</td></tr>
+<tr><th>Flight Model</th><td>{{ aero.fdm }}</td></tr>
+<tr><th>Version</th><td>{{ aero.version }}</td></tr>
+<tr><th>Directory</th><td>{{ aero.directory }}</td></tr>
+</table>
+
+<img width="200" height="200" 
+	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
+	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f={{ aero.splash }};hb=HEAD"
+>
+	#{{ aero.splash }}#
+</table>
+
+
+
+<h3>Issues</h3>
+{% include "issues_table.html" %}
+
+<h3>Files</h3>
+{% include "files_table.html" %}
