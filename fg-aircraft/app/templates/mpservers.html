@@ -6,7 +6,10 @@ left MP
 
 
 {% block content %}
-
+<pre>#
+{{ conf.app_vars.pilots_info.count }}
+{{ conf.app_vars.pilots_info.updated }}
+</pre>
 <table>
 <tr>
 	<th>No</th>
@@ -15,6 +18,7 @@ left MP
 	<th>Updated</th>
 	<th>Location</th>
 	<th align="right">Address</th>
+	<th align="right">Online</th>
 </tr>
 {% for server in servers %}
 	<tr>
@@ -26,6 +30,7 @@ left MP
 		<td {% ifequal server.status "Down" %}class="status_down"{% endifequal %}>{{ server.status_updated|date:"Y-m-d H:i:s" }}</td>
 		<td>{{ server.location }}</td>
 		<td align="right">{{ server.ip }}:{{ server.port }}</td>
+		<td align="right">{{ server.pilots_count }}</td>
     </tr>
 {% endfor %}
 </table>

@@ -23,21 +23,24 @@
 
 </head> 
 <body> 
-
-
 <div id="container">
-<div id="top">
+
+<div id="top_box">
 <h1>FlightGear GAE Experiment</h1>
 
 	
 <div id="navcontainer">
-
-<ul id="navlist">
-	{% for n in conf.nav %}
-	<li><a {% ifequal path n.path  %}class="current"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
-	{% endfor %}
-</ul>
+	<ul id="navlist">
+		{% for n in conf.nav %}
+		<li><a {% ifequal path n.path  %}class="current"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
+		{% endfor %}
+	</ul>
 </div>
+
+<table class="toolbar">
+<th>Last Updated:</th><td>{{ conf.app_vars.pilots_info.updated }}</td>
+<th>Pilots Online:</th><td>{{ conf.app_vars.pilots_info.count }}</td>
+</table>
 
 </div>
 
@@ -65,7 +68,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 </div>
 <div id="footer">
 <a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a>
-Pilots ONline={{ app_vars.pilots_count }}
+Pilots ONline={{ app_vars.pilots_info }}
 </div>
 </div>
 

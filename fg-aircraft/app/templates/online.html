@@ -4,7 +4,10 @@
 	##{% if pilots_online.loaded %}<b>Loaded</b>{% endif %}<br>
 	##{% if pilots_online.client %}<b>{{ pilots_online.client }}</b>{% endif %}
 
-{{ conf.app_vars.pilots_count }}
+<pre>#
+{{ conf.app_vars.pilots_info.count }}
+{{ conf.app_vars.pilots_info.updated }}
+</pre>
 <table>
 <tr>
 	<th>Callsign</th>

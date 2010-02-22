@@ -13,7 +13,8 @@ from google.appengine.api import urlfetch
 import datetime
 
 import conf
-from models.models import MPServer
+import app.fetch
+#from models.models import MPServer
 
 
 ##################################
@@ -21,12 +22,12 @@ from models.models import MPServer
 class MPServersPage(webapp.RequestHandler):
 
 	def get(self, action=None):
-		
-		query = MPServer.all()
-		servers = query.fetch(10000)
-
+		servers = app.fetch.mp_servers()
+		for srv in servers:
+			v = memcache.get("server_count_%s" % srv.server)
+			srv.pilots_count = "-" if v == None else v
 		template_values = {
-			'conf': conf, 'path': self.request.path, 'title': 'MP Servers Database',
+			'conf': conf, 'path': self.request.path, 'title': 'MP Servers',
 			'servers': servers
 		}
 

@@ -5,6 +5,9 @@ class Developer(db.Model):
 	cvs = db.StringProperty()
 	name = db.StringProperty()
 	
+class Pilots(db.Model):
+	callsign = db.StringProperty()
+	#last_seen
 
 class Aero(db.Model):
 	aero = db.StringProperty()

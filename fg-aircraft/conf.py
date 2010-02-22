@@ -17,15 +17,15 @@ nav.append( {'path':'/', 'label': 'Home'} )
 nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
 nav.append( {'path':'/online/', 'label': 'Pilots Online'} )
 nav.append( {'path':'/mpservers/', 'label': 'MP Servers'} )
-nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
+#nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )
-nav.append( {'path':'/issues/', 'label': 'Issues'} )
+nav.append( {'path':'/issues/', 'label': 'Isssues'} )
 nav.append( {'path':'/source/', 'label': 'Source'} )
 
 import app.fetch
 
-app_vars = { 
-			'pilots_count': app.fetch.pilots_count(),
+app_vars = { 'foo': 'bar',
+			'pilots_info': app.fetch.pilots_info(),
 			'servers_up': app.fetch.servers_up(),
 			'servers_down': app.fetch.servers_down()
 }

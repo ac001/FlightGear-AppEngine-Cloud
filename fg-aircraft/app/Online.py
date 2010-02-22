@@ -66,12 +66,15 @@ class DDOnline:
 class OnlinePage(webapp.RequestHandler):
 
 	def get(self):
+
+		pilots_online = app.fetch.pilots_online()
 		template_values = {
 			'conf': conf, 'path': self.request.path, 'title': 'Pilots Online',
-			'pilots_online': app.fetch.pilots_online(),
+			'pilots_online': pilots_online
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/online.html')
 		self.response.out.write(template.render(path, template_values))
+
 
 class MPServersRpc(webapp.RequestHandler):
 

@@ -29,9 +29,12 @@
 .fg_pilot_fly{
 	border-left: 5px solid green;
 }
-
-
-
+/*
+body{
+	background-image: url(/images/flightgear.png);
+	background-repeat: no-repeat;
+}
+*/
 
 #container
 {
@@ -43,20 +46,42 @@ border: 0px solid gray;
 line-height: 130%;
 }
 
-#top
+#top_box
 {
 padding: .5em;
 /* background-color: #ddd;
 border-bottom: 1px solid gray; */
 }
 
-#top h1
+#top_box h1
 {
 padding: 0px;
 margin: 0px;
 text-align: right;
 }
 
+#top_box table.toolbar
+{
+margin: 0px;
+text-align: right;
+
+font-size: 9pt;
+}
+
+#top_box table.toolbar th
+{
+padding: 4px 4px 4px 10px;
+
+border-bottom: 1px solid #cccccc;
+}
+
+#top_box table.toolbar td
+{
+padding: 4px;
+
+border-right: 1px solid #cccccc;
+border-bottom: 1px solid #cccccc;
+}
 
 #left_box
 {
@@ -161,23 +186,23 @@ border-bottom: 1px solid white;
 
 
 
-table{
+#content table{
 	font-size: 10pt;
 }
-table tr{
+#content table tr{
 	border-bottom: 1px solid #cccccc;
 }
-table td{
+#content table td{
 	padding: 3px;
 }
-table th{
+#content table th{
 	padding: 3px;
 	background-color: #efefef;
 }
 
-table td.status_ok{
+#content table td.status_ok{
 	color: #009900;
 }
-table td.status_down{
+#content table td.status_down{
 	color: #990000;
 }
