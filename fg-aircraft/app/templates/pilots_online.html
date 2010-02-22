@@ -1,6 +1,6 @@
-<html>
-  <body>
-	<h1>Pilots Online</h1>
+{% extends "main.html" %}
+
+{% block content %}
 	{% if pilots_online.loaded %}<b>Loaded</b>{% endif %}
 	{% if pilots_online.client %}<b>{{ pilots_online.client }}</b>{% endif %}
 	<ul>
@@ -9,5 +9,4 @@
 	{% endfor %}
 	<ul>
 	
-  </body>
-</html>
+{% endblock %}

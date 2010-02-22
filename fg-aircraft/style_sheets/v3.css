@@ -46,17 +46,18 @@ line-height: 130%;
 #top
 {
 padding: .5em;
-background-color: #ddd;
-border-bottom: 1px solid gray;
+/* background-color: #ddd;
+border-bottom: 1px solid gray; */
 }
 
 #top h1
 {
 padding: 0px;
 margin: 0px;
+text-align: right;
 }
 
-#leftnav
+#left
 {
 float: left;
 width: 160px;
@@ -103,8 +104,8 @@ border-top: 1px solid gray;
 
 #navlist
 {
-padding: 3px 0;
-margin-left: 0;
+padding: 3px 0px;
+margin-left: 0px;
 border-bottom: 1px solid #778;
 font: bold 12px Verdana, sans-serif;
 }
@@ -112,7 +113,7 @@ font: bold 12px Verdana, sans-serif;
 #navlist li
 {
 list-style: none;
-margin: 0;
+margin: 0px;
 display: inline;
 }
 
@@ -124,10 +125,9 @@ border: 1px solid #778;
 border-bottom: none;
 background: #DDE;
 text-decoration: none;
+color: black;
 }
 
-#navlist li a:link { color: #448; }
-#navlist li a:visited { color: #667; }
 
 #navlist li a:hover
 {
@@ -136,7 +136,7 @@ background: #AAE;
 border-color: #227;
 }
 
-#navlist li a#current
+#navlist li a.current
 {
 background: white;
 border-bottom: 1px solid white;

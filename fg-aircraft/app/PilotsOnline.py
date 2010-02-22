@@ -11,6 +11,8 @@ from google.appengine.api import memcache
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
+import conf
+
 def get_pilots_feed(client='--none--'):
 	url = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flightgear.org:5001"
 	result = urlfetch.fetch(url)
@@ -49,7 +51,8 @@ class PilotsOnline(webapp.RequestHandler):
 
 	def get(self):
 		template_values = {
-			'pilots_online': self.get_pilots()
+			'pilots_online': self.get_pilots(),
+			'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/pilots_online.html')
 		self.response.out.write(template.render(path, template_values))

@@ -1,5 +1,5 @@
 application: fg-aircraft
-version: 1
+version: 2
 runtime: python
 api_version: 1
 
@@ -10,5 +10,6 @@ handlers:
   static_dir: js
 - url: /style_sheets
   static_dir: style_sheets
+
 - url: /.*
   script: main.py

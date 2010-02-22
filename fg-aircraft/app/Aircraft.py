@@ -14,6 +14,8 @@ import xml.dom.minidom
 
 from models.models import Aero
 
+import conf
+
 class AircraftPage(webapp.RequestHandler):
 
 	def get(self):
@@ -22,7 +24,8 @@ class AircraftPage(webapp.RequestHandler):
 		results = query.fetch(1000)
 
 		template_values = {
-			'title': 'Aircraft', 'aircraft': results
+			'title': 'Aircraft', 'aircraft': results,
+			'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/aircraft.html')
 		self.response.out.write(template.render(path, template_values))
@@ -72,6 +75,7 @@ class AircraftRpc(webapp.RequestHandler):
 		aero.fdm = self.request.get("flight-model")
 		aero.splash = self.request.get("splash")
 		aero.version = self.request.get("version")
+		aero.splash = self.request.get("splash")
 		aero.put()
 
 		#print 'Content-Type: text/plain'

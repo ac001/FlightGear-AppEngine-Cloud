@@ -27,24 +27,27 @@
 
 <div id="container">
 <div id="top">
-<h1>FlightGear on Google Cloud</h1>
+<h1>FlightGear GAE Experiment</h1>
 
-
+	
 <div id="navcontainer">
+
 <ul id="navlist">
-<li id="active"><a href="/" id="current">Home</a></li>
-<li><a href="/pilots_online">Pilots Online</a></li>
-<li><a href="/aircraft/">Aircraft</a></li>
-<li><a href="#">Item four</a></li>
-<li><a href="#">Item five</a></li>
+	{% for n in conf.nav %}
+	<li><a {% ifequal path n.path  %}class="current"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
+	{% endfor %}
 </ul>
 </div>
 
 </div>
-<div id="leftnav">
+
+
+<div id="left">
+{% block left %}
 <p>
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.
+left 
 </p>
+{% endblock %}
 </div>
 
 <div id="content">
@@ -61,7 +64,7 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 {% endblock %}
 </div>
 <div id="footer">
-Footer
+<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a>
 </div>
 </div>
 

@@ -1,13 +1,14 @@
-<html>
-  <body>
-	<h1>MultiPlayer Servers</h1>
-	{% if pilots_online.loaded %}<b>Loaded</b>{% endif %}
-	{% if pilots_online.client %}<b>{{ pilots_online.client }}</b>{% endif %}
-	<ul>
-    {% for pilot in pilots_online.pilots %}
-		<li>{{ pilot }}</li>
-	{% endfor %}
-	<ul>
-	
-  </body>
-</html>
+{% extends "main.html" %}
+
+{% block left %}
+left MP
+{% endblock %}
+
+
+
+
+{% block content %}
+
+mp servers
+
+{% endblock %}

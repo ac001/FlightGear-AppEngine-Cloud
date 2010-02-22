@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+  <script type="text/javascript" src="/js/feed-viewer/FeedViewer.js"></script>
+    <script type="text/javascript" src="/js/feed-viewer/FeedWindow.js"></script>
+    <script type="text/javascript" src="/js/feed-viewer/FeedGrid.js"></script>
+    <script type="text/javascript" src="/js/feed-viewer/MainPanel.js"></script>
+    <script type="text/javascript" src="/js/feed-viewer/FeedPanel.js"></script>
+
+
+
+    <script type="text/javascript" src="/js/feed-viewer/TabCloseMenu.js"></script>
+  
+
+<div id="header"><div style="float:right;margin:5px;" class="x-small-editor"></div></div>
+
+<!-- Template used for Feed Items -->
+<div id="preview-tpl" style="display:none;">
+    <div class="post-data">
+        <span class="post-date">{pubDate:date("M j, Y, g:i a")}</span>
+        <h3 class="post-title">{title}</h3>
+        <h4 class="post-author">by {author:defaultValue("Unknown")}</h4>
+    </div>
+    <div class="post-body">{content:this.getBody}</div>
+</div>
+
+{% endblock content %}

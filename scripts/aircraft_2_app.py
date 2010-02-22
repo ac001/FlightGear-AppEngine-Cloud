@@ -108,12 +108,14 @@ def generate_aircraft_yaml(xml_contents, file_name):
 			yaml_dic['status'] = str(xml_dic['sim'][0]['status'][0])
 
 		yaml_dic = {}
-		flds = [ 'aero', 'description', 'flight-model', 'author', 'status' ]
+		flds = [ 'aero', 'description', 'flight-model', 'author', 'status']
 		for fld in flds:
 			if fld in xml_dic['sim'][0]:
 				yaml_dic[fld] = str(xml_dic['sim'][0][fld][0])
 
-
+		if 'startup' in xml_dic['sim'][0]:
+			yaml_dic['splash'] = str(xml_dic['sim'][0]['startup'][0]['splash-texture'][0])
+			print "@@@@@@@@", yaml_dic['splash']
 		## create yaml string
 		#yaml_string = yaml.dump(yaml_dic)
 		#print "yaml_dic=", yaml_dic
@@ -164,7 +166,7 @@ for air_dir in directories:
 		dic = generate_aircraft_yaml(xml_contents, xml_file_path)
 		import urllib
 		import urllib2
-		print "dic=", dic
+		#print "dic=", dic
 		if dic == None:
 			pass
 		else:

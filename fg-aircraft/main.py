@@ -11,20 +11,28 @@ import app.PilotsOnline
 import app.MPServers
 import app.Aircraft
 import app.Aero
+import app.Feeds
+import app.Issues
+
+
 
 # 										('/cron/pilots_online', app.PilotsOnline.PilotsOnlineCron),
 
 application = webapp.WSGIApplication([	('/', app.Index.Index),
 										('/pilots_online/', app.PilotsOnline.PilotsOnline),
-										('/rpc/pilots_online', app.PilotsOnline.PilotsOnlineRpc),
+										#('/rpc/pilots_online', app.PilotsOnline.PilotsOnlineRpc),
 
 										('/mpservers/', app.MPServers.MPServers),
 										('/rpc/mpservers', app.MPServers.MPServersRpc),
 
-										('/aircraft', app.Aircraft.AircraftPage),
+										('/aircraft/', app.Aircraft.AircraftPage),
+		
 										('/rpc/aircraft', app.Aircraft.AircraftRpc),
 
+										('/feeds', app.Feeds.FeedsPage),
+
 										('/aero/(.*)/', app.Aero.AeroPage),
+										('/issues/', app.Issues.IssuesPage),
 									],
 									debug=True)
 

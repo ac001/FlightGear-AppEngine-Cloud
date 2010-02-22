@@ -22,7 +22,8 @@ class AeroPage(webapp.RequestHandler):
 		aeroObj = query.get()
 
 		template_values = {
-			'title': 'Aircraft', 'aero': aeroObj
+			'title': 'Aircraft', 'conf': conf, 'path': self.request.path,
+			'aero': aeroObj
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/aero.html')
 		self.response.out.write(template.render(path, template_values))
