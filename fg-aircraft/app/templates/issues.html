@@ -1,11 +1,13 @@
 {% extends "main.html" %}
 
-{% block left_box %}
-<ul>
-<li><a href="http://code.google.com/p/flightgear-bugs/issues/list">flightgear-bugs</a></li>
+{% block side_box %}
+<h2>Links</h2>
+<p>There is a remote feed from the {{ conf.GOOGLE_PROJECT }}</p>
+<ul class="vnav">
+<li><a href="http://code.google.com/p/flightgear-bugs/issues/list">Google Project - {{ conf.GOOGLE_PROJECT }}</a></li>
 <li><a href="http://code.google.com/p/support/wiki/IssueTrackerAPIReference">Issues API</a></li>
 </ul>
-{% endblock %}
+{% endblock side_box %}
 
 
 

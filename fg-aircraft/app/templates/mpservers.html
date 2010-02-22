@@ -1,13 +1,16 @@
 {% extends "main.html" %}
 
-{% block left_box %}
-<a href="/mpservers/update/">Update Now</a>
+{% block side_box %}
+
+
 <h2>Links</h2>
-<ul>
+<ul class="vnav">
 	<li><a href="http://fgms.sourceforge.net/">fgms Project</a></li>
 	<li><a href="http://fgms.sourceforge.net/download.php">Download</a></li>
 </ul>
-{% endblock %}
+
+<button onclick="location.href='/mpservers/update/'">Update Now</button>
+{% endblock side_box %}
 
 
 {% block content %}

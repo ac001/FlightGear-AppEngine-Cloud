@@ -14,7 +14,7 @@
 </tr>
 {% for pilot in pilots_online %}
 	<tr>
-		<td><a href="/aircraft/{{ aero.aero }}/">{{ pilot.callsign }}</a></td>
+		<td>{{ pilot.callsign }}</td>
 		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
 		<td>{{ pilot.lat }}</td>
 		<td>{{ pilot.alt }}</td>	

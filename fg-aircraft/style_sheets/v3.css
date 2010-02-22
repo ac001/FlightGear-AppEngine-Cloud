@@ -84,13 +84,36 @@ border-bottom: 1px solid #cccccc;
 #left_box
 {
 float: left;
-width: 160px;
+width: 250px;
 margin: 0px;
 padding: 1em;
+
 }
 
 #left_box h2{
  font-size: 10pt;
+}
+
+#right_box
+{
+float: right;
+width: 200px;
+margin: 0px;
+padding: 1em;
+background-color: #efefef;
+border: 1px solid #dddddd;
+}
+
+#right_box h2{
+ font-size: 10pt;
+ border-bottom: 1px solid #dddddd;
+
+}
+
+#right_box p{
+ font-size: 9pt;
+ padding: 10px;
+
 }
 
 #left_box h4{
@@ -98,7 +121,6 @@ font-size: 8pt;
 }
 
 .video_box{
-	background-color: black;
 	padding: 2px;
 	margin-bottom: 5px;
 	text-align: center;
@@ -107,9 +129,7 @@ font-size: 8pt;
 
 #content
 {
-margin-left: 200px;
-border-left: 1px solid gray;
-border-right: 1px solid gray;
+margin-right: 250px;
 padding: 1em;
 
 }
@@ -180,8 +200,14 @@ background: white;
 border-bottom: 1px solid white;
 }
 
-
-
+.vnav {
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+.vnav li{
+	list-style-type: square; 
+	font-size: 8pt;
+}
 
 
 #content table{

@@ -8,6 +8,14 @@ from google.appengine.api import memcache
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
+import gdata.projecthosting.client
+import gdata.projecthosting.data
+import gdata.gauth
+import gdata.client
+import gdata.data
+import atom.http_core
+import atom.core
+
 from BeautifulSoup import BeautifulSoup 
 
 import conf
@@ -103,6 +111,7 @@ def mpservers():
 
 def mpservers_info():
 	info =	memcache.get("mpservers_info")
+	return info
 	last = info['updated']	
 	current = datetime.datetime.now()
 	info['ago'] =  last - current
@@ -161,3 +170,43 @@ def mpservers_status_update():
 		return True
 
 
+def TODOissues(aero=None):
+	def all(self):
+		"""Retrieve all the issues in a project."""
+		#data = memcache.get("issues_all")
+		#if data is not None:
+		#	return data, True
+		client = gdata.projecthosting.client.ProjectHostingClient()
+		client.client_login(
+					conf.USER_NAME,
+					conf.USER_PASS,
+					source='flightgear-bot',
+					service='code')
+		feed = client.get_issues(conf.GOOGLE_PROJECT)
+		data = []
+		print sfeed
+		for issue in feed.entry:
+			dic = process_entry(issue)
+			data.append(dic)
+		if not memcache.set("issues_all", data, 60):
+			print "error"
+		return data
+
+def process_issue_entry(issue):
+	dic = {}
+	dic['id'] = issue.id.text.split("/")[-1]
+	dic['title'] = issue.title.text
+	dic['labels'] = []
+	for label in issue.label:
+		dic['labels'].append(label.text)
+	if issue.owner:
+		#print issue.owner
+		if issue.owner.username.text.find('@') > 0:
+			dic['owner'] = issue.owner.username.text.split('@')[0]  #// take out email
+		else:
+			dic['owner'] = issue.owner.username.text
+	
+	dic['stars'] = issue.stars.text
+	dic['state'] = issue.state.text
+	dic['status'] = issue.status.text
+	return dic

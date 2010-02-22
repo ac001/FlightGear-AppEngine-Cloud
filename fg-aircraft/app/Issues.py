@@ -20,6 +20,7 @@ import atom.http_core
 import atom.core
 
 import conf
+import app.fetch
 
 class GoogleIssuesClient:
 
@@ -41,7 +42,7 @@ class GoogleIssuesClient:
 		if data is not None:
 			return data, True
 
-		feed = self.client.get_issues(conf.PROJECT_NAME)
+		feed = self.client.get_issues(conf.GOOGLE_PROJECT)
 		data = []
 		for issue in feed.entry:
 			dic = self.process_entry(issue)
@@ -85,15 +86,16 @@ class GoogleIssuesClient:
 
 class IssuesPage(webapp.RequestHandler):
 
-
 	def get(self):
 		issuesObj = GoogleIssuesClient()
 		issues, cached = issuesObj.all()
 		#print self.request
+		#issues = app.fetch.issues()
 		template_values = {
-			'issues': issues, 'cached': cached, 
+			'issues': issues,  
 			'title': 'Issues List', 'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')
+		#self.response.out.write(issues)
 		self.response.out.write(template.render(path, template_values))
 
