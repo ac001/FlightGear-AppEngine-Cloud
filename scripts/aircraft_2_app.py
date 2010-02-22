@@ -8,17 +8,12 @@ import sys
 import glob
 import yaml
 
-#from BeautifulSoup import BeautifulStoneSoup, Tag, NavigableString
-#import BeautifulSoup
+import urllib
+import urllib2
 
-## TODO make this either env or command line or error
-FG_ROOT = '/home/flight-sim/flight-gear-9/data'
-FG_DATA_AIRCRAFT_PATH = '%s/Aircraft/' % FG_ROOT
+import conf
 
-## TODO make this either env or command line or error
-YAML_PATH = '/home/flight-sim/fg-aircraft/fg-aircraft.appspot.com/aicraft_yaml'
-
-############################################
+#########################################
 ## XML to Dict parser.
 ## Thanks to http://nonplatonic.com/ben.php?title=python_xml_to_dict_bow_to_my_recursive_g&more=1&c=1&tb=1&pb=1
 ## for this xml parser
@@ -60,23 +55,80 @@ def remove_whilespace_nodes(node, unlink=True):
 			node.unlink()
 
 
-def generate_aircraft_minidom(xml_file_path):
-	try:
-		doc = xml.dom.minidom.parse(xml_file_path)
-	except :
-		print "ERRORsome parse error"
-		return
 
-	mapping = {}
-	for node in doc.getElementsByTagName("PropertyList"):
-		if node.getAttribute("include"):
-			print "include", node.getAttribute("include")
+
+
+###################################################################
+## Process CVS Aaircraft
+###################################################################
+class ProcessCVSAircraft:
+
+	def __init__(self):
+		self.doc = None
+		self.curr_dir = None
+
+	def run(self):
+		directories = sorted(os.listdir(conf.FG_DATA_AIRCRAFT_PATH))
+		c = 0
+		print "\n\nSTART --------------------------------------------"
+		for air_dir in directories:
+			
+			##  list the *-set.xml files (maybe more than one eg different liveries)
+			self.curr_dir = air_dir
+			aircraft_wildpath =  "%s%s/*-set.xml" %(conf.FG_DATA_AIRCRAFT_PATH, self.curr_dir)
+			aircraft_set_files = glob.glob(aircraft_wildpath)
+
+			for xml_file_path in aircraft_set_files:
+				print "set=", self.curr_dir
+				doc = self.process_set(xml_file_path)
+				print self.dic
+				print "======================================================"
+				c  +=  1
+				if c == 2: 
+					print "die"
+					sys.exit(1)
+
+				if 1 == 0:
+					xml_contents =  open(xml_file_path).read()
+			
+					dic = self.process_file(xml_contents, xml_file_path)
+
+					if dic == None:
+						pass
+					else:
+						self.send_to_server(self, dic)
+
+
+	def process_set(self, xml_file_path):
+		
+		self.dic = {}
+		self.dic['directory'] = self.curr_dir
+		self.xml_doc(xml_file_path)
 		
 
+	def xml_doc(self, xml_file_path):
+		try:
+			self.doc = xml.dom.minidom.parse(xml_file_path)
+		except :
+			print "ERRORsome parse error", xml_file_path
+			return
 
-def generate_aircraft_yaml(xml_contents, file_name):
+		mapping = {}
+		for node in self.doc.getElementsByTagName("PropertyList"):
+			if node.getAttribute("include"):
+				#print "include", node.getAttribute("include"), self.curr_dir, xml_file_path
+				inc_path = conf.FG_DATA_AIRCRAFT_PATH +  self.curr_dir + "/" +  node.getAttribute("include")
+				print "include=", inc_path
+				self.xml_doc(inc_path)
+				#self.process_file(
+			xml_contents =  open(xml_file_path).read()
+			self.dic.update( self.process_file(xml_contents, "foo") )
+			#sys.exit(0)
 
-		## convert string to dictionary
+	#def to_dic(self, 
+	
+	def process_file(self, xml_contents, file_name):
+
 		try:
 			xml_dic = xmltodict(xml_contents)
 		except:
@@ -86,27 +138,7 @@ def generate_aircraft_yaml(xml_contents, file_name):
 		if not xml_dic:
 			print "ERROR: Something not parsable"
 			return
-		## include
-		#print xml_dic
 
-		## construct yaml dictionary and check for basic values (non conformists ignored for now)
-		yaml_dic = {}
-		if not 'sim' in xml_dic:
-			#print "ERROR: no <sim> tag", file_name
-			return
-		if not 'aero' in xml_dic['sim'][0]:
-			#print "ERROR: no <aero> tag", file_name
-			return
-
-		## map xml to yaml
-		yaml_dic['aero'] = str(xml_dic['sim'][0]['aero'][0])
-		if 'description' in xml_dic['sim'][0]:
-			yaml_dic['description'] = str(xml_dic['sim'][0]['description'][0])
-
-		if 'author' in xml_dic['sim'][0]:
-			yaml_dic['author'] = str(xml_dic['sim'][0]['author'][0])
-		if 'status' in xml_dic['sim'][0]:
-			yaml_dic['status'] = str(xml_dic['sim'][0]['status'][0])
 
 		yaml_dic = {}
 		flds = [ 'aero', 'description', 'flight-model', 'author', 'status']
@@ -116,93 +148,29 @@ def generate_aircraft_yaml(xml_contents, file_name):
 
 		if 'startup' in xml_dic['sim'][0]:
 			yaml_dic['splash'] = str(xml_dic['sim'][0]['startup'][0]['splash-texture'][0])
-			print "@@@@@@@@", yaml_dic['splash']
-		## create yaml string
-		#yaml_string = yaml.dump(yaml_dic)
-		#print "yaml_dic=", yaml_dic
+
 		return yaml_dic
-		## write yaml_string to file
-		#file_to_write = YAML_PATH + "/" + str(yaml_dic['aero']) + ".yaml"
-		# TODO - catch error
-		#file_handle = file(file_to_write, 'w')
-		#yaml.dump(yaml_dic, file_handle,  default_flow_style=False, explicit_start=True)
-		#file_handle.write(yaml_string)
-		#file_handle.close()
-
-		#sys.exit(0)
 
 
-##########################################################################################
-## Process and convert aircraft to yaml files
-##########################################################################################
-print "FG_DATA_AIRCRAFT_PATH =", FG_DATA_AIRCRAFT_PATH
 
-## Get a list of sub directories of aircraft in FG_ROOT/Aircraft/
-directories = sorted(os.listdir(FG_DATA_AIRCRAFT_PATH))
+	def send_to_server(self, dic):
+		url = 'http://localhost:8080/rpc/aircraft'
 
-# Loop though each subdir
-c = 0
-print "--------------------------------------------"
-for air_dir in directories:
-
-	##  list the *-set.xml files (maybe more than one eg different liveries)
-	aircraft_wildpath =  "%s%s/*-set.xml" %(FG_DATA_AIRCRAFT_PATH, air_dir)
-	aircraft_set_files = glob.glob(aircraft_wildpath)
-	#print aircraft_set_files
-
-	#sCVS = cvs log -N -r > /home/flight-sim/fg-aircraft/log.txt
-
-	#call(['cmd', 'arg1', 'arg2'], stdin='...', stdout='...')
-	#eg:
-	#call(['ls', '-l'])
-	if len(aircraft_set_files) > 0:
-		cvs_path = FG_DATA_AIRCRAFT_PATH  + air_dir
-		command = "cvs log -N -r %s " % cvs_path
-	
-		print "cvs_path=", cvs_path, command
-		res = call([command])
-		print res
-		sys.exit(0)
-	#print "###############"
-	## Loop thru each xml -set.xml file
-	for xml_file_path in aircraft_set_files:
-		#print "\nfile=", xml_file_path
-		#print xml_file_path
-
-		## read the file contents 
-		# TODO - error handler of file read 
-		xml_contents =  open(xml_file_path).read()
-		#print xml_contents
-		#try:
-		## parse xml to python dict
-		# TODO catch error
-		dic = generate_aircraft_yaml(xml_contents, xml_file_path)
-		import urllib
-		import urllib2
-		#print "dic=", dic
-		if dic == None:
-			pass
-		else:
-			url = 'http://localhost:8080/rpc/aircraft'
-			values = {'name' : 'Michael Foord',
-					'location' : 'Northampton',
-					'language' : 'Python' }
-
+		if 1 == 1:
+			data = urllib.urlencode(dic)
+			print url + "?" + data
+			req = urllib2.Request(url + "?" + data) #, data)
+			#req = urllib2.Request(url, data)
+			response = urllib2.urlopen(req)
+			the_page = response.read()
+			print the_page
+		c  +=  1
+		if c == 20: 
+			print "die"
+			sys.exit(1)
+	#generate_aircraft_minidom(xml_file_path)
 			
 
-
-			if 1 == 1:
-				data = urllib.urlencode(dic)
-				print url + "?" + data
-				req = urllib2.Request(url + "?" + data) #, data)
-				#req = urllib2.Request(url, data)
-				response = urllib2.urlopen(req)
-				the_page = response.read()
-				print the_page
-			c  +=  1
-			if c == 20: 
-				print "die"
-				#sys.exit(1)
-		#generate_aircraft_minidom(xml_file_path)
-		
+p = ProcessCVSAircraft()
+p.run()
 

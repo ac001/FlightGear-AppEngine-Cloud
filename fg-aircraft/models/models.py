@@ -3,13 +3,26 @@ from google.appengine.ext import db
 
 class Aero(db.Model):
 	aero = db.StringProperty()
+	directory =  db.StringProperty()
 	description = db.StringProperty()
 	author = db.StringProperty()
 	splash = db.StringProperty()
 	fdm = db.StringProperty()
 	status = db.StringProperty()
 	version = db.StringProperty()
+	last_updated = db.DateTimeProperty()
 
+class Revisions(db.Model):
+	#aero
+	file_name = db.StringProperty()
+	directory =  db.StringProperty()
+	description = db.StringProperty()
+	author = db.StringProperty()
+	splash = db.StringProperty()
+	fdm = db.StringProperty()
+	status = db.StringProperty()
+	version = db.StringProperty()
+	last_updated = db.DateTimeProperty()
 
 class MPServer(db.Model):
 	no = db.StringProperty()
