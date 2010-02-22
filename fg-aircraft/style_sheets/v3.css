@@ -57,6 +57,7 @@ margin: 0px;
 text-align: right;
 }
 
+
 #left
 {
 float: left;
@@ -142,3 +143,27 @@ background: white;
 border-bottom: 1px solid white;
 }
 
+
+
+
+
+table{
+	font-size: 10pt;
+}
+table tr{
+	border-bottom: 1px solid #cccccc;
+}
+table td{
+	padding: 3px;
+}
+table th{
+	padding: 3px;
+	background-color: #efefef;
+}
+
+table td.status_ok{
+	color: #009900;
+}
+table td.status_down{
+	color: #990000;
+}

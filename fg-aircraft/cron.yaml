@@ -1,1 +1,4 @@
 cron:
+- description: MP Server status update
+  schedule: every 1 minutes
+  url: /mpservers/update_status/

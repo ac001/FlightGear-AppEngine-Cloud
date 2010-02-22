@@ -10,25 +10,6 @@
 {% block content %}
 
 {% if cached %}cash{% else %}live{% endif %}
-<table>
-<tr>
-	<th>Issue</th>
-	<th>Description</th>
-	<th>Owner</th>
-	<th>Status</th>
-	<th>State</th>
-	<th>Stars</th>
-</tr>
-{% for issue in issues %}
-	<tr>
-		<td>#<a href="/aero/{{ aero.aero }}/">{{ aero.aero }}</td>
-		<td>{{ aero.description }}</td>
-		<td>{{ issue.owner }}</td>
-		<td>{{ issue.status }}</td>
-		<td>{{ aero.state }}</td>
-		<td>{{ aero.stars }}</td>
-    </tr>
-{% endfor %}
-</table>
+{% include "issues_table.html" %}
 
 {% endblock %}

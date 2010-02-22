@@ -21,7 +21,7 @@ import atom.core
 
 import conf
 
-class GoogleIssuesClient():
+class GoogleIssuesClient:
 
 	def __init__(self):
 		self.client = None
@@ -37,37 +37,51 @@ class GoogleIssuesClient():
 
 	def all(self):
 		"""Retrieve all the issues in a project."""
-
 		data = memcache.get("issues_all")
 		if data is not None:
 			return data, True
 
 		feed = self.client.get_issues(conf.PROJECT_NAME)
-		
 		data = []
 		for issue in feed.entry:
-			#print issue.uri
-			#print issue.username
-			#print "------------------------------"
-			dic = {}
-			dic['labels'] = []
-			for label in issue.label:
-				dic['labels'].append(label.text)
-			if issue.owner:
-				#print issue.owner
-				if issue.owner.username.text.find('@') > 0:
-					dic['owner'] = issue.owner.username.text.split('@')[0]  #// take out email
-				else:
-					dic['owner'] = issue.owner.username.text
-			dic['stars'] = issue.stars.text
-			dic['state'] = issue.state.text
-			dic['status'] = issue.status.text
+			dic = self.process_entry(issue)
 			data.append(dic)
-			#print dic
-			if not memcache.set("issues_all", data, 10):
-				print "error"
+			
+		if not memcache.set("issues_all", data, 10):
+			print "error"
 		return data, False
 
+	def process_entry(self, issue):
+		dic = {}
+		dic['id'] = issue.id.text.split("/")[-1]
+		dic['title'] = issue.title.text
+		dic['labels'] = []
+		for label in issue.label:
+			dic['labels'].append(label.text)
+		if issue.owner:
+			#print issue.owner
+			if issue.owner.username.text.find('@') > 0:
+				dic['owner'] = issue.owner.username.text.split('@')[0]  #// take out email
+			else:
+				dic['owner'] = issue.owner.username.text
+		
+		dic['stars'] = issue.stars.text
+		dic['state'] = issue.state.text
+		dic['status'] = issue.status.text
+		return dic
+
+	def aero(self, aero):
+		"""Retrieve all the issues in a project."""
+		#data = memcache.get("issues_all")
+		
+		query = gdata.projecthosting.client.Query(label=aero)
+		feed = self.client.get_issues(conf.PROJECT_NAME, query=query)
+		#print feed
+		data = []
+		for issue in feed.entry:
+			dic = self.process_entry(issue)
+			data.append(dic)
+		return data
 
 class IssuesPage(webapp.RequestHandler):
 
@@ -78,7 +92,7 @@ class IssuesPage(webapp.RequestHandler):
 		#print self.request
 		template_values = {
 			'issues': issues, 'cached': cached, 
-			'conf': conf, 'path': self.request.path
+			'title': 'Issues List', 'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')
 		self.response.out.write(template.render(path, template_values))

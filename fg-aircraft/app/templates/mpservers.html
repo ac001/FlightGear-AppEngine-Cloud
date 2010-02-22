@@ -5,10 +5,29 @@ left MP
 {% endblock %}
 
 
-
-
 {% block content %}
 
-mp servers
+<table>
+<tr>
+	<th>No</th>
+	<th>Server</th>
+	<th>Status</th>
+	<th>Updated</th>
+	<th>Location</th>
+	<th align="right">Address</th>
+</tr>
+{% for server in servers %}
+	<tr>
+		<td>{{ server.no }}</td>
+		<td><a href="/mpserver/{{ server.server }}/">{{ server.host }}</a></td>
+		<td {% ifequal server.status "OK" %} class="status_ok"{% endifequal %}
+			{% ifequal server.status "Down" %}class="status_down"{% endifequal %}
+			>{{ server.status }}</td>
+		<td {% ifequal server.status "Down" %}class="status_down"{% endifequal %}>{{ server.status_updated|date:"Y-m-d H:i:s" }}</td>
+		<td>{{ server.location }}</td>
+		<td align="right">{{ server.ip }}:{{ server.port }}</td>
+    </tr>
+{% endfor %}
+</table>
 
 {% endblock %}

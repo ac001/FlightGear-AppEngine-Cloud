@@ -11,11 +11,16 @@ class Aero(db.Model):
 	version = db.StringProperty()
 
 
-class MPServers(db.Model):
-	server_id = db.StringProperty()
-	long_name = db.StringProperty()
-	host = db.StringProperty()
+class MPServer(db.Model):
+	no = db.StringProperty()
+	server = db.StringProperty()
+	description = db.StringProperty()
+	host= db.StringProperty()
 	port = db.StringProperty()
 	ip = db.StringProperty()
-	group = db.StringProperty()
+	dev = db.BooleanProperty()
 	location = db.StringProperty()
+	status = db.StringProperty()
+	status_updated = db.DateTimeProperty()
+
+

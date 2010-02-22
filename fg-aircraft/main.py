@@ -7,7 +7,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 import app.Index
-import app.PilotsOnline
+import app.Online
 import app.MPServers
 import app.Aircraft
 import app.Aero
@@ -15,18 +15,21 @@ import app.Feeds
 import app.Issues
 
 
-
 # 										('/cron/pilots_online', app.PilotsOnline.PilotsOnlineCron),
 
 application = webapp.WSGIApplication([	('/', app.Index.Index),
-										('/pilots_online/', app.PilotsOnline.PilotsOnline),
+										('/online/', app.Online.OnlinePage),
+										#('/online/', app.Online.Online),
 										#('/rpc/pilots_online', app.PilotsOnline.PilotsOnlineRpc),
 
-										('/mpservers/', app.MPServers.MPServers),
+										('/mpservers/', app.MPServers.MPServersPage),
+										('/mpservers/import/', app.MPServers.MPServerImport),
+										('/mpservers/update_status/', app.MPServers.MPServersUpdateStatus),
+										('/mpserver/(.*)/', app.MPServers.MPServerPage),
 										('/rpc/mpservers', app.MPServers.MPServersRpc),
 
 										('/aircraft/', app.Aircraft.AircraftPage),
-		
+										('/aircraft/(.*)/', app.Aircraft.AircraftPage),
 										('/rpc/aircraft', app.Aircraft.AircraftRpc),
 
 										('/feeds', app.Feeds.FeedsPage),

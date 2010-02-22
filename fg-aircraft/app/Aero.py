@@ -13,6 +13,7 @@ from google.appengine.api import urlfetch
 import xml.dom.minidom
 
 from models.models import Aero
+import conf
 
 class AeroPage(webapp.RequestHandler):
 
@@ -22,7 +23,7 @@ class AeroPage(webapp.RequestHandler):
 		aeroObj = query.get()
 
 		template_values = {
-			'title': 'Aircraft', 'conf': conf, 'path': self.request.path,
+			'title': 'Aircraft', 'conf': conf, 'path': '/aircraft/',
 			'aero': aeroObj
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/aero.html')

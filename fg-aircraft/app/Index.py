@@ -8,9 +8,8 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-from google.appengine.ext import db
 
-
+import conf
 
 class Index(webapp.RequestHandler):
 
@@ -21,7 +20,7 @@ class Index(webapp.RequestHandler):
 
 
 		template_values = {
-
+			'title': 'Index', 'conf': conf, 'path': self.request.path
 			}
 		#print template_values
 		path = os.path.join(os.path.dirname(__file__), 'templates/index.html')

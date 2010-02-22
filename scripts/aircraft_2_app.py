@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 ## Global Config uration for script execution
@@ -111,7 +112,7 @@ def generate_aircraft_yaml(xml_contents, file_name):
 		flds = [ 'aero', 'description', 'flight-model', 'author', 'status']
 		for fld in flds:
 			if fld in xml_dic['sim'][0]:
-				yaml_dic[fld] = str(xml_dic['sim'][0][fld][0])
+				yaml_dic[fld] = str(xml_dic['sim'][0][fld][0]).strip().replace("\n","")
 
 		if 'startup' in xml_dic['sim'][0]:
 			yaml_dic['splash'] = str(xml_dic['sim'][0]['startup'][0]['splash-texture'][0])
@@ -149,7 +150,19 @@ for air_dir in directories:
 	aircraft_set_files = glob.glob(aircraft_wildpath)
 	#print aircraft_set_files
 
+	#sCVS = cvs log -N -r > /home/flight-sim/fg-aircraft/log.txt
+
+	#call(['cmd', 'arg1', 'arg2'], stdin='...', stdout='...')
+	#eg:
+	#call(['ls', '-l'])
+	if len(aircraft_set_files) > 0:
+		cvs_path = FG_DATA_AIRCRAFT_PATH  + air_dir
+		command = "cvs log -N -r %s " % cvs_path
 	
+		print "cvs_path=", cvs_path, command
+		res = call([command])
+		print res
+		sys.exit(0)
 	#print "###############"
 	## Loop thru each xml -set.xml file
 	for xml_file_path in aircraft_set_files:
@@ -174,6 +187,10 @@ for air_dir in directories:
 			values = {'name' : 'Michael Foord',
 					'location' : 'Northampton',
 					'language' : 'Python' }
+
+			
+
+
 			if 1 == 1:
 				data = urllib.urlencode(dic)
 				print url + "?" + data
@@ -184,7 +201,8 @@ for air_dir in directories:
 				print the_page
 			c  +=  1
 			if c == 20: 
-				sys.exit(1)
+				print "die"
+				#sys.exit(1)
 		#generate_aircraft_minidom(xml_file_path)
 		
 

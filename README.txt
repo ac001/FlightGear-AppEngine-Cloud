@@ -1,10 +1,14 @@
 This is work in progress of an idea to host Flight Gear aircraft data on the Google AppEngine cloud.
 
+http://fg-aircraft.appspot.com/
+
+Its a mashup.
+
 Initial R+D.
 
 The code is available at git hub.
+http://github.com/ac001/fg-aircraft
 
-I
 ------------------
 Structure
 ------------------

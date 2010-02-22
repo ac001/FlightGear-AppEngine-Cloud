@@ -1,8 +1,55 @@
 {% extends "main.html" %}
 
+{% comment %}
+## left ################################################
+{% endcomment %}
+
+{% block left %}
+
+{% if aero %}
+aero info
+
+{% else %}
+<form action="/aircraft/" method="get">
+<input type="text" name="search">
+<input type="submit" value="Search Aircraft">
+</form>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+
 {% block content %}
 
+{% if aero %}
+
+
 <table>
+<tr><td><a href="/arcraft/{{ aero.aero }}/">{{ aero.aero }}</td></tr>
+<tr><td>{{ aero.description }}</td></tr>
+<tr><td>{{ aero.author }}</td></tr>
+<tr><td>{{ aero.fdm }}</td></tr>
+<tr><td>{{ aero.version }}</td></tr>
+</table>
+
+<img width="400" height="400" 
+	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
+	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f={{ aero.splash }};hb=HEAD"
+>
+	#{{ aero.splash }}#
+</table>
+
+<h3>Issues</h3>
+{% include "issues_table.html" %}
+
+
+{% else %}
+
+<table width="100%">
 <tr>
 	<th>Aero</th>
 	<th>Description</th>
@@ -12,14 +59,16 @@
 </tr>
 {% for aero in aircraft %}
 	<tr>
-		<td><a href="/aero/{{ aero.aero }}/">{{ aero.aero }}</td>
+		<td><a href="/aircraft/{{ aero.aero }}/">{{ aero.aero }}</td>
 		<td>{{ aero.description }}</td>
 		<td>{{ aero.author }}</td>
 		<td>{{ aero.fdm }}</td>
 		<td>{{ aero.version }}</td>
-		<td>{{ aero.splash }}</td>
     </tr>
 {% endfor %}
 </table>
+
+{% endif %}
+
 
 {% endblock %}
