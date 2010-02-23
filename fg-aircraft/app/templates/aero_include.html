@@ -1,26 +1,44 @@
 
-<div style="float: left; margin: 0px 10px 10px 0px;">
-<table>
-<tr><th>Aero</th><td>{{ aero.aero }}</td></tr>
-<tr><th>Description</th><td>{{ aero.description }}</td></tr>
-<tr><th>Authors</th><td>{{ aero.author }}</td></tr>
-<tr><th>Flight Model</th><td>{{ aero.fdm }}</td></tr>
-<tr><th>Version</th><td>{{ aero.version }}</td></tr>
-<tr><th>Directory</th><td>{{ aero.directory }}</td></tr>
-</table>
-
-</div>
+<div style="float: right; margin: 0px 0px 0px 0px;">
 
 <img width="200" height="200" 
 	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
 	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f=Aircraft/{{ aero.directory }}/thumbnail.jpg;hb=HEAD"
 >
+</div>
 
 
-<div style="clear: left;"></div>
+
+
+<table width="50%" class="aero">
+<tr><th>Aero</th><td>{{ aero.aero }}</td></tr>
+<tr><th>Authors</th><td>{{ aero.author }}</td></tr>
+<tr><th>Flight Model</th><td>{{ aero.fdm }}</td></tr>
+<tr><th>Version</th><td>{{ aero.version }}</td></tr>
+<tr><th>Directory</th><td>{{ aero.directory }}/</td></tr>
+<tr><th>Manufacturer</th><td>--ToDO--</td></tr>
+<tr><th>Classification</th><td>--ToDO--</td></tr>
+</table>
+
+
+
+
+
+
+
 
 <h3>Issues</h3>
+{% if issues %}
 {% include "issues_table.html" %}
+{% else %}
+<p>No Issues to view</p>
+{% endif %}
 
 <h3>Files</h3>
+
+{% if aero_files %}
 {% include "files_table.html" %}
+{% else %}
+<p>No Files to view</p>
+{% endif %}
+

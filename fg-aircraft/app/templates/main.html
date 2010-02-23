@@ -15,10 +15,9 @@
 <script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>
 <!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
 
+<script type="text/javascript" src="/js/main.js"></script>
 
-
-<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
-<link rel="stylesheet" type="text/css" href="/style_sheets/v3.css">
+<link rel="stylesheet" type="text/css" href="/style_sheets/v5.css">
 <!--<script type="text/javascript" src="js/FG_PilotsGrid.js"></script>-->
 
 </head> 
@@ -33,22 +32,23 @@
 <h1>{{ conf.SITE_TITLE }}</h1>
 
 	
-<div id="navcontainer">
-	<ul id="navlist">
+<div>
+	<ul class="navtabs">
 		{% for n in conf.nav %}
 		<li><a {% ifequal path n.path  %}class="current"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
 		{% endfor %}
 	</ul>
 </div>
 
-<table class="toolbar">
-<th><b>Pilots</b>:</th>
-<th>Updated:</th><td>{{ conf.app_vars.pilots_info.updated|date:"H:i:s" }}</td>
-<th>Online:</th><td>{{ conf.app_vars.pilots_info.count }}</td>
-<th><b>Servers</b>:</th>
-<th>Updated:</th><td>{{ conf.app_vars.mpservers_info.updated|date:"H:i:s" }}</td>
-<th>Up:</th><td>{{ conf.app_vars.mpservers_info.up }}</td>
-<th>Down:</th><td>{{ conf.app_vars.mpservers_info.down }}</td>
+<table class="toolbar" width="100%">
+	<td>Pilots Update: {{ conf.app_vars.pilots_info.updated|date:"H:i:s"|default:"--"  }}</td>
+	<td>Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</td>
+	<td>ATC: {{ conf.app_vars.pilots_info.act_count}}</td>
+	
+	<td>Servers Update: {{ conf.app_vars.mpservers_info.updated|date:"H:i:s"|default:"--" }}</td>
+	<td>Up: {{ conf.app_vars.mpservers_info.up|default:"--" }}</td>
+	<td>Down: {{ conf.app_vars.mpservers_info.down|default:"--" }}</td>
+	<td width="33%">&nbsp;</td>
 </table>
 
 </div>
@@ -75,8 +75,11 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 </p>
 {% endblock %}
 </div>
+
+<div  style="clear: both;"></div>
 <div id="footer">
-<small><a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a></small>
+<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">Google App Engine</a>
+<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a>
 </div>
 </div>
 

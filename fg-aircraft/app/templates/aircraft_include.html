@@ -1,17 +1,34 @@
 
+<form action="/aircraft/" method="get" style="margin: 0px 0px 10px 0px;">
+<input type="text" name="search" size="15" value="{{ search_text }}"> <input type="submit" value="Search">
+</form>
+
+{% if aircraft %}
 <table width="100%">
 <tr>
-	<th>Aero</th>
+	<th>&nbsp;</th>
 	<th>Description</th>
 	<th>FDM</th>
 	<th>Version</th>
+	<th>&nbsp;</th>
 </tr>
 {% for aero in aircraft %}
-	<tr>
-		<td><a href="/aircraft/{{ aero.aero }}/">{{ aero.aero }}</td>
-		<td>{{ aero.description }}</td>
+	<tr valign="top">
+		<td><img width="40" height="40" 
+	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
+	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f=Aircraft/{{ aero.directory }}/thumbnail.jpg;hb=HEAD"
+		></td>
+		<td><b>{{ aero.description }}</b></td>
 		<td>{{ aero.fdm }}</td>
 		<td>{{ aero.version }}</td>
+		<td><button onclick="location.href='/aircraft/{{ aero.aero}}/'">View</button></td>
     </tr>
 {% endfor %}
 </table>
+
+{% else %}
+<div class="search_info">
+<p>No aircraft matching '<b>{{ search_text }}</b>' found</p>
+</div>
+
+{% endif %}

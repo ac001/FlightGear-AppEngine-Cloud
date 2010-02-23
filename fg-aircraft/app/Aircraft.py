@@ -38,7 +38,7 @@ class Aircraft:
 
 		data = memcache.get("aircraft_all")
 		if data is not None:
-			return data, True
+			return data
 
 		query = Aero.all()
 		aircraft = query.fetch(10000)
@@ -52,15 +52,16 @@ class Aircraft:
 		if not memcache.set("aircraft_all", data, 5):
 			print "error=aircraft_all"
 
-		return aircraft, False
+		return aircraft
 
-	def list_aircraft(self):
+	def aircraft_list(self):
 		data = memcache.get("aircraft_list")
-		self.get_all()
+		if data == None:
+			self.get_all()
 		return memcache.get("aircraft_list")
 
 	def search(self, search_str=None):
-		aircraft, cached = self.get_all()
+		aircraft = self.get_all()
 		aircraft_list = []
 		for aero in aircraft:
 			#print aero.aero, search_str,  aero.aero.find(search_str)
@@ -68,7 +69,7 @@ class Aircraft:
 				#print "match", search_str
 				aircraft_list.append(aero)
 			#print aero
-		return aircraft_list, False
+		return aircraft_list
 
 def get_videos( aero):
 	client = gdata.youtube.service.YouTubeService()
@@ -110,7 +111,7 @@ class AircraftPage(webapp.RequestHandler):
 			#print "aero=", aero
 			if aero:
 				airdb = Aircraft()
-				template_values['title'] = aero.aero
+				template_values['title'] = aero.description
 				template_values['aero'] = aero
 				template_values['content_template'] = 'aero_include.html'
 				template_values['path'] =  '/aircraft/'
@@ -123,20 +124,33 @@ class AircraftPage(webapp.RequestHandler):
 				template_values['aero_files'] = aero_files
 
 				template_values['videos'] = get_videos(selected_aircraft)
-				print template_values
+				#print template_values
+			else:
+				self.redirect("/aircraft/?search=%s" % selected_aircraft)
 
 		else:
 			""" Show all aircraft or searched"""
+			search_text = ""
 			airdb = Aircraft()
 			if self.request.get("search"):
-				aircraft, cached = airdb.search(self.request.get("search"))
+				search_text = self.request.get("search").lower()
+				aircraft = []
+				if search_text:
+					query = Aero.all()
+					dbair = query.fetch(1000)
+			
+					for aero in dbair:
+						#print aero.aero, search_text,  aero.aero.find(search_text)
+						if aero.description.lower().find(search_text)  > -1:
+							#print "match", search_str
+							aircraft.append(aero)
 			else:
-				aircraft, cached = airdb.get_all()
+				aircraft = airdb.get_all()
 			
 			
 			template_values['title'] = 'Aircraft'
-			template_values['aircraft'] = aircraft
-			template_values['cached'] = cached, 
+			template_values['aircraft'] = aircraft 
+			template_values['search_text'] = search_text
 			template_values['content_template'] = 'aircraft_include.html'
 			template_values['path'] =  '/aircraft/'
 		
@@ -153,37 +167,32 @@ class AircraftImport(webapp.RequestHandler):
 			#'pilots_online': self.get_pilots()
 		}
 		query = db.GqlQuery("SELECT * FROM  Aero where aero = :1", self.request.get("aero")) 
-		#results = query.fetch(10)
-		#c =  query.count()
-		foo  ={}
-		#print results
 		aero = query.get()
-		#for res in results:
-		#	foo[res.aero] = "foo"
 		if not aero:
-			x =  "create"
+			x =  "add"
 			aero = Aero()
 			aero.aero = self.request.get("aero")
+			aero.author = self.request.get("author")
+			aero.directory = self.request.get("directory")
+			aero.description = self.request.get("description")
+			aero.status = self.request.get("status")
+			aero.fdm = self.request.get("flight-model")
+			aero.splash = self.request.get("splash")
+			aero.version = self.request.get("version")
+			aero.splash = self.request.get("splash")
+			aero.put()
 		else:
 			x = "edit"
 			pass
 
-		aero.author = self.request.get("author")
-		aero.directory = self.request.get("directory")
-		aero.description = self.request.get("description")
-		aero.status = self.request.get("status")
-		aero.fdm = self.request.get("flight-model")
-		aero.splash = self.request.get("splash")
-		aero.version = self.request.get("version")
-		aero.splash = self.request.get("splash")
-		aero.put()
+
 
 		reply = {'success': True, 'status': x}
 		#print 'Content-Type: text/plain'
 		#print ''
 		#print json.dumps(self.get_pilots())
 		#path = os.path.join(os.path.dirname(__file__), 'templates/pilots_online.html')
-		self.response.out.write(json.dumps("ok"))
+		self.response.out.write(json.dumps(reply))
 
 
 
@@ -242,41 +251,31 @@ class AircraftImportRevisions(webapp.RequestHandler):
 				#revOb.dev = devOb
 
 				#revOb.put()		
-			c += 1
-			#if c == 8:
-				#sys.exit(0)
-		"""
-{"file": {"directory": "707", "file_name": " 707-338.txt", "head": " 1.1", "rcs": " /var/cvs/FlightGear-0.9/data/Aircraft/707/707-338.txt,v"}, "revision": {"date": "2006/01/04 12:41:45", "state": "Exp", "revision": "1.1", "message": "Add Innis' Boeing 707 model.", "author": "ehofman"}},
-
-		lambda x: datetime.datetime.strptime(x, '%m/%d/%Y').date()),
-
-		class AeroFile(db.Model):
-			file_name = db.StringProperty()
-			head = db.StringProperty()
-			rcs = db.StringProperty()
-			revision = db.StringProperty()
-			last_update = db.DateTimeProperty()
-		"""
-		#results = query.fetch(10)
-		#c =  query.count()
-		foo  ={}
-		#print results
-		#aero = query.get()
-		#for res in results:
-		#	foo[res.aero] = "foo"
-		#if not aero:
-			#x =  "create"
-			#aero = Aero()
-			#aero.aero = self.request.get("aero")
-		#else:
-			#x = "edit"
-			#pass
 
 
-		#aero.put()
 
-		#reply = {'success': True, 'status': x}
+class AircraftRpc(webapp.RequestHandler):
 
-		self.response.out.write(ret)
+	def post(self):
+		self.get()
 
+	def get(self, selected_aircraft=None):
+		
+		template_values = {
+			'conf': conf
+		}
+		search_text = self.request.get("query")
+		aircraft_list = []
+		if search_text:
+			query = Aero.all()
+			aircraft = query.fetch(1000)
+			
+			for aero in aircraft:
+				#print aero.aero, search_text,  aero.aero.find(search_text)
+				if aero.aero.find(search_text)  > -1:
+					#print "match", search_str
+					aircraft_list.append({'aero': aero.aero, 'description': aero.description})
 
+		payload = {'success': True, 'aircraft': aircraft_list, 'count': len(aircraft_list)}
+		self.response.headers['Content-Type'] = 'text/plain'
+		self.response.out.write(json.dumps(payload))

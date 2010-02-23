@@ -55,11 +55,8 @@ border: 0px solid gray;
 line-height: 130%;
 }
 
-.info{
-	background-color: yellow;
-	border: 1px solid blue;
-	padding: 10px;
-	font-family: sans-serif;
+.search_info{
+	padding: 5px;
 }
 
 /*============================================*/
@@ -81,28 +78,28 @@ color: #3B6695;
 
 }
 
+/*============================================*/
+/* Toolbar */
+/*============================================*/
 #top_box table.toolbar
 {
-margin: 0px;
-text-align: right;
+margin: 2px 0px 0px 0px;
+font-family: arial, sans-serif;
 
 font-size: 9pt;
+border-bottom: 1px solid #dddddd;
 }
 
-#top_box table.toolbar
-{
-font-family: arial, sans-serif;
-}
 #top_box table.toolbar th
 {
 padding: 4px 4px 4px 20px;
-border-bottom: 1px solid #eeeeee;
+
 }
 
 #top_box table.toolbar td
 {
-padding: 4px;
-border-bottom: 1px solid #eeeeee;
+padding: 0px 10px 0px 10px;
+border-right: 1px solid #eeeeee;
 }
 
 /*============================================*/
@@ -144,6 +141,7 @@ padding: 1em;
 background-color: #efefef;
 border: 1px solid #dddddd;
 font-family: arial, sans-serif;
+min-height: 500px;
 
 }
 
@@ -161,17 +159,31 @@ font-family: arial, sans-serif;
 
 
 
+/*============================================*/
+/* Footer */
+/*============================================*/
 #footer
 {
 clear: both;
 margin: 0;
 padding: .5em;
 color: #333;
-background-color: #ddd;
-border-top: 1px solid gray;
+
+border-top: 1px solid #5491CF;
+font-family: sans-serif;
+font-size: 10pt;
 }
 
+#footer a{
+	text-decoration: underline;
+	color: black;
+	margin-right: 20px;
+}
 
+#footer a:hover{
+	text-decoration: underline;
+	color: blue;
+}
 
 
 
@@ -287,7 +299,7 @@ border-bottom: 1px solid white;
 /****************************************************/
 /** Main Content **/
 /****************************************************/
-#contents
+#content
 {
 margin-right: 250px;
 padding: 0px;
@@ -297,12 +309,13 @@ min-height: 600px;
 
 #content h2
 {
-border-left: 5px solid #4A8FD5;
+border-left: 2px solid #4A8FD5;
 border-top: 2px solid #4A8FD5;
 border-bottom: 2px solid #4A8FD5;
-border-right: 150px solid #4A8FD5;
+border-right: 2px solid #4A8FD5;
 padding: 3px 3px 3px 8px;
 margin-bottom: 10px;
+background-color: #eeeeee;
 }
 
 #content h3
@@ -310,6 +323,7 @@ margin-bottom: 10px;
 color: #4A8FD5;
 margin-top: 20px;
 margin-bottom: 10px;
+font-size: 11pt;
 }
 
 #content ul{
@@ -351,6 +365,8 @@ margin-bottom: 10px;
 	padding: 5px;
 	background-color: #efefef;
 	text-align: right;
+	border-right: 2px solid #eeeeee;
+	width: 33%;
 }
 #content table.aero td{
 	padding: 5px;
@@ -358,9 +374,12 @@ margin-bottom: 10px;
 }
 
 
-
-
-
+.status_down{
+	color: #990000;
+}
+.status_up{
+	color: #009900;
+}
 
 
 

@@ -14,6 +14,13 @@
 
 {% block content %}
 
+<div>
+	<ul class="navsubtabs">
+		{% for tab in subtabs %}
+		<li><a {% ifequal tab.view view  %}class="current"{% endifequal %} href="/issues/?view={{ tab.view }}" >{{ tab.view}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
 
 {% include "issues_table.html" %}
 

@@ -25,19 +25,20 @@ from models.models import MPServer
 ## Pilots Online
 ####################################################
 def pilots_online():
-	data = memcache.get("pilots_online")
-	if data is not None:
-		return data
-	return update_pilots_feed()
+	if 1 == 0:
+		data = memcache.get("pilots_online")
+		if data is not None:
+			return data
+	return get_pilots_feed()
 
 def pilots_info():
 	data = memcache.get("pilots_info")
 	if data is not None:
 		return data
-	update_pilots_feed()
+	get_pilots_feed()
 	return memcache.get("pilots_info")
 
-def update_pilots_feed():
+def get_pilots_feed():
 		url = conf.MP_PILOTS_URL
 		result = urlfetch.fetch(url)
 		if result.status_code == 200:
@@ -47,8 +48,10 @@ def update_pilots_feed():
 			except :
 				print "ERRORsome parse error"
 				return None
+
 			
 			pilots = {}		
+			atc = {}
 			player_ips = {}
 			servers_lookup = server_ip_lookup()
 
@@ -59,7 +62,7 @@ def update_pilots_feed():
 					server = servers_lookup[ip]
 				else:
 					server = ip
-				pilots[callsign] = {
+				dic = {
 							'aero': node.getAttribute("model"), 
 							'callsign': callsign, 
 							'lat': float(node.getAttribute("lat")), 
@@ -72,6 +75,12 @@ def update_pilots_feed():
 					player_ips[server] += 1
 				else:
 					player_ips[server] = 1
+
+				callsign = node.getAttribute("callsign")
+				if callsign.startswith("atc"):
+					atc[callsign] = dic
+				else:
+					pilots[callsign] = dic
 			#print player_ips
 			#servers = server_ips()
 			for server in player_ips:
@@ -80,19 +89,27 @@ def update_pilots_feed():
 			
 
 
+			## callsigns
 			callsigns =  sorted(pilots.keys())
-			if not memcache.set("callsigns", callsigns, 10):
+			if not memcache.set("callsigns", callsigns):
 				print "error"
-			info = {'count': len(callsigns), 'updated': datetime.datetime.now()}
-			if not memcache.set("pilots_info", info, 10):
+
+			## info 
+			info = {'pilots_count': len(pilots), 
+					'atc_count': len(atc),
+					'updated': datetime.datetime.now()
+			}
+			if not memcache.set("pilots_info", info):
 				print "error"
 
 			pilots_sorted = []
 			for ki in callsigns:
 				pilots_sorted.append( pilots[ki] )
-			if not memcache.set("pilots_online", pilots_sorted, 20):
+			if not memcache.set("pilots_online", pilots_sorted):
 				print "error"
 
+			if not memcache.set("atc_online", atc):
+				print "error"
 			return pilots_sorted
 
 

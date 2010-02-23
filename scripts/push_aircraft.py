@@ -92,8 +92,8 @@ class ProcessCVSAircraft:
 
 				#print "======================================================"
 				c  +=  1
-				if c == 50: 
-					sys.exit(1)
+				#if c == 50: 
+				#	sys.exit(1)
 
 
 
@@ -155,7 +155,8 @@ class ProcessCVSAircraft:
 
 
 	def send_to_server(self, dic):
-		url = 'http://localhost:8080/import/aircraft/'
+		url = conf.WWW + '/import/aircraft/'
+		print "URL=", url
 		data = urllib.urlencode(dic)
 		#print url + "?" + data
 		req = urllib2.Request(url, data) #+ "?" + data) #, data)

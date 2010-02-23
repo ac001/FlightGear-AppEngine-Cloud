@@ -9,12 +9,18 @@
 </tr>
 {% for issue in issues %}
 	<tr>
-		<td align="right"><a class="link" href="/issue/{{ issue.id }}/">{{ issue.id }}</td>
-		<td>{{ issue.title }}</td>
+		<!--<td align="right"><a class="link" href="/issue/{{ issue.id }}/">{{ issue.id }}</td>-->
+		<td align="right"><button class="linkbutton" style="width: 40px;"
+			onclick="toggle_layer('issue_{{ issue.id }}');"
+				>{{ issue.id }}</button></td>
+		<td>{{ issue.title }}
+			<div  id="issue_{{ issue.id }}" style="visibility:hidden; display:none;"><pre >{{ issue.description }}</pre></div>
+		</td>
 		<td>{{ issue.owner }}</td>
 		<td>{{ issue.status }}</td>
 		<td>{{ issue.state }}</td>
 		<td>{{ issue.stars }}</td>
     </tr>
+
 {% endfor %}
 </table>

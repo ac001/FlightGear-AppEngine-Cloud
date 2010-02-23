@@ -36,13 +36,15 @@ class GoogleIssuesClient:
 					source='flightgear-bot',
 					service='code')
 
-	def all(self):
+	def all(self, status):
 		"""Retrieve all the issues in a project."""
-		data = memcache.get("issues_all")
-		if data is not None:
-			return data, True
+		if 1 == 0:
+			data = memcache.get("issues_all")
+			if data is not None:
+				return data, True
 
-		feed = self.client.get_issues(conf.GOOGLE_PROJECT)
+		query = gdata.projecthosting.client.Query(max_results=200,status=status)
+		feed = self.client.get_issues(conf.GOOGLE_PROJECT, query=query)
 		data = []
 		for issue in feed.entry:
 			dic = self.process_entry(issue)
@@ -56,6 +58,7 @@ class GoogleIssuesClient:
 		dic = {}
 		dic['id'] = issue.id.text.split("/")[-1]
 		dic['title'] = issue.title.text
+		dic['description'] = issue.content.text
 		dic['labels'] = []
 		for label in issue.label:
 			dic['labels'].append(label.text)
@@ -87,12 +90,19 @@ class GoogleIssuesClient:
 class IssuesPage(webapp.RequestHandler):
 
 	def get(self):
+		status = self.request.get("status")
 		issuesObj = GoogleIssuesClient()
-		issues, cached = issuesObj.all()
-		#print self.request
-		#issues = app.fetch.issues()
+		issues, cached = issuesObj.all(status)
+		
+		if not view:
+			view = "New"
+		subtabs = []
+		subtabs.append({'view': 'New'})
+		subtabs.append({'view': 'Accepted'})
+		subtabs.append({'view': 'Recently Closed'})
+		subtabs.append({'view': 'Wont Fix'})
 		template_values = {
-			'issues': issues,  
+			'issues': issues, 'subtabs': subtabs, "view": view,
 			'title': 'Issues List', 'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')

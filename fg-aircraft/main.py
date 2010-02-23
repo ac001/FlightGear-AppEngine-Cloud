@@ -30,6 +30,7 @@ application = webapp.WSGIApplication([	('/', app.Index.Index),
 
 										('/aircraft/', app.Aircraft.AircraftPage),
 										('/aircraft/(.*)/', app.Aircraft.AircraftPage),
+										('/rpc/aircraft/', app.Aircraft.AircraftRpc),		
 
 										('/import/aircraft/', app.Aircraft.AircraftImport),
 										('/import/revisions/', app.Aircraft.AircraftImportRevisions),
