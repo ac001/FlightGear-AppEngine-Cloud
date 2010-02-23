@@ -4,7 +4,7 @@
 ## left ################################################
 {% endcomment %}
 
-{% block left_box %}
+{% block side_box %}
 
 {% if aero %}
 
@@ -25,7 +25,7 @@
 
 {% endif %}
 
-{% endblock left_box %}
+{% endblock side_box %}
 
 
 
@@ -34,32 +34,11 @@
 {% block content %}
 
 {% if aero %}
-
-
-
-
 {% include "aero_include.html" %}
 
-{% else %}
 
-<table width="100%">
-<tr>
-	<th>Aero</th>
-	<th>Description</th>
-	<th>Authors</th>
-	<th>FDM</th>
-	<th>Version</th>
-</tr>
-{% for aero in aircraft %}
-	<tr>
-		<td><a href="/aircraft/{{ aero.aero }}/">{{ aero.aero }}</td>
-		<td>{{ aero.description }}</td>
-		<td>{{ aero.author }}</td>
-		<td>{{ aero.fdm }}</td>
-		<td>{{ aero.version }}</td>
-    </tr>
-{% endfor %}
-</table>
+{% else %}
+{% include "aircraft_include.html" %}
 
 {% endif %}
 

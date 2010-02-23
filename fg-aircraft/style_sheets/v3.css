@@ -29,18 +29,26 @@
 .fg_pilot_fly{
 	border-left: 5px solid green;
 }
-/*
-body{
-	background-image: url(/images/flightgear.png);
-	background-repeat: no-repeat;
-}
-*/
 
+body{
+	background-image: url("/images/cloud.jpg");
+	background-repeat: no-repeat;
+	background-position: top right;
+}
+
+
+
+#flightgear_logo{
+	position: fixed;
+	top: 10px;
+	left: 5px;
+}
+	
 #container
 {
 width: 90%;
 margin: 10px auto;
-background-color: #fff;
+
 color: #333;
 border: 0px solid gray;
 line-height: 130%;
@@ -58,6 +66,7 @@ border-bottom: 1px solid gray; */
 padding: 0px;
 margin: 0px;
 text-align: right;
+color: #3B6695;
 }
 
 #top_box table.toolbar
@@ -72,13 +81,13 @@ font-size: 9pt;
 {
 padding: 4px 4px 4px 20px;
 
-border-bottom: 1px solid #cccccc;
+border-bottom: 1px solid #eeeeee;
 }
 
 #top_box table.toolbar td
 {
 padding: 4px;
-border-bottom: 1px solid #cccccc;
+border-bottom: 1px solid #eeeeee;
 }
 
 #left_box
@@ -134,6 +143,33 @@ padding: 1em;
 
 }
 
+#content h2
+{
+border-left: 5px solid #4A8FD5;
+border-top: 2px solid #4A8FD5;
+border-bottom: 2px solid #4A8FD5;
+border-right: 150px solid #4A8FD5;
+padding: 3px 3px 3px 8px;
+
+}
+
+#content ul{
+	margin-left: 40px;
+	margin-bottom: 10px;
+}
+#content li
+{
+list-style-type: circle;
+padding: 3px 3px 3px 3px;
+
+font-size: 10pt;
+}
+
+#content p
+{
+font-size: 10pt;
+margin-bottom: 10px;
+}
 #footer
 {
 clear: both;
@@ -181,7 +217,7 @@ padding: 3px 0.5em;
 margin-left: 3px;
 border: 1px solid #778;
 border-bottom: none;
-background: #DDE;
+background: #eeeeee;
 text-decoration: none;
 color: black;
 }

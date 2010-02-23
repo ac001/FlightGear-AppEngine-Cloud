@@ -16,13 +16,13 @@ MP_PILOTS_URL = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flig
 
 nav = []
 nav.append( {'path':'/', 'label': 'Home'} )
-#nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
+nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
 nav.append( {'path':'/online/', 'label': 'Pilots Online'} )
 nav.append( {'path':'/mpservers/', 'label': 'MP Servers'} )
 #nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )
 nav.append( {'path':'/issues/', 'label': 'Isssues'} )
-#nav.append( {'path':'/source/', 'label': 'Source'} )
+nav.append( {'path':'/developers/', 'label': 'Developers'} )
 
 import app.fetch
 

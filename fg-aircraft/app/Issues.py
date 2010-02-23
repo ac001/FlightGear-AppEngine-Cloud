@@ -76,7 +76,7 @@ class GoogleIssuesClient:
 		#data = memcache.get("issues_all")
 		
 		query = gdata.projecthosting.client.Query(label=aero)
-		feed = self.client.get_issues(conf.PROJECT_NAME, query=query)
+		feed = self.client.get_issues(conf.GOOGLE_PROJECT, query=query)
 		#print feed
 		data = []
 		for issue in feed.entry:

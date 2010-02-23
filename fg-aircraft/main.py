@@ -13,7 +13,7 @@ import app.Aircraft
 import app.Aero
 import app.Feeds
 import app.Issues
-
+import app.Devs
 
 # 										('/cron/pilots_online', app.PilotsOnline.PilotsOnlineCron),
 
@@ -35,8 +35,9 @@ application = webapp.WSGIApplication([	('/', app.Index.Index),
 										('/import/revisions/', app.Aircraft.AircraftImportRevisions),
 
 										('/feeds', app.Feeds.FeedsPage),
+										('/developers/', app.Devs.DevsPage),
 
-										('/aero/(.*)/', app.Aero.AeroPage),
+										#('/aero/(.*)/', app.Aero.AeroPage),
 										('/issues/', app.Issues.IssuesPage),
 									],
 									debug=True)

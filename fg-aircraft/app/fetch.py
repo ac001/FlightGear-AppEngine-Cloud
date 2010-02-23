@@ -192,7 +192,7 @@ def TODOissues(aero=None):
 			print "error"
 		return data
 
-def process_issue_entry(issue):
+def TODOprocess_issue_entry(issue):
 	dic = {}
 	dic['id'] = issue.id.text.split("/")[-1]
 	dic['title'] = issue.title.text

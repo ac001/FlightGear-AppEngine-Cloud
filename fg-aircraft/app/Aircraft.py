@@ -68,30 +68,30 @@ class Aircraft:
 			#print aero
 		return aircraft_list, False
 
-	def get_videos(self, aero):
-		client = gdata.youtube.service.YouTubeService()
-		query = gdata.youtube.service.YouTubeVideoQuery()
-		query.vq = "flightgear " + aero
-		query.max_results = 10
-		#query.order_by = "rating"
-		feed = client.YouTubeQuery(query)	
-		videos = []
-		for entry in feed.entry:
-			v = self.process_entry(entry)
-			videos.append(v)
-		#print videos
-		return videos
+def get_videos( aero):
+	client = gdata.youtube.service.YouTubeService()
+	query = gdata.youtube.service.YouTubeVideoQuery()
+	query.vq = "flightgear " + aero
+	query.max_results = 10
+	#query.order_by = "rating"
+	feed = client.YouTubeQuery(query)	
+	#print feed
+	videos = []
+	for entry in feed.entry:
+		v = process_vid_entry(entry)
+		videos.append(v)
+	return videos
 
-	def process_entry(self, entry):
-		dic = {}
-		dic['id'] = entry.id.text.split("/")[-1]
-		dic['title'] = entry.title.text
-		dic['thumbnail'] = entry.media.thumbnail[0].url
-		#print dic
-		#dic['stars'] = issue.stars.text
-		#dic['state'] = issue.state.text
-		#dic['status'] = issue.status.text
-		return dic
+def process_vid_entry( entry):
+	dic = {}
+	dic['id'] = entry.id.text.split("/")[-1]
+	dic['title'] = entry.title.text
+	dic['thumbnail'] = entry.media.thumbnail[0].url
+	#print dic
+	#dic['stars'] = issue.stars.text
+	#dic['state'] = issue.state.text
+	#dic['status'] = issue.status.text
+	return dic
 
 
 class AircraftPage(webapp.RequestHandler):
@@ -120,7 +120,7 @@ class AircraftPage(webapp.RequestHandler):
 				aero_files = query.fetch(1000)
 				template_values['aero_files'] = aero_files
 
-				template_values['videos'] = airdb.get_videos(selected_aircraft)
+				template_values['videos'] = get_videos(selected_aircraft)
 				print template_values
 
 		else:
@@ -132,7 +132,7 @@ class AircraftPage(webapp.RequestHandler):
 				aircraft, cached = airdb.get_all()
 			
 			
-			template_values['title'] = 'Aircraft##'
+			template_values['title'] = 'Aircraft'
 			template_values['aircraft'] = aircraft
 			template_values['cached'] = cached, 
 			template_values['content_template'] = 'aircraft_include.html'
