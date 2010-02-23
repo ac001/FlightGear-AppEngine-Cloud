@@ -10,13 +10,13 @@ class Pilots(db.Model):
 	#last_seen
 
 class Aero(db.Model):
-	aero = db.StringProperty()
-	directory =  db.StringProperty()
-	description = db.StringProperty()
+	aero = db.StringProperty(indexed=True)
+	directory =  db.StringProperty(indexed=True)
+	description = db.StringProperty(indexed=True)
 	splash = db.StringProperty()
-	fdm = db.StringProperty()
-	status = db.StringProperty()
-	version = db.StringProperty()
+	fdm = db.StringProperty(indexed=True)
+	status = db.StringProperty(indexed=True)
+	version = db.StringProperty(indexed=True)
 	last_updated = db.DateTimeProperty()
 	author = db.StringProperty()
 	cvs_users = db.StringListProperty()
@@ -30,7 +30,7 @@ class AeroFile(db.Model):
 	file_name = db.StringProperty(indexed=True)
 	directory = db.StringProperty(indexed=True)
 	rcs = db.StringProperty()
-	revision = db.FloatProperty(indexed=True)
+	revision = db.StringProperty(indexed=True)
 	updated = db.DateTimeProperty(indexed=True)
 	message = db.TextProperty()
 

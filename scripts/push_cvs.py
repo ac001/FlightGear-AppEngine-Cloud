@@ -25,7 +25,7 @@ class PushAircraftRevisions:
 		self.curr_dir = None
 
 	def run(self):
-		pth =conf.ROOT_PATH + "temp/json/"
+		pth = conf.ROOT_PATH + "temp/json/"
 		print pth
 		files = sorted(os.listdir(pth))
 		c = 0
@@ -49,7 +49,7 @@ class PushAircraftRevisions:
 
 	def send_to_server(self, dic):
 		#json_str = json.dumps(dic)
-		url = 'http://localhost:8080/import/revisions/'
+		url = conf.WWW + '/import/revisions/'
 		#print json_str
 
 		data = urllib.urlencode(dic)

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
+import datetime
+
 from django.utils import simplejson as json
 
 from google.appengine.ext import webapp
@@ -200,7 +202,7 @@ class AircraftImportRevisions(webapp.RequestHandler):
 			fileOb = query.get()
 			if not fileOb:
 
-				dated = time.strptime(rev_dic['date'], "%Y/%m/%h %H:%M:%S") #"date": "2008/09/22 23:08:47"
+				dated = datetime.datetime.strptime(rev_dic['date'], "%Y/%m/%d %H:%M:%S") #"date": "2008/09/22 23:08:47"
 				fileOb = AeroFile()
 				fileOb.file_name = cfile['file_name']
 				fileOb.directory = cfile['directory']

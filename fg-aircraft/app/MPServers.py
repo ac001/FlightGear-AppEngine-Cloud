@@ -81,7 +81,8 @@ class MPServersUpdateStatus(webapp.RequestHandler):
 	def get(self, action=None):
 
 		app.fetch.mpservers_status_update()
-		self.redirect("/mpservers/")
+		if self.request.get("return"):
+			self.redirect("/mpservers/")
 		return
 		""" Paarses out the http://mpmap01.flightgear.org/mpstatus/ page """
 		from BeautifulSoup import BeautifulSoup 
