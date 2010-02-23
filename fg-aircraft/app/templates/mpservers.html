@@ -3,35 +3,37 @@
 {% block side_box %}
 
 
-<h2>Links</h2>
+<h4>fgms</h4>
+<p>The multiplayer serverr</p>
 <ul class="vnav">
 	<li><a href="http://fgms.sourceforge.net/">fgms Project</a></li>
 	<li><a href="http://fgms.sourceforge.net/download.php">Download</a></li>
 </ul>
 
+<h4>Refresh</h4>
 <button onclick="location.href='/mpservers/update/?return=1'">Update Now</button>
 {% endblock side_box %}
 
 
 {% block content %}
 
-<table>
+<table width="100%" class="hover">
 <tr>
 	<th>No</th>
 	<th>Server</th>
 	<th>Status</th>
-	<th>Updated</th>
+	<th>Last Updated</th>
 	<th>Location</th>
-	<th align="right">Address</th>
+	<th style="text-align:right;">Address</th>
 	<th align="right">Online</th>
 </tr>
 {% for server in servers %}
 	<tr>
 		<td>{{ server.no }}</td>
 		<td><a href="/mpserver/{{ server.server }}/">{{ server.host }}</a></td>
-		<td {% ifequal server.status "OK" %} class="status_ok"{% endifequal %}
-			{% ifequal server.status "Down" %}class="status_down"{% endifequal %}
-			>{{ server.status }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+			</td>
 		<td {% ifequal server.status "Down" %}class="status_down"{% endifequal %}>{{ server.status_updated|date:"Y-m-d H:i:s" }}</td>
 		<td>{{ server.location }}</td>
 		<td align="right">{{ server.ip }}:{{ server.port }}</td>

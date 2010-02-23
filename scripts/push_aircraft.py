@@ -79,14 +79,15 @@ class ProcessCVSAircraft:
 			aircraft_set_files = glob.glob(aircraft_wildpath)
 
 			for xml_file_path in aircraft_set_files:
+				print "--------------------------------\n"
 				print "set=", self.curr_dir
 				doc = self.process_set(xml_file_path)
 				
-				files_pth = conf.ROOT_PATH + "/temp/json/" + self.curr_dir + '.txt'
-				print files_pth
-				contents = open(files_pth, "r").read()
+				#files_pth = conf.ROOT_PATH + "/temp/json/" + self.curr_dir + '.txt'
+				#print files_pth
+				#contents = open(files_pth, "r").read()
 				
-				self.dic['files'] = contents
+				#self.dic['files'] = contents
 
 				self.send_to_server( self.dic )
 
@@ -156,7 +157,7 @@ class ProcessCVSAircraft:
 
 	def send_to_server(self, dic):
 		url = conf.WWW + '/import/aircraft/'
-		print "URL=", url
+		#sprint "URL=", url
 		data = urllib.urlencode(dic)
 		#print url + "?" + data
 		req = urllib2.Request(url, data) #+ "?" + data) #, data)

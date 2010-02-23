@@ -91,18 +91,19 @@ class IssuesPage(webapp.RequestHandler):
 
 	def get(self):
 		status = self.request.get("status")
+		if not status:
+			status = "New"
 		issuesObj = GoogleIssuesClient()
 		issues, cached = issuesObj.all(status)
 		
-		if not view:
-			view = "New"
+
 		subtabs = []
-		subtabs.append({'view': 'New'})
-		subtabs.append({'view': 'Accepted'})
-		subtabs.append({'view': 'Recently Closed'})
-		subtabs.append({'view': 'Wont Fix'})
+		subtabs.append({'view': 'New', 'status': 'New'})
+		subtabs.append({'view': 'Accepted', 'status': 'Accepted'})
+		subtabs.append({'view': 'Recently Closed', 'status': 'closed'})
+		subtabs.append({'view': 'Wont Fix', 'status': 'invalid'})
 		template_values = {
-			'issues': issues, 'subtabs': subtabs, "view": view,
+			'issues': issues, 'subtabs': subtabs, "status": status,
 			'title': 'Issues List', 'conf': conf, 'path': self.request.path
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')

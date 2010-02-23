@@ -3,17 +3,42 @@
 <input type="text" name="search" size="15" value="{{ search_text }}"> <input type="submit" value="Search">
 </form>
 
+<style>
+.aero_box{
+	border: 1px solid white;
+	padding: 3px;
+	float: left;
+	width: 200px;
+	height: 200px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-color: white;
+	text-align: center;
+}
+.aero_box h6{
+font-size: 9pt;
+font-family: sans-serif;
+font-weight: normal;
+background-color: #efefef;
+}
+</style>
 {% if aircraft %}
-<table width="100%">
+<!--<table width="100%">
 <tr>
 	<th>&nbsp;</th>
 	<th>Description</th>
 	<th>FDM</th>
 	<th>Version</th>
 	<th>&nbsp;</th>
-</tr>
+</tr>-->
+<table class="aircraft_list">
+<tr>
 {% for aero in aircraft %}
-	<tr valign="top">
+{% if forloop.counter0|divisibleby:2 %}
+</tr>
+<tr>
+{% endif %}
+	<!--<tr valign="top">
 		<td><img width="40" height="40" 
 	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
 	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f=Aircraft/{{ aero.directory }}/thumbnail.jpg;hb=HEAD"
@@ -22,12 +47,29 @@
 		<td>{{ aero.fdm }}</td>
 		<td>{{ aero.version }}</td>
 		<td><button onclick="location.href='/aircraft/{{ aero.aero}}/'">View</button></td>
-    </tr>
+    </tr>-->
+	<td width="25%">
+		<h6>{{ aero.description|default:"--na--" }}</h6>
+		<p><button onclick="location.href='/aircraft/{{aero.aero}}/'">View</button></p>
+		<p>Author: {{ aero.author }}</p>
+		<p>Flight Model: {{ aero.fdm }}</p>
+		<p>Version: {{ aero.version }}</p>
+
+	</td>
+<td width="25%">
+<a href='/aircraft/{{aero.aero}}/'>
+<img swidth="120" sheight="190" 
+	sssrc="http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=blob_plain;f={{ aero.splash }}"
+	src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f=Aircraft/{{ aero.directory }}/thumbnail.jpg;hb=HEAD"
+		></a>
+</td>
+
+	
 {% endfor %}
 </table>
 
 {% else %}
-<div class="search_info">
+<div class="info">
 <p>No aircraft matching '<b>{{ search_text }}</b>' found</p>
 </div>
 

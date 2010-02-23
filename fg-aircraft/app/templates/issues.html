@@ -17,7 +17,7 @@
 <div>
 	<ul class="navsubtabs">
 		{% for tab in subtabs %}
-		<li><a {% ifequal tab.view view  %}class="current"{% endifequal %} href="/issues/?view={{ tab.view }}" >{{ tab.view}}</a></li>
+		<li><a {% ifequal tab.status status  %}class="current"{% endifequal %} href="/issues/?status={{ tab.status }}" >{{ tab.view}}</a></li>
 		{% endfor %}
 	</ul>
 </div>

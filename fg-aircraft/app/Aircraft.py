@@ -41,7 +41,8 @@ class Aircraft:
 			return data
 
 		query = Aero.all()
-		aircraft = query.fetch(10000)
+		query.order("description")
+		aircraft = query.fetch(20)
 
 		aircraft_list = {}
 		for aero in aircraft:
@@ -120,7 +121,7 @@ class AircraftPage(webapp.RequestHandler):
 				#print issues
 				template_values['issues']  = issues
 				query = db.GqlQuery("SELECT * FROM  AeroFile where directory = :1", aero.directory) 
-				aero_files = query.fetch(1000)
+				aero_files = query.fetch(20)
 				template_values['aero_files'] = aero_files
 
 				template_values['videos'] = get_videos(selected_aircraft)
