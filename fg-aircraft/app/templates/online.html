@@ -5,9 +5,19 @@
 <p>something here</p>
 {% endblock %}
 
+
+
 {% block content %}
 
-<table width="100%" class="hover">
+{% include "inc.subtabs.html" %}
+
+{% ifequal page "ajax" %}
+<div id="online_grid"></div>
+<script type="text/javascript" src="/js/online.js"></script>
+
+{% else %}
+
+<table width="100%" class="listing">
 <tr>
 	<th>Callsign</th>
 	<th>Aircraft</th>
@@ -18,7 +28,7 @@
 	<th>Server</th>
 </tr>
 {% for pilot in pilots_online %}
-	<tr>
+	<tr class="hover">
 		<td><b>{{ pilot.callsign }}</a></td>
 		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
 		<td>{{ pilot.lat }}</td>
@@ -30,5 +40,6 @@
 {% endfor %}
 </table>
 
+{% endifequal %}
 	
 {% endblock %}

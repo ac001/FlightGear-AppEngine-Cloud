@@ -17,7 +17,7 @@
 
 {% block content %}
 
-<table width="100%" class="hover">
+<table width="100%" class="listing">
 <tr>
 	<th>No</th>
 	<th>Server</th>
@@ -29,7 +29,7 @@
 	<th align="center">Online</th>
 </tr>
 {% for server in servers %}
-	<tr>
+	<tr class="hover">
 		<td><button href="/mpserver/{{ server.server }}/">{{ server.no }}</button></td>
 		<td>{{ server.server }}</td>
 		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>

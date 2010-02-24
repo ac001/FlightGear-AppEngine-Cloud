@@ -33,7 +33,7 @@ class CodePage(webapp.RequestHandler):
 			page = subtabs[0]['page']
 
 		template_values = {
-			'conf': conf, 'path': "code/", 'title': 'Code',  "page": page,
+			'conf': conf, 'path': "/code/", 'title': 'Code',  "page": page,
 			'git': app.fetch.git_feed(page),
 			'subtabs': subtabs
 		}

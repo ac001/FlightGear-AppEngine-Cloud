@@ -1,0 +1,7 @@
+<div>
+	<ul class="navsubtabs">
+		{% for tab in subtabs %}
+		<li><a {% ifequal tab.page page  %}class="current"{% endifequal %} href="{{ path }}?page={{ tab.page }}" >{{ tab.label}}</a></li>
+		{% endfor %}
+	</ul>
+</div>

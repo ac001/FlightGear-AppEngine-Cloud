@@ -1,21 +1,15 @@
-{% comment %}
 
-{% endcomment %}
-
-<table width="100%" class="hover">
+<table width="100%" class="listing">
 <tr>
 	<th>Dated</th>
 	<th>Log</th>
 	<th>Author</th>
 </tr>
 {% for entry in git %}
-	<tr>
-		<td>{{ entry.updated }}</td>
-		<td>{{ entry.title }}</td>
-		<td>{{ entry.author }}</td>
-    </tr>
-
-
-
+<tr class="hover">
+	<td>{{ entry.updated }}</td>
+	<td>{{ entry.title }}</td>
+	<td>{{ entry.author }}</td>
+</tr>
 {% endfor %}
 </table>

@@ -62,9 +62,18 @@ class OnlinePage(webapp.RequestHandler):
 
 	def get(self):
 
+		subtabs = []
+		subtabs.append({'label': 'Plain View', 'page': 'html'})
+		subtabs.append({'label': 'Widget View', 'page': 'ajax'})
+
+		page = self.request.get("page")
+		if not page:
+			page = subtabs[0]['page']
+
 		pilots_online = app.fetch.pilots_online()
 		template_values = {
-			'conf': conf, 'path': self.request.path, 'title': 'Pilots Online',
+			'conf': conf, 'path': self.request.path, 
+			'title': 'Pilots Online', 'subtabs': subtabs, 'page': page,
 			'pilots_online': pilots_online
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/online.html')

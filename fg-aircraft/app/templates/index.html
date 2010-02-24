@@ -1,8 +1,22 @@
 {% extends "main.html" %}
 
 {% block side_box %}
-<h4>TODO</h4>
-<p>Something to go here</p>
+<h4>Servers</h4>
+<table width="100%" class="hover">
+<tr>
+	<th>Server</th>
+	<th>Status</th>
+
+</tr>
+{% for server in servers %}
+	<tr>
+		<td>{{ server.server }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+		</td>
+    </tr>
+{% endfor %}
+</table>
 <h4>TODO</h4>
 <p>something else here</p>
 {% endblock side_box %}

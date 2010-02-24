@@ -104,7 +104,7 @@ class IssuesPage(webapp.RequestHandler):
 		subtabs.append({'label': 'Wont Fix', 'page': 'invalid'})
 		template_values = {
 			'issues': issues, 'subtabs': subtabs, "page": page,
-			'title': 'Issues List', 'conf': conf, 'path': "issues/"
+			'title': 'Issues List', 'conf': conf, 'path': "/issues/"
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')
 		#self.response.out.write(issues)

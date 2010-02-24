@@ -161,8 +161,17 @@ border-right: 1px solid #538FD1;
 
 }
 
+#right_box table{
+	font-size: 9pt;
+	padding: 10px;
+	font-family: arial, sans-serif;
+	margin: 10px;
+}
 
-
+#right_box table th{
+	background-color: #efefef;
+	border: 1px solid #dddddd;
+}
 /*============================================*/
 /* Footer */
 /*============================================*/
@@ -348,19 +357,19 @@ font-size: 10pt;
 margin-bottom: 10px;
 }
 
-#content table{
+#content table.listing{
 	font-size: 10pt;
 }
-#content table tr{
+#content table.listing tr{
 	border-bottom: 1px solid #cccccc;
 }
-#content table.hover tr:hover{
+#content table.listing tr.hover:hover{
 	background-color: #FFFCD5;
 }
-#content table td{
+#content table.listing td{
 	padding: 3px;
 }
-#content table th{
+#content table.listing th{
 	padding: 3px;
 	background-color: #efefef;
 }
