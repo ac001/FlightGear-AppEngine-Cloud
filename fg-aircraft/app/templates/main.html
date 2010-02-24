@@ -40,6 +40,7 @@
 	</ul>
 </div>
 
+
 <table class="toolbar" width="100%">
 	<td>Pilots Update: {{ conf.app_vars.pilots_info.updated|date:"H:i:s"|default:"--"  }}</td>
 	<td>Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</td>
@@ -53,29 +54,22 @@
 
 </div>
 
-
+<!-- Right Block -->
 <div id="right_box">
 {% block side_box %}
-<p>
-left 
-</p>
+No content
 {% endblock side_box %}
 </div>
 
+<!-- Content -->
 <div id="content">
 <h2>{{ title }}</h2>
 {% block content %}
-
-
-<p>
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-</p>
-<p>
-Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-</p>
+No Content
 {% endblock %}
 </div>
 
+<!--- Footer --->
 <div  style="clear: both;"></div>
 <div id="footer">
 <a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">Google App Engine</a>
