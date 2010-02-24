@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import app.fetch
+
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
 
 SITE_TITLE = "FlightGear GAE Cloud Experiment"
@@ -13,6 +15,8 @@ USER_PASS = 'daffo0217'
 MP_STATUS_URL = "http://mpmap01.flightgear.org/mpstatus/"
 MP_PILOTS_URL = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flightgear.org:5001"
 
+GIT_ATOM = "http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=atom"
+
 
 nav = []
 nav.append( {'path':'/', 'label': 'Home'} )
@@ -23,8 +27,8 @@ nav.append( {'path':'/mpservers/', 'label': 'MP Servers'} )
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )
 nav.append( {'path':'/issues/', 'label': 'Isssues'} )
 nav.append( {'path':'/developers/', 'label': 'Developers'} )
+nav.append( {'path':'/code/', 'label': 'Code'} )
 
-import app.fetch
 
 app_vars = { 'foo': 'bar',
 			'pilots_info': app.fetch.pilots_info(),

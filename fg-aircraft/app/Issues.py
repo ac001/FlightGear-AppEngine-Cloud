@@ -90,21 +90,21 @@ class GoogleIssuesClient:
 class IssuesPage(webapp.RequestHandler):
 
 	def get(self):
-		status = self.request.get("status")
-		if not status:
-			status = "New"
+		page = self.request.get("page")
+		if not page:
+			page = "New"
 		issuesObj = GoogleIssuesClient()
-		issues, cached = issuesObj.all(status)
+		issues, cached = issuesObj.all(page)
 		
 
 		subtabs = []
-		subtabs.append({'view': 'New', 'status': 'New'})
-		subtabs.append({'view': 'Accepted', 'status': 'Accepted'})
-		subtabs.append({'view': 'Recently Closed', 'status': 'closed'})
-		subtabs.append({'view': 'Wont Fix', 'status': 'invalid'})
+		subtabs.append({'label': 'New', 'page': 'New'})
+		subtabs.append({'label': 'Accepted', 'page': 'Accepted'})
+		subtabs.append({'label': 'Recently Closed', 'page': 'closed'})
+		subtabs.append({'label': 'Wont Fix', 'page': 'invalid'})
 		template_values = {
-			'issues': issues, 'subtabs': subtabs, "status": status,
-			'title': 'Issues List', 'conf': conf, 'path': self.request.path
+			'issues': issues, 'subtabs': subtabs, "page": page,
+			'title': 'Issues List', 'conf': conf, 'path': "issues/"
 		}
 		path = os.path.join(os.path.dirname(__file__), 'templates/issues.html')
 		#self.response.out.write(issues)

@@ -2,9 +2,13 @@
 
 import datetime
 
+
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
+
+from django.utils import simplejson as json
+from BeautifulSoup import BeautifulSoup 
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
@@ -15,8 +19,6 @@ import gdata.client
 import gdata.data
 import atom.http_core
 import atom.core
-
-from BeautifulSoup import BeautifulSoup 
 
 import conf
 from models.models import MPServer
@@ -114,7 +116,68 @@ def get_pilots_feed():
 
 
 ####################################################
-## MP Server
+## Git 
+####################################################
+def git_feed(git):
+	
+	json_str = memcache.get('git_feed', namespace=git)
+	if json_str:
+		return json.loads(json_str)
+
+	if git == 'gitorious':
+		url = 'http://gitorious.org/fg/flightgear.atom'
+	else:
+		url = "http://pigeond.net/git/?a=atom;p=%s;" % git
+	result = urlfetch.fetch(url) 
+	if result.status_code == 200:
+		xml_str = result.content
+	else:
+		pass # TODO
+		return None
+	entries = BeautifulSoup.BeautifulSoup(xml_str).findAll("entry")
+	records = []
+	for entry in entries:
+		updated = entry.updated.text.replace("T", " ").replace("Z","").replace("/", "-")
+		rec = {	'author': entry.author.findAll("name")[0].text
+				, 'title': entry.title.text
+				, 'content': entry.content.text
+				, 'updated': updated
+		}
+		records.append(rec)
+	if not memcache.set("git_feed", json.dumps(records), 60, namespace=git):
+		pass # TODO
+	return records
+
+def git_feeds():
+
+	#json_str = memcache.get("git_feed")
+	#if json_str:
+		#return json.loads(json_str)
+	url = "http://pigeond.net/git/?p=flightgear/flightgear.data.git&a=search&h=HEAD&st=commit&s=787"
+	result = urlfetch.fetch(url) #conf.GIT_ATOM)
+	if result.status_code == 200:
+		xml_str = result.content
+	else:
+		pass # TODO
+		return None
+	#table = BeautifulSoup.BeautifulSoup(xml_str).findAll("table")
+	html_rows = BeautifulSoup.BeautifulSoup(xml_str).findAll("tr")
+	return_rows = []
+	for html_row in html_rows:
+		#print html_row
+		cells = html_row.findAll("td")
+		if len(cells) == 4:
+			row = {}
+			row['len'] = len(cells)
+			row['updated'] = cells[0].text
+			row['author'] = cells[1].text
+			row['title'] = cells[2].text
+			#print "\n##########", row, "\n"
+			return_rows.append(row)
+	return return_rows
+
+####################################################
+## MP Server Queries
 ####################################################
 def mpservers():
 	data = memcache.get("mp_servers")
@@ -146,6 +209,9 @@ def server_ip_lookup():
 			ret[server.ip] = server.server
 	return ret
 
+####################################################
+## MP Servers Update
+####################################################
 def mpservers_status_update():
 	""" Parses out the http://mpmap01.flightgear.org/mpstatus/ page """
 
