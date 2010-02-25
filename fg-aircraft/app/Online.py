@@ -63,8 +63,9 @@ class OnlinePage(webapp.RequestHandler):
 	def get(self):
 
 		subtabs = []
-		subtabs.append({'label': 'Plain View', 'page': 'html'})
 		subtabs.append({'label': 'Widget View', 'page': 'ajax'})
+		subtabs.append({'label': 'Html View', 'page': 'html'})
+
 
 		page = self.request.get("page")
 		if not page:
