@@ -21,6 +21,13 @@ GIT_ATOM = "http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=atom"
 
 tm = "<span class='tm'>FlightGear</span>"
 
+platforms = [	{'platform': 'windows', 'label': 'Windows'},
+				{'platform': 'linux', 'label': 'Linux'},
+				{'platform': 'mac', 'label': 'Mac OSX'},
+				{'platform': 'freebsd', 'label': 'Free BSD'},
+				{'platform': 'sgi', 'label': 'SGI'}
+]
+
 nav = []
 nav.append( {'path':'/idea/', 'label': 'Home'} )
 nav.append( {'path':'/idea/about/', 'label': 'About', 
@@ -28,7 +35,13 @@ nav.append( {'path':'/idea/about/', 'label': 'About',
 			})
 nav.append( {'path':'/idea/features/', 'label': 'Features'} )
 nav.append( {'path':'/idea/news/', 'label': 'News'} )
-nav.append( {'path':'/idea/download/', 'label': 'Download'} )
+nav.append( {'path':'/idea/download/', 'label': 'Download',
+			'subnav': [	
+				{'path':'/idea/about/features/', 'label': 'FlightGear'}, 	
+				{'path':'/idea/about/features/', 'label': 'Aircraft'},
+				{'path':'/idea/about/features/', 'label': 'Scenery'}
+			]
+})
 nav.append( {'path':'/mpservers/', 'label': 'Aircraft'} )
 #nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )

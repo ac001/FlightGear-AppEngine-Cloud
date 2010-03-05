@@ -2,22 +2,45 @@
 
 {% block content %}
 
-<div class="important">
+<h1>Download Central</h1>
+
+<div class="important_box">
 <img src="/images/missc/important.png">
-<h1>Important</h1>
+<h5>Important</h5>
+<p><b>Please do not use a download accelearator.</b> At peak periods, this overloads our server. Be pateient instead.</p>
 </div>
 
-<h1>Installer and Binary Downloads</h1>
-<p>
-Ready to run versions of FlightGear are available for many different platforms:
-</p>
-<ul>
-<li>Windows
-<li>Linux
-<li>Mac OS X
-<li>Solaris (sparc/x86)
-<li>sgi
-<li>FreeBSD
 
+
+<table>
+
+<tr>
+<td>
+<div class="column_box">
+<h2>FlightGear</h2>
+<img src="/images/flightgear.png" style="float: right; margin: 10px;">
+<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+<ul>
+{% for p in iconf.platforms %}
+<li><a href="/idea/download/{{ p.platform }}/" class="link">{{ p.label }}</a></li>
+{% endfor %}
 </ul>
+</div>
+</td><td>
+<div class="column_box">
+<h2>Aircraft</h2>
+<img src="/images/missc/aircraft.jpg" style="float: right; margin: 10px;">
+<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+</div>
+
+</td><td>
+<div class="column_box">
+<h2>Scenery</h2>
+<img src="/images/missc/scenery.jpg" style="float: right; margin: 10px;">
+<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+</div>
+
+</td>
+</tr>
+</table>
 {% endblock content %}

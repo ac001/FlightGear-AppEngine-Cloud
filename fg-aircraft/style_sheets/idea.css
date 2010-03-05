@@ -17,13 +17,15 @@ body{
 #left_box{
 	float: left;
 	width: 180px;
-	cccbackground-color: #dddddd;
+	ssbackground-color: #efefef;
 	ssposition: fixed;
+	border-right: 1px solid #efefef;
+	padding-right: 5px;
 }
 #left_box #flightgear_logo{
-	text-align: right;
-	margin-top: 10px;
-	margin-bottom: 20px;
+	text-align: center;
+	margin-bottom: 30px;
+	background-color: white;
 }
 
 #middle_box{
@@ -78,7 +80,7 @@ body{
 #top_box{
 	cccmargin: 20px 30px 20px 30px;
 	margin-top: 20px;
-	margin-bottom: 40px;
+	mmmargin-bottom: 10px;
 	background-color: #efefef;
 	border-bottom: 3px solid #dddddd;
 	ssborder-top: 1px solid #eeeeee;
@@ -105,6 +107,75 @@ body{
 	background-color: white;
 	margin-right: 200px;
 }
+
+#top_box h2{
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 5px;
+	color: #3B5584;
+}
+
+#top_box table{
+	width: 100%;
+}
+#top_box table th{
+	text-align: left;
+	font-size: 10pt;
+	font-weight: bold;
+	font-family: sans-serif;
+	padding: 5px;
+	color: #666666;
+}
+#top_box table td{
+	text-align: right;
+
+}
+#top_box table td a{
+	padding: 2px 10px 2px 10px;
+	text-align: right;
+	text-decoration: none;
+	background-color: white;
+	display: block;
+	font-size: 10pt;
+	font-family: sans-serif;
+	color: #333333;
+	border: 1px solid #efefef;
+}
+
+#top_box table td a:hover{
+	background-color: #dddddd;
+	color: blue;
+	border: 1px solid #aaaaaa;
+}
+
+
+#toolbar_box{
+	margin-top: 5px;
+	mmbackground-color: #efefef;
+	margin-bottom: 10px;
+}
+
+.important_box{
+	border: 1px solid #FFC69D;
+	background-color: #FFE99D;
+	padding: 10px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.important_box img{
+	float: right;
+	margin: 3px;
+	padding: 3px;
+	background-color: white;
+}
+
+.important_box h5{
+	margin-left: 30px;
+	color: black;
+	font-family: sans-serif;
+}
+
 
 
 
@@ -174,6 +245,60 @@ body{
 
 
 
+#content_box table ss{
+	background-color: #A1CAEA;
+	color: black;
+	font-family: sans-serif;
+	font-size: 12pt;
+	padding: 5px;
+	border: 1px solid #aaaaaa;
+	text-align: left;
+}
+#content_box table sstd{
+	border-right: 1px solid #dddddd;
+
+	margin: 10px;
+}
+
+#content_box table sstd p{
+	margin-left: 0px;
+	padding: 10px;
+}
+
+#content_box  .column_box{
+llfloat: left;
+	llwidth: 150px;
+	background-color: #efefef;
+	llmargin-right: 10px;
+	padding: 3px;
+	border: 1px solid #dddddd;
+	margin: 10px;
+	height: 100%;
+}
+
+#content_box  .column_box:hover{
+	background-color: #D6E7EB;
+	border: 1px solid #214073;
+}
+
+
+#content_box  .column_box h2{
+	font-family: sans-serif;
+	background-color: white;
+	padding: 3px;
+	border: 1px solid #dddddd;
+}
+
+
+#content_box  .column_box p{
+	font-family: sans-serif;
+	ssbackground-color: white;
+	padding: 3px;
+	ssborder: 1px solid #dddddd;
+	margin: 5px;
+	font-size: 10pt;
+}
+
 /********************************************************************/
 /** Navigation ***/
 /********************************************************************/
@@ -191,7 +316,7 @@ body{
 }
 
 #navcontainer li { 
-	margin: 0px 0px 5px 0px; 
+	margin: 4px 0px 4px 0px; 
 }
 
 #navcontainer a{
@@ -204,7 +329,7 @@ body{
 	border-bottom: 1px solid #aaa;
 	border-left: 10px solid #eeeeee;
 	border-right: 10px solid #eeeeee;
-	font-size: 12pt;
+	font-size: 10pt;
 	font-weight: bold;
 }
 
@@ -218,26 +343,28 @@ body{
 
 #navcontainer ul ul{
 	margin-left: 30px;
-	padding: 0;
+	padding: 0px;
 	list-style-type: none;
 }
 
 #navcontainer li li a{
 	display: block;
-	color: #efefef;
-	background-color: transparent;
-	width: 160px;
+	color: #3B4E77;
+	background-color: #efefef;
+	sswidth: 160px;
 	padding: 2px 10px;
-	margin: 0;
+	margin: 0px;
 	border-top: none;
 	border-bottom: none;
-	border-left-color: #91B6DF;
-	border-right-color: #91B6DF;
+	border-left: 10px solid #eeeeee;
+	border-right: 10px solid #eeeeee;
 	text-decoration: none;
 	font-size: 10pt;
+	border-bottom: 1px solid #aaa;
 }
 
 #navcontainer a.selected{
 	border-left-color: #214074;
 	border-right-color: #214074;
+	background-color: #D7E8EC;
 }

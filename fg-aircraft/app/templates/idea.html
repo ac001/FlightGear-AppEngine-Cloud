@@ -28,14 +28,26 @@
 
 <div id="main_container">
 
-<!--### Left Column ###-->
+<!--######################################################-->
+<!--### Left Block ###-->
+<!--######################################################-->
 <div id="left_box">
+
+	<!--## Logo ##-->
 	<div id="flightgear_logo"><img src="/images/fg3.png"></div>
 
+	<!--## Navigation  ##-->
 	<div id="navcontainer">
-		<ul class="navtabs">
+		<ul>
 			{% for n in iconf.nav %}
-			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
+			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a>
+			{% if n.subnav %}
+			<ul>
+			{% for sn in n.subnav %}
+			<li><a href="#">{{ sn.label }}</a></li>
+			{% endfor %}
+			</ul>
+			{% endif %}
 			{% endfor %}
 		</ul>
 	</div>
@@ -43,9 +55,13 @@
 </div>
 
 
-<!-- ### Top Banner ###-->
+
 <div id="middle_box">
 
+
+<!--######################################################-->
+<!-- ### Top Banner ###-->
+<!--######################################################-->
 <div id="top_box">
 	<!-- Language Icons and links -->
 	<div id="lang_box">
@@ -53,9 +69,29 @@
 		<a href="#"><img src="/images/langs/{{ lang.code }}.gif" title="{{ lang.label }}"></a>
 		{% endfor %}
 	</div>
-	<h1>The FlightGear Simulator Project</h1>
-	
+	<h1>FlightGear Simulator Project</h1>
+	<table>
+	<tr>
+	<th>The world's leading Open Source flight simulator</th>
+	<td><a href="#">Pilots Online: 23</a></td>
+	<td><a href="#">Servers: <span style="color: green">3 Up</span> / <span style="color: red">2 down</span></a></td>
+	</tr>
+	</table>
 </div><!-- end top_box -->
+
+
+
+<div id="toolbar_box">
+<ssform action="http://www.google.com/cse" ssid="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
+    <input type="hidden" name="ie" value="UTF-8" />
+    <input type="text" name="q" size="31" />
+    <input type="submit" name="sa" value="Search" />
+  </div>
+</form>
+<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+</div>
 
 
 <div id="right_box">
