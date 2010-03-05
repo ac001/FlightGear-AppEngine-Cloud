@@ -23,7 +23,9 @@ tm = "<span class='tm'>FlightGear</span>"
 
 nav = []
 nav.append( {'path':'/idea/', 'label': 'Home'} )
-nav.append( {'path':'/idea/about/', 'label': 'About'} )
+nav.append( {'path':'/idea/about/', 'label': 'About', 
+				'subnav': [	{'path':'/idea/about/features/', 'label': 'Features'}, 	{'path':'/idea/about/features/', 'label': 'Features'}]
+			})
 nav.append( {'path':'/idea/features/', 'label': 'Features'} )
 nav.append( {'path':'/idea/news/', 'label': 'News'} )
 nav.append( {'path':'/idea/download/', 'label': 'Download'} )

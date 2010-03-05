@@ -1,7 +1,7 @@
 
 
 .tm{
- color: #0D2F67;
+ color: #000099;
 }
 
 body{
@@ -18,7 +18,7 @@ body{
 	float: left;
 	width: 180px;
 	cccbackground-color: #dddddd;
-	position: fixed;
+	ssposition: fixed;
 }
 #left_box #flightgear_logo{
 	text-align: right;
@@ -31,21 +31,68 @@ body{
 	margin-left: 210px;
 }
 
+/******************************************/
+/** Right Box **/
+/******************************************/
+#right_box{
+	ssbackground-color: red;
+	float: right;
+	width: 200px;
+	border-left: 1px solid #dddddd;
+	min-height: 500px;
+	sspadding-left: 10px;
+}
 
+
+/******************************************/
+/** Panel Box **/
+/**********************************/
+.panel_box{
+	ssbackground-color: blue;
+	margin-bottom: 30px;
+}
+
+.panel_box h3{
+	color: #CFE2F2;
+	background-color: #344E7F;
+	border-top: 1px solid #dddddd;
+	border-bottom: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	padding: 4px;
+	font-size: 11pt;
+	font-family: sans-serif;
+}
+
+.panel_box p{
+	margin: 10px;
+	font-size: 10pt;
+	font-family: sans-serif;
+	line-height: 130%;
+}
+
+
+
+/******************************************/
+/** Top Box **/
+/******************************************/
 #top_box{
 	cccmargin: 20px 30px 20px 30px;
 	margin-top: 20px;
 	margin-bottom: 40px;
-	ssbackground-color: #efefef;
+	background-color: #efefef;
+	border-bottom: 3px solid #dddddd;
+	ssborder-top: 1px solid #eeeeee;
+	border-right: 1px solid #cccccc;
 }
 
 #top_box #lang_box{
 	float: right;
+	ssbackground-color: red;
+	margin: 10px 10px 0px 0px;
 }
-
-#DDDtop_box #DDDflightgear_logo{
-	float: left;
-	width: 200px;
+#top_box #lang_box a{
+	text-decoration: none;
+	margin-left: 10px;
 }
 
 #top_box h1{
@@ -53,25 +100,29 @@ body{
 	line-height: 180%;
 	color: #3B5584;
 	font-family: sans-serif;
-	border-bottom: 1px solid #cccccc;
-	padding: 10px;
+	ssborder-bottom: 1px solid #cccccc;
+	sspadding: 10px;
+	background-color: white;
+	margin-right: 200px;
 }
 
-#top_box #lang_box a{
-	text-decoration: none;
-	margin-left: 10px;
-}
+
 
 /******************************************/
 /** Content Box **/
 /******************************************/
+#content_box{
+	margin-right: 240px;
+}
 #content_box h1{
-	ssbackground-color: #efefef;
-	border-left: 20px solid #4380C1;
-	border-top: 1px solid #4380C1;
+	background-color: #efefef;
+	ssborder-left: 1px solid #4380C1;
+	ssborder-top: 1px solid #4380C1;
 	padding: 5px 0px 5px 10px;
 	margin-bottom: 10px;
 	margin-top: 5px;
+	border: 1px solid #aaaaaa;
+	font-family: sans-serif;
 }
 
 #content_box h3{
@@ -117,14 +168,8 @@ body{
 	margin-left: 10px;
 	margin-right: 50px;
 }
-/**********************************/
-/** right Box **/
-/**********************************/
 
-.rbox{
- background-color: red;
 
-}
 
 
 

@@ -1,155 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+{% extends "idea.html" %}
 
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
-<title>{{ title }} | {{ conf.SITE_TITLE }}</title>
-
-<!--<link rel="SHORTCUT ICON" href="images/favicon.png">-->
-<!--<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">-->
-<!--
-<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/ext-all.css">
-<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/xtheme-gray.css">
-<script type="text/javascript" src="/js/ext-3.1.1/adapter/ext/ext-base.js"></script>
-<script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>-->
-<!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
-
-<!--
-<script type="text/javascript" src="/js/main.js"></script>
--->
-<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
-<link rel="stylesheet" type="text/css" href="/style_sheets/idea.css">
-<!--<script type="text/javascript" src="js/FG_PilotsGrid.js"></script>-->
-
-</head> 
-<body> 
-
-
-<div id="main_container">
-
-<div id="left_box">
-	<div id="flightgear_logo"><img src="/images/fg3.png"></div>
-
-	<div id="navcontainer">
-		<ul class="navtabs">
-			{% for n in iconf.nav %}
-			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
-			{% endfor %}
-		</ul>
-	</div>
-
-</div>
-
-
-<!-- ### Top Banner ###-->
-<div id="top_box">
-
-<!-- Language Icons and links -->
-<div id="lang_box">
-{% for lang in iconf.langs %}
-<a href="#"><img src="/images/langs/{{ lang.code }}.gif" title="{{ lang.label }}"></a>
-{% endfor %}
-</div>
-
-
-<h1>The FlightGear Simulator Project</h1>
-
-</div>
-
-
-</div>
-
-
-
-<div style="clear: both;">
-
-
-
-<div id="content_box">
 {% block content %}
 
-{% endblock content %}
+<div class="important">
+<img src="/images/missc/important.png">
+<h1>Important</h1>
 </div>
 
-
-<table>
-
-<tr>
-
-<!--## Left Block  --->
-<td width="200px"  valign="top">
-
-
-
-</td>
-
-<!--## Mid Block  --->
-<td SSwidth="50%"  valign="top">
-<p>The FlightGear flight simulator project is an open-source, multi-platform, cooperative flight simulator development project. Source code for the entire project is available and licensed under the GNU General Public License.
+<h1>Installer and Binary Downloads</h1>
+<p>
+Ready to run versions of FlightGear are available for many different platforms:
 </p>
+<ul>
+<li>Windows
+<li>Linux
+<li>Mac OS X
+<li>Solaris (sparc/x86)
+<li>sgi
+<li>FreeBSD
 
-<h1>Latest News</h1>
-</td>
-
-<!--## Right Block  --->
-<td width="25%"  valign="top">
-
-<div class="rbox">
-<h2>Download</h2>
-<h3>Latest</h3>
-<p><a href="#">v2.0.3</a> - 19th Dec 2010. New major release</p>
-
-<h3>Previous</h3>
-<p><a href="#">v1.9-bugfix</a> - 7th Dec 2010</p>
-
-
-</td>
-
-</tr>
-</table>
-
-<div id="container">
-
-<!---
-<div id="top_box">
-<h1>{{ conf.SITE_TITLE }}</h1>
-
-	
-<div>
-	<ul class="navtabs">
-		{% for n in conf.nav %}
-		<li><a {% ifequal path n.path  %}class="current"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
-		{% endfor %}
-	</ul>
-</div>
-
-
-<table class="toolbar" width="100%">
-	<td>Pilots Update: {{ conf.app_vars.pilots_info.updated|date:"H:i:s"|default:"--"  }}</td>
-	<td>Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</td>
-	<td>ATC: {{ conf.app_vars.pilots_info.act_count}}</td>
-	
-	<td>Servers Update: {{ conf.app_vars.mpservers_info.updated|date:"H:i:s"|default:"--" }}</td>
-	<td>Up: {{ conf.app_vars.mpservers_info.up|default:"--" }}</td>
-	<td>Down: {{ conf.app_vars.mpservers_info.down|default:"--" }}</td>
-	<td width="33%">&nbsp;</td>
-</table>
-
-</div>
--->
-
-
-<!--- Footer --->
-<div  style="clear: both;"></div>
-<div id="footer">
-<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">Google App Engine</a>
-<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a>
-</div>
-</div>
-
-
-
-
-</body> 
-</html>
+</ul>
+{% endblock content %}
