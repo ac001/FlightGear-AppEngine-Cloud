@@ -18,6 +18,7 @@ body{
 	float: left;
 	width: 180px;
 	cccbackground-color: #dddddd;
+	position: fixed;
 }
 #left_box #flightgear_logo{
 	text-align: right;
@@ -61,25 +62,61 @@ body{
 	margin-left: 10px;
 }
 
+/******************************************/
+/** Content Box **/
+/******************************************/
 #content_box h1{
-	background-color: #efefef;
+	ssbackground-color: #efefef;
+	border-left: 20px solid #4380C1;
+	border-top: 1px solid #4380C1;
+	padding: 5px 0px 5px 10px;
+	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
 #content_box h3{
-	background-color: #444444;
+	ssbackground-color: #444444;
+	margin-left: 30px;
+	font-family: sans-serif;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #eeeeee;
 }
 
 #content_box p{
 	font-size: 11pt;
 	font-family: sans-serif;
-	line-height: 140%;
+	line-height: 130%;
 	margin-top: 5px;
-	margin-left: 20px;
+	margin-left: 60px;
 	margin-right: 10px;
-	margin-bottom: 5px;
+	margin-bottom: 10px;
+}
+#content_box ol{
+	font-size: 11pt;
+	font-family: sans-serif;
+	line-height: 130%;
+	margin-top: 5px;
+	margin-left: 60px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	list-style-type: lower-roman;
+}
+#content_box ul{
+	font-size: 11pt;
+	font-family: sans-serif;
+	line-height: 130%;
+	margin-top: 5px;
+	margin-left: 60px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	list-style-type: disc;
 }
 
-
+#content_box li p{
+	margin-left: 10px;
+	margin-right: 50px;
+}
 /**********************************/
 /** right Box **/
 /**********************************/

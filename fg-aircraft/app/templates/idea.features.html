@@ -23,12 +23,12 @@ preference.</p>
 
 <h3>Flight Dynamics Models</h3>
 
-With {{ iconf.tm }} it is possible to choose between three primary Flight
+<p>With {{ iconf.tm }} it is possible to choose between three primary Flight
 Dynamics Models.  It is possible to add new dynamics models or even
-interface to external "proprietary" flight dynamics models:<BR>
+interface to external "proprietary" flight dynamics models:</p>
  
- <OL>
-  <LI> <A HREF="http://www.jsbsim.org"><STRONG>JSBSim</STRONG></A>:
+ <ol>
+  <li><p><A HREF="http://www.jsbsim.org"><strong>JSBSim</strong></A>:
        JSBSim is a generic, 6DoF flight dynamics model for simulating
        the motion of flight vehicles.  It is written in C++.  JSBSim
        can be run in a standalone mode for batch runs, or it can be
@@ -36,9 +36,9 @@ interface to external "proprietary" flight dynamics models:<BR>
        visuals subsystem (such as FlightGear.)  In both cases,
        aircraft are modeled in an XML configuration file, where the
        mass properties, aerodynamic and flight control properties are
-       all defined.</LI><BR>
+       all defined.<p></li>
 
-  <LI> <STRONG>YASim</STRONG>: This FDM is an integrated part of
+  <li><p><strong>YASim</strong>: This FDM is an integrated part of
        FlightGear and uses a different approach than JSBSim by
        simulating the effect of the airflow on the different parts of
        an aircraft.  The advantage of this approach is that it is
@@ -47,66 +47,66 @@ interface to external "proprietary" flight dynamics models:<BR>
        numbers for an aircraft.  This allows for quickly constructing
        a plausibly behaving aircraft that matches published
        performance numbers without requiring all the traditional
-       aerodynamic test data.</LI><BR>
+       aerodynamic test data.</p></li>
 
-  <LI> <A HREF="http://www.ae.uiuc.edu/m-selig/">
-       <STRONG>UIUC</STRONG></A>: This FDM is based on <A
+	<li> <p><A HREF="http://www.ae.uiuc.edu/m-selig/">
+       <strong>UIUC</strong></A>: This FDM is based on <A
        HREF="http://techreports.larc.nasa.gov/ltrs/PDF/NASA-95-tm110164.pdf">
        LaRCsim</A> originally written by the NASA. UIUC extends the
        code by allowing aircraft configuration files instead and by
        adding code for simulation of aircraft under icing
-       conditions.<P>
-
+       conditions.</p>
+		<p>
        UIUC (like JSBSim) uses lookup tables to retrieve the component
        aerodynamic force and moment coefficients for an
        aircraft... and then uses these coefficients to calculate the
-       sum of the forces and moments acting on the aircraft.</LI><BR>
+       sum of the forces and moments acting on the aircraft.</p>
+	</li>
 
-</OL>
+</ol>
 
 <h3>Extensive and Accurate World Scenery Data Base</h3>
 
 <UL>
-  <LI> Over 20,000 real world airports included in the full scenery set.
+  <li><p>Over 20,000 real world airports included in the full scenery set.</p></li>
 
-  <LI> Correct runway markings and placement, correct runway and
-       approach lighting.
+  <li><p>Correct runway markings and placement, correct runway and approach lighting.</p></li>
 
-  <LI> Taxiways available for many larger airports (even including the
-       green center line lights when appropriate.)
+  <li><p>Taxiways available for many larger airports (even including the
+       green center line lights when appropriate.)</p></li>
 
-  <LI> Sloping runways (runways change elevation like they usually do
-       in real life.)
+  <li><p>Sloping runways (runways change elevation like they usually do
+       in real life.)</p></li>
 
-  <LI> Directional airport lighting that smoothly changes intensity as
-       your relative view direction changes.
+  <li><p>Directional airport lighting that smoothly changes intensity as
+       your relative view direction changes.</p></li>
 
-  <LI> World scenery fits on 3 DVD's.  (I'm not sure that's a feature
+  <li><p>World scenery fits on 3 DVD's.  (I'm not sure that's a feature
        or a problem!)  But it means we have pretty detailed coverage
-       of the entire world.
+       of the entire world.</p></li>
 
-  <LI> Accurate terrain worldwide, based on the most recently released
+  <li><p>Accurate terrain worldwide, based on the most recently released
        SRTM terrain data.)  3 arc second resolution (about 90m post
        spacing) for North and South America, Europe, Asia, Africa, and
-       Australia.
+       Australia.</p></li>
 
-  <LI> Scenery includes all vmap0 lakes, rivers, roads, railroads,
-       cities, towns, land cover, etc.
+  <li><p>Scenery includes all vmap0 lakes, rivers, roads, railroads,
+       cities, towns, land cover, etc.</p></li>
 
-  <LI> Nice scenery night lighting with ground lighting concentrated
+  <li><p>Nice scenery night lighting with ground lighting concentrated
        in urban areas (based on real maps) and headlights visible on
        major highways.  This allows for realistic night VFR flying
-       with the ability to spot towns and cities and follow roads.
+       with the ability to spot towns and cities and follow roads.</p></li>
 
-  <LI> Scenery tiles are paged (loaded/unloaded) in a separate thread
-       to minimize the frame rate hit when you need to load new areas.
+  <li><p>Scenery tiles are paged (loaded/unloaded) in a separate thread
+       to minimize the frame rate hit when you need to load new areas.</p></li>
 
 
-</UL>
+</ul>
 
 <h3>Accurate and Detailed Sky Model</h3>
 
-FlightGear implements extremely accurate time of day modeling with
+<p>FlightGear implements extremely accurate time of day modeling with
 correctly placed sun, moon, stars, and planets for the specified time
 and date.  FlightGear can track the current computer clock time in
 order to correctly place the sun, moon, stars, etc. in their current
@@ -117,90 +117,90 @@ correct courses through the sky.  This modeling also correctly takes
 into account seasonal effects so you have 24 hour days north of the
 arctic circle in the summer, etc.  We also illuminate the correctly
 placed moon with the correctly placed sun to get the correct phase of
-the moon for the current time/date, just like in real life.
+the moon for the current time/date, just like in real life.</p>
 
 
 <h3>Flexible and Open Aircraft Modeling System</h3>
 
-FlightGear has the ability to model a wide variety of aircraft.
+<p>FlightGear has the ability to model a wide variety of aircraft.
 Currently you can fly the 1903 Wright Flyer, strange flapping wing
 "ornithopters", a 747 and A320, various military jets, and several
 light singles.  FlightGear has the ability to model those aircraft and
-just about everything in between.<P>
+just about everything in between.</p>
 
-FlightGear has extremely smooth and fluid instrument animation that
+<p>FlightGear has extremely smooth and fluid instrument animation that
 updates at the same rate as your out-the-window view updates (i.e. as
 fast as your computer can crank, and not artificially limited and
-chunky like in some sims.)<P>
+chunky like in some sims.)</p>
 
-FlightGear has the infrastructure to allow aircraft designers to build
+<p>FlightGear has the infrastructure to allow aircraft designers to build
 fully animated, fully operational, fully interactive 3d cockpits
 (which even update and display correctly from external chase plane
-views.)<P>
+views.)</p>
 
-FlightGear realistically models real world instrument behavior.
+<p>FlightGear realistically models real world instrument behavior.
 Instruments that lag in real life, lag correctly in FlightGear, gyro
 drift is modeled correctly, the magnetic compass is subject to
 aircraft body forces -- all those things that make real world flying a
-challenge.<P>
+challenge.</p>
 
-FlightGear also accurately models many instrument and system failures.
+<p>FlightGear also accurately models many instrument and system failures.
 If the vacuum system fails, the HSI gyros spin down slowly with a
 corresponding degradation in response as well as a slowly increasing
-bias/error.
+bias/error.</p>
 
 <h3>Moderate Hardware Requirements</h3>
 
-The intention of FlightGear is to look nice, but not at the expense of
+<p>The intention of FlightGear is to look nice, but not at the expense of
 other aspects of a realistic simulator.  Our focus is not on competing
-in the "game" market and not on the ultra-flashy graphic tricks.<P>
+in the "game" market and not on the ultra-flashy graphic tricks.</p>
 
-The result is a simulator with moderate hardware requirements to run
+<p>The result is a simulator with moderate hardware requirements to run
 at smooth frame rates.  You can be reasonably happy on a $500-1000
 (USD) machine (possibly even less if you are careful) and don't
 necessarily need $3000 (USD) worth of new hardware like you do with
-the many of the newest games.<P>
+the many of the newest games.</p>
 
-That said, the more hardware you throw at FlightGear, the better it
+<p>That said, the more hardware you throw at FlightGear, the better it
 looks and runs, so don't feel like you have to chuck your expensive
-new hardware if you just purchased it. :-)
+new hardware if you just purchased it. :-)</p>
 
 <h3>Internal Properties EXPOSED!</h3>
 
-FlightGear allows users and aircraft designers access to a very large
+<p>FlightGear allows users and aircraft designers access to a very large
 number of internal state variables via numerous internal and external
 access mechanisms.  These state variables are organized into a
-convenient hierarchal "property" tree.<P>
+convenient hierarchal "property" tree.</p>
 
-Using the properties tree it is possible to monitor just about any
+<p>Using the properties tree it is possible to monitor just about any
 internal state variable in FlightGear.  It's possible to remotely
 control FlightGear from an external script.  You can create model
 animations, sound effects, instrument animations and network protocols
 for about any situation imaginable just by editing a small number of
 human readable configuration files.  This is a powerful system that
-makes FlightGear immensely flexible, configurable, and adaptable.
+makes FlightGear immensely flexible, configurable, and adaptable.</p>
 
 <h3>Networking options</h3>
 
-A number of networking options allow FlightGear to communicate with
+<p>A number of networking options allow FlightGear to communicate with
 other instances of FlightGear, GPS receivers, external flight dynamics
 modules, external autopilot or control modules, as well as other
 software such as <A HREF="http://www.opengc.org/">the Open Glass
 Cockpit project</A> and the <A
 HREF="http://atlas.sourceforge.net/">Atlas</A> mapping utility.<P>
 
-A generic input/output option allows for a user defined output
-protocol to a file, serial port or network client.<P>
+<p>A generic input/output option allows for a user defined output
+protocol to a file, serial port or network client.</p>
 
-A multi player protocol is available for using FlightGear on a local
+<p>A multi player protocol is available for using FlightGear on a local
 network in a multi aircraft environment, for example to practice
-formation flight or for tower simulation purposes.<P>
+formation flight or for tower simulation purposes.</p>
 
-The powerful network options make it possible to synchronize several
+<p>The powerful network options make it possible to synchronize several
 instances of FlightGear allowing for a multi-display, or even a cave
 environment.  If all instances are running at the same frame rate
 consistently, it is possible to get extremely good and tight
-synchronization between displays.
+synchronization between displays.</p>
 
 
 {% endblock content %}
