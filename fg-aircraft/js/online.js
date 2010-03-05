@@ -1,9 +1,11 @@
-Ext.onReady(function(){
 
-var REFRESH_RATE = 5;
-var refresh_counter = REFRESH_RATE;
+function OnlineWidget(){
 
-function render_callsign(v, meta, rec){
+var self = this;
+this.REFRESH_RATE = 5;
+this.refresh_counter = 0;
+
+this.render_callsign = function(v, meta, rec){
 	switch(rec.get('flag')){
 		case 0: //* pilot is flying
 			meta.css = 'fg_pilot_fly';
@@ -18,7 +20,7 @@ function render_callsign(v, meta, rec){
 	return v;
 }
 
-function render_altitude(v, meta, rec, rowIdx, colIdx, store){
+this.render_altitude = function(v, meta, rec, rowIdx, colIdx, store){
 	if(v < 1000){
 		color = '#931429';
 	}else if(v < 2000){
@@ -41,18 +43,12 @@ function render_altitude(v, meta, rec, rowIdx, colIdx, store){
 	return "<span style='color:" + color + ';">' + Ext.util.Format.number(v, '0,000'); + '</span>';
 }
 
+//this.pilotsSummaryCountLabel = new Ext.Toolbar.TextItem({text:'No pilots'});
+this.pilotsDataCountLabel = new Ext.Toolbar.TextItem({text:'No pilots'});
 
-//********************************************************************************************
-Ext.onReady(function(){
+this.refreshTimerLabel = new Ext.Toolbar.TextItem({text:'-'});
 
-//****************************************************************
-
-var pilotsSummaryCountLabel = new Ext.Toolbar.TextItem({text:'No pilots'});
-var pilotsDataCountLabel = new Ext.Toolbar.TextItem({text:'No pilots'});
-
-var refreshTimerLabel = new Ext.Toolbar.TextItem({text:'-'});
-
-var PilotRecord = Ext.data.Record.create([
+this.PilotRecord = Ext.data.Record.create([
 	{name: 'flag', type: 'int'},
 	{name: "callsign", type: 'string'},
 	{name: "server_ip", type: 'string'},
@@ -65,13 +61,11 @@ var PilotRecord = Ext.data.Record.create([
 	{name: "roll", type: 'string'}
 ]);
 
-
-
-//* list of pilot markers (atmo there is no ID etc in api3)
-var pilotMarkers = {};
-
 //* Pilots Datastore
-var pilotsStore = new Ext.data.Store({
+this.pilotsStore = new Ext.data.JsonStore({
+	url: "/rpc/online/",
+	method: 'GET',
+	root: 'data',
 	fields: [ 	{name: 'flag', type: 'int'},
 				{name: "callsign", type: 'string'},
 				{name: "server_ip", type: 'string'},
@@ -85,23 +79,35 @@ var pilotsStore = new Ext.data.Store({
 	]
 	//, sortInfo: {field: "callsign", direction: 'ASC'}
 });
-pilotsStore.on("exception", function(prx, typ, act){
+this.pilotsStore.on("exception", function(prx, typ, act){
 	//TODO
-	console.log("exception", prx, typ, act);
+	//console.log("exception", prx, typ, act);
+});
+this.pilotsStore.on("load", function(){
+	//TODO
+	//console.log("exception", prx, typ, act);
+	setTimeout(self.step_counter, 1000);
 });
 
+this.step_counter = function(){
+	self.refresh_counter++;
+	self.refreshTimerLabel.setText(self.refresh_counter);
+	setTimeout(self.step_counter, 1000);
+}
 
     
 
-function load_pilots(){
+this.load_pilots = function(){
+	//this.pilotsStore.load()
+	//return
 	//console.log(refresh_counter);
-	if(refresh_counter > 0){
-		refresh_counter--;
-		refreshTimerLabel.setText(refresh_counter);
-		setTimeout(load_pilots, 1000);
+	if(self.refresh_counter > 0){
+		self.refresh_counter--;
+		self.refreshTimerLabel.setText(self.refresh_counter);
+		setTimeout(self.load_pilots, 1000);
 		return
 	}
-	refreshTimerLabel.setText('loading')
+	self.refreshTimerLabel.setText('loading');
 	//console.log("AJAX pilots request -------------------------------------");
 	Ext.Ajax.request({
 		url: "/rpc/online/",
@@ -109,17 +115,15 @@ function load_pilots(){
 		success: function(resp, opts){
 			//console.log("ok", resp);
 			var json = Ext.decode(resp.responseText);
-			console.log("ok-pilots", json);
+			//console.log("ok-pilots", json);
 			var pilots =  json['data'];
 		
 			//* loop thru existing pilots and update
-			if(pilotsStore.getCount() > 0){
+			if(self.pilotsStore.getCount() > 0){
 				//for(var idx=0; idx <= pilotsStore.getCount(); idx++){
-				pilotsStore.each( function(rec){	
+				self.pilotsStore.each( function(rec){	
 					//var rec = pilotsStore.getAt(idx);
 					if(rec){
-						//console.log( rec.id);
-
 						if(pilots[rec.id]){
 							//* Pilot exists so update
 							rec.set('flag', 0);
@@ -139,77 +143,58 @@ function load_pilots(){
 								rec.set('flag', f);	
 							}
 							//console.log("dead", );
-							
-							//
-						}
+							}
 					}else{
-						console.log("errOR");
+						//console.log("errOR");
 					}
-					/*
-					if(pilots[rec.get('callsign')]){
-						console.log("update", rec);
-						rec.set('flag', 0);
-					}else{
-						console.log("exist", idx, rec);
-						rec.set('flag', 2);
-					} */
 				}, this);
 			}
 			//* add new pilots_list
 			for(var p in pilots){
 				//console.log("add", p);
 				pilots[p].flag = 1;
-				var pRec = new PilotRecord(pilots[p], p);
-				pilotsStore.add(pRec);
+				var pRec = new self.PilotRecord(pilots[p], p);
+				self.pilotsStore.add(pRec);
 				delete pilots[p]
 			}
 			//* Update count labels
-			var cnt = pilotsStore.getCount();
+			var cnt = self.pilotsStore.getCount();
 			//console.log("cnt", cnt, "pilots.length", pilots);
 			var lbl = cnt == 0 ? "No Pilots Online" : cnt + " Pilots Online"
-			pilotsSummaryCountLabel.setText(lbl);
-			pilotsDataCountLabel.setText(lbl);
-			refreshTimerLabel.setText(refresh_counter)
-			refresh_counter = REFRESH_RATE;
-			setTimeout(load_pilots, 1000);
+			self.grid.setTitle(lbl);
+			self.pilotsDataCountLabel.setText(lbl);
+			self.refresh_counter = self.REFRESH_RATE;
+			self.refreshTimerLabel.setText(self.refresh_counter)
+			setTimeout(self.load_pilots, 1000);
 		},
 		failure: function(resp, opts){
 			//TODO error handler
-			console.log("fail");
-			refreshTimerLabel.setText("Failed")
-			refresh_counter = REFRESH_RATE;
-			setTimeout(load_pilots, 1000);
+			//console.log("fail");
+			self.refreshTimerLabel.setText("Failed")
+			self.refresh_counter = self.REFRESH_RATE;
+			setTimeout(self.load_pilots, 1000);
 		}
 	});
 
-}
+} /* load pilots */
 
         
-var grid = new Ext.grid.GridPanel({
+this.grid = new Ext.grid.GridPanel({
 	title: 'Pilots Online',
 	//iconCls: 'iconPilots',
 	autoScroll: true,
 	autoWidth: true,
-	hideTitle: true,
 	height: 600,
 	renderTo: 'online_grid',
-	//tbar:[  mapToolBarItems//this.actionAdd, this.actionEdit, this.actionDelete, 
-			//'-',// this.actionLabSelectToolbarButton,
-			//'->',
-			//Geo2.widgets.goto_www('Online', 'View rates on website', '/rates.php'),
-		//	{text: 'Refresh', iconCls: 'iconRefresh', handler: function(){
-				//load_pilots();
-				//}
-			//}    
-	//],
-	tbar: [],
 	viewConfig: {emptyText: 'No pilots online', forceFit: true}, 
 	//sm: this.selModel,
-	store: pilotsStore,
+	store: this.pilotsStore,
 	loadMask: true,
 	columns: [  //this.selModel,	
 		{header: 'F',  dataIndex:'flag', sortable: true, width: 20},
-		{header: 'CallSign',  dataIndex:'callsign', sortable: true, renderer: render_callsign},
+		{header: 'CallSign',  dataIndex:'callsign', sortable: true, 
+			renderer: this.render_callsign
+		},
 		{header: 'Aircraft',  dataIndex:'model', sortable: true},
 		{header: 'Lat', dataIndex:'lat', sortable: true, align: 'right',
 			renderer: function(v, meta, rec, rowIdx, colIdx, store){
@@ -222,7 +207,7 @@ var grid = new Ext.grid.GridPanel({
 			}
 		},
 		{header: 'Alt', dataIndex:'alt', sortable: true, align: 'right',
-			renderer: render_altitude
+			renderer: this.render_altitude
 		},
 		{header: 'Heading', dataIndex:'heading', sortable: true, align: 'right',
 			renderer: function(v, meta, rec, rowIdx, colIdx, store){
@@ -247,12 +232,24 @@ var grid = new Ext.grid.GridPanel({
 
 	],
 	listeners: {},
-	bbar: [pilotsDataCountLabel]
-});
-	load_pilots();
-});
+	bbar: [ self.refreshTimerLabel,
+			'->',
+			{text: 'Refresh Now', iconCls: 'iconRefresh', 
+				handler: function(){
+					self.load_pilots();
+				}
+			}    
+	]
+}); /* grid */
 
 
+
+} /* OnlineWidget */
+
+Ext.onReady(function(){
+
+var widget = new OnlineWidget();
+widget.load_pilots();
 	
 }); /* Ext.onready() */
 

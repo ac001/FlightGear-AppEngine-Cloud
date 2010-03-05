@@ -16,5 +16,9 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+- url: /idea/.*
+  script: idea.py
 - url: /.*
   script: main.py
+
+

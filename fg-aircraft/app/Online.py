@@ -27,14 +27,6 @@ class DDOnline:
 				return None
 			
 			pilots = {}
-			#for node in doc.getElementsByTagName("fg_server"):
-				#if node.getAttribute("pilot_cnt"):
-					#pilot_cnt = node.getAttribute("pilot_cnt")
-			"""
-			<marker callsign="barta" server_ip="LOCAL" model="aerostar" 
-			slat="-32.738765" lng="-68.782593" alt="2243.647478" 				
-			heading="110.946533203125" pitch="0.928494572639465" roll="0.190453231334686" /> 
-			"""
 			for node in doc.getElementsByTagName("marker"):
 				callsign = node.getAttribute("callsign")
 				pilots[callsign] = {
@@ -47,14 +39,12 @@ class DDOnline:
 							'server': node.getAttribute("server_ip")
 
 				}
-			#data = {'pilots': pilots, 'count': pilot_cnt, 'client': client}
 			
 			pilots_sorted = []
 			for ki in sorted(pilots.keys()):
 				pilots_sorted.append( pilots[ki] )
 			if not memcache.set("pilots_online", pilots_sorted, 5):
 				print "error"
-			#data['loaded'] = True
 			return pilots_sorted
 
 
@@ -98,7 +88,7 @@ class MPServersRpc(webapp.RequestHandler):
 		}
 		#print 'Content-Type: text/plain'
 		#print ''
-		print json.dumps(self.get_pilots())
+		#print json.dumps(self.get_pilots())
 		#path = os.path.join(os.path.dirname(__file__), 'templates/pilots_online.html')
 		self.response.out.write(json.dumps(self.get_pilots()))
 """	

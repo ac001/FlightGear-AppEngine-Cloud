@@ -1,11 +1,19 @@
+==================================
+-- FlightGear Aircraft Database --
+==================================
+
+### IMPORTANT ###
+
 This is work in progress of an idea to host Flight Gear aircraft data on the Google AppEngine cloud.
-
 http://fg-aircraft.appspot.com/
+Its a mashup. Initial R+D. 
+###
 
-Its a mashup.
+The idea is to create a database of FlightGears aircraft.
 
-Initial R+D.
-
+Intentions
+* pull data from repositories and feeds
+* 
 The code is available at git hub.
 http://github.com/ac001/fg-aircraft
 

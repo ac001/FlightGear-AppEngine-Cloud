@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
+<title>{{ title }} | {{ conf.SITE_TITLE }}</title>
+
+<!--<link rel="SHORTCUT ICON" href="images/favicon.png">-->
+<!--<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">-->
+<!--
+<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/ext-all.css">
+<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/xtheme-gray.css">
+<script type="text/javascript" src="/js/ext-3.1.1/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>-->
+<!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
+
+<!--
+<script type="text/javascript" src="/js/main.js"></script>
+-->
+<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="/style_sheets/idea.css">
+<!--<script type="text/javascript" src="js/FG_PilotsGrid.js"></script>-->
+
+</head> 
+<body> 
+
+
+<div id="main_container">
+
+<!--### Left Column ###-->
+<div id="left_box">
+	<div id="flightgear_logo"><img src="/images/fg3.png"></div>
+
+	<div id="navcontainer">
+		<ul class="navtabs">
+			{% for n in iconf.nav %}
+			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+</div>
+
+
+<!-- ### Top Banner ###-->
+<div id="middle_box">
+
+<div id="top_box">
+	<!-- Language Icons and links -->
+	<div id="lang_box">
+		{% for lang in iconf.langs %}
+		<a href="#"><img src="/images/langs/{{ lang.code }}.gif" title="{{ lang.label }}"></a>
+		{% endfor %}
+	</div>
+	<h1>The FlightGear Simulator Project</h1>
+	
+</div><!-- end top_box -->
+
+<div id="content_box">
+{% block content %}
+
+
+{% endblock content %}
+</div><!-- content box -->
+
+</div><!-- midle box -->
+
+
+</div><!-- end main_container -->
+
+
+
+
+
+</body> 
+</html>

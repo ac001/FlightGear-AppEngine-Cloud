@@ -31,7 +31,7 @@ def elementtodict(parent):
 	elif (child.nodeType == xml.dom.minidom.Node.TEXT_NODE):
 		return child.nodeValue
 	
-
+	d = {}
 	while child is not None:
 		if (child.nodeType == xml.dom.minidom.Node.ELEMENT_NODE):
 			try:
@@ -95,8 +95,8 @@ class ProcessCVSAircraft:
 
 				#print "======================================================"
 				c  +=  1
-				#if c == 50: 
-				#	sys.exit(1)
+				if 1 == 1 and c == 5: 
+					sys.exit(1)
 		print self.errors
 
 
@@ -106,12 +106,12 @@ class ProcessCVSAircraft:
 		self.xml_doc(xml_file_path)
 		
 	def xml_doc(self, xml_file_path):
-		try:
-			self.doc = xml.dom.minidom.parse(xml_file_path)
-		except :
-			print "ERRORsome parse error", xml_file_path
-			self.errors.append({'parse1': xml_file_path})
-			return
+		#try:
+		self.doc = xml.dom.minidom.parse(xml_file_path)
+		#except :
+		#	print "ERRORsome parse error", xml_file_path
+		#	self.errors.append({'parse1': xml_file_path})
+		#	return
 
 		mapping = {}
 		for node in self.doc.getElementsByTagName("PropertyList"):
@@ -125,19 +125,19 @@ class ProcessCVSAircraft:
 			#print xml_cotents
 			pro = self.process_file(xml_contents, xml_file_path)
 			if pro == None:
-				print "ERROR on file"
+				pass #print "ERROR on file"
 			else:
 				self.dic.update( pro ) 
 
 	
 	def process_file(self, xml_contents, file_name):
 
-		try:
-			xml_dic = xmltodict(xml_contents)
-		except:
-			print "failed to convert to dict", file_name
-			self.errors.append({'fail': file_name})
-			return
+		#try:
+		xml_dic = xmltodict(xml_contents)
+		#except:
+			#print "failed to convert to dict", file_name
+			#self.errors.append({'fail': file_name})
+			#return
 		
 		if not xml_dic:
 			print "ERROR: Something not parsable", file_name
