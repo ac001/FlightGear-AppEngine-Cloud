@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import app.fetch
-
+from google.appengine.api import users
 #from google.appengine.ext import db
 #from models.models import DownloadServer
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
@@ -34,7 +34,15 @@ nav.append( {'path':'/developers/', 'label': 'Developers'} )
 nav.append( {'path':'/code/', 'label': 'Code'} )
 
 
-app_vars = { 'foo': 'bar',
+user = users.get_current_user()
+if user:
+	nickname = user.nickname()
+	auth_url = users.create_logout_url("/idea/")
+else:
+	nickname = None
+	auth_url = users.create_login_url("/idea/")
+
+app_vars = { 'nickname': nickname, 'auth_url': auth_url,
 			'pilots_info': app.fetch.pilots_info(),
 			'mpservers_info': app.fetch.mpservers_info()
 }
@@ -111,6 +119,10 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'Es', 'label': 'Spanish'},
 			{'code': 'De', 'label': 'German'}
 ]
+
+
+
+
 
 """
 download_servers = [

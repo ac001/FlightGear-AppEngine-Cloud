@@ -16,6 +16,11 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
+
+- url: /admin/
+  script: admin.py
+  login: admin
+
 - url: /idea/.*
   script: idea.py
 - url: /.*

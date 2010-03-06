@@ -88,31 +88,36 @@
 <table>
 <tr>
 <td>
-<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
-  <div>
-    <input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
-    <input type="hidden" name="ie" value="UTF-8" />
-    <input type="text" name="q" size="21" />
-    <input type="submit" name="sa" value="Search" />
-  </div>
-</form>
-<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+	<ul id="top_nav">
+		<li><a href="http://wiki.flightgear.org">&nbsp;Wiki&nbsp;</a></li>
+		<li><a href="http://www.flightgear.org/forums/">Forums</a></li>
+		<li><a href="http://mpmap01.flightgear.org">MP Map #1</a></li>
+		<li><a href="http://mpmap02.flightgear.org">MP Map #2</a></li>
+	</ul>
+</td>
+
+<td><!-- TODO -->
+	<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
+	<div>
+		<input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
+		<input type="hidden" name="ie" value="UTF-8" />
+		<input type="text" name="q" size="21" />
+		<input type="submit" name="sa" value="Search" />
+	</div>
+	</form>
+	<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
 </td>
 <td style="text-align:right;">
-<form  class="toolbar_form">
-<label>Callsign: <input type="text" size="10"></label>
-<label>Password: <input type="text" size="10"></label>
-<input type="submit" name="sa" value="Login" />
-
-</form>
+<div class="account">
+{% if conf.app_vars.nickname %}
+<a href="/account/">{{ conf.app_vars.nickname }}</a><a href="{{ conf.app_vars.auth_url }}">Logout</a>
+{% else %}
+<a href="{{ conf.app_vars.auth_url }}">Login</a>
+{% endif %}
+</div>
 </td></tr></table>
 
-<ul id="top_nav">
-<li><a href="http://wiki.flightgear.org">&nbsp;Wiki&nbsp;</a></li>
-<li><a href="http://www.flightgear.org/forums/">Forums</a></li>
-<li><a href="http://mpmap01.flightgear.org">MP Map #1</a></li>
-<li><a href="http://mpmap02.flightgear.org">MP Map #2</a></li>
-</ul>
+
 
 </div>
 
@@ -169,7 +174,7 @@
 <h1>Welcome</h1>
 <p>The {{ conf.tm }} flight simulator project is an open-source, multi-platform, cooperative flight simulator development project. Source code for the entire project is available and licensed under the <a href="/idea/about/license/">GNU General Public License.</a>.</p>
 
-<h1>Headlines</h1>
+<h3>Headlines</h3>
 
 <p>FlightGear v2.0 is now available. Check out the <a href="/idea/download/">gallery page</a> and <a href="/idea/download/">start downloading.</a>
 </p>
