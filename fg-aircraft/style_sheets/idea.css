@@ -1,11 +1,12 @@
 
-
+/*** Trademark **/
 .tm{
 	color: #000066;
 	font-family: serif;
 }
 
 
+/* Multiplayer server status */
 .status_down{
 	color: #990000;
 	background-color: #FFE1DB;
@@ -20,7 +21,7 @@
 }
 
 
-
+/* Download Buttons */
 a.download_button {
 	border: 2px outset #dddddd;
 	text-decoration: none;
@@ -56,39 +57,10 @@ a.refresh_button:hover {
 	color: #000099;
 }
 
-#content_box .back_link_block{
-	text-align: right;
-	margin-right: 0px;
-}
-
-#content_box  .back_link_block a{
-	text-align: right;
-	margin-right: 0px;
-	font-size: 9pt;
-	font-family: sans-serif;
-	text-decoration: none;
-	color: #333333;
-}
-#content_box  .back_link_block a:hover{
-	text-decoration: underline;
-	color: blue;
-}
 
 
-#content_box pre{
-	margin-left: 100px; 
-	margin-right: 0px;
-}
-
-#content_box pre.shell{
-	background-color: #444444;
-	color: white;
-	margin-right: 20px;
-	margin-left: 70px; 
-	padding: 8px;
-	font-size: 8pt;
-}
-
+/***************************************/
+/* Containers */
 /***************************************/
 body{
 
@@ -103,9 +75,7 @@ body{
 #left_box{
 	float: left;
 	width: 180px;
-	ssbackground-color: #efefef;
-	ssposition: fixed;
-	border-right: 1px solid #efefef;
+	border-right: 0px solid #efefef;
 	padding-right: 5px;
 }
 #left_box #flightgear_logo{
@@ -382,28 +352,39 @@ body{
 
 
 
+#content_box .back_link_block{
+	text-align: right;
+	margin-right: 0px;
+}
 
-
-
-#content_box table ss{
-	background-color: #A1CAEA;
-	color: black;
+#content_box  .back_link_block a{
+	text-align: right;
+	margin-right: 0px;
+	font-size: 9pt;
 	font-family: sans-serif;
-	font-size: 12pt;
-	padding: 5px;
-	border: 1px solid #aaaaaa;
-	text-align: left;
+	text-decoration: none;
+	color: #333333;
 }
-#content_box table sstd{
-	border-right: 1px solid #dddddd;
-
-	margin: 10px;
+#content_box  .back_link_block a:hover{
+	text-decoration: underline;
+	color: blue;
 }
 
-#content_box table sstd p{
-	margin-left: 0px;
-	padding: 10px;
+
+#content_box pre{
+	margin-left: 100px; 
+	margin-right: 0px;
 }
+
+#content_box pre.shell{
+	background-color: #444444;
+	color: white;
+	margin-right: 20px;
+	margin-left: 70px; 
+	padding: 8px;
+	font-size: 8pt;
+}
+
 
 /******************************************/
 #content_box  #faq_box{
@@ -532,6 +513,7 @@ llfloat: left;
 	clear: both;
 	border-top: 1px solid #98A9CB;
 	margin-top: 40px;
+	font-family: sans-serif;
 }
 
 #footer_box p{
@@ -568,9 +550,6 @@ llfloat: left;
 	border-right: 10px solid #eeeeee;
 	font-size: 9pt;
 	font-weight: bold;
-	border-radius: 2px;
-	-moz-border-radius: 2px; 
-	-webkit-border-radius: 2px;
 }
 
 #navcontainer a:hover{
