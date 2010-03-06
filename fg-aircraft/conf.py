@@ -6,7 +6,9 @@ import app.fetch
 #from models.models import DownloadServer
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
 
-SITE_TITLE = "FlightGear GAE Cloud Experiment"
+tm = "<span class='tm'>FlightGear&#0174;</span>"
+
+SITE_TITLE = "FlightGear Cloud Experiment"
 
 GOOGLE_PROJECT = "flightgear-bugs"
 ISSUES_FEED = 'http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full'
@@ -39,7 +41,7 @@ app_vars = { 'foo': 'bar',
 
 
 
-tm = "<span class='tm'>FlightGear</span>"
+
 
 platforms = [	{'platform': 'windows', 'label': 'Windows'},
 				{'platform': 'linux', 'label': 'Linux'},

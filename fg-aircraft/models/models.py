@@ -60,4 +60,6 @@ class DownloadServer(db.Model):
 	online = db.IntegerProperty()
 	notes =  db.StringProperty()
 	hits = db.IntegerProperty()
+
+
 	
