@@ -2,6 +2,8 @@
 
 import app.fetch
 
+#from google.appengine.ext import db
+#from models.models import DownloadServer
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
 
 SITE_TITLE = "FlightGear GAE Cloud Experiment"
@@ -108,8 +110,8 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'De', 'label': 'German'}
 ]
 
-
-ftp_servers = [
+"""
+download_servers = [
 	{'location': 'Germany', 'server': 'ftp://ftp.de.flightgear.org/pub/fgfs/'},
 	{'location': 'Germany', 'server': 'http://flightgear.mxchange.org/pub/fgfs/'},
 	{'location': 'South Africa', 'server': '	 ftp://ftp.is.co.za/pub/games/flightgear/'},
@@ -117,5 +119,15 @@ ftp_servers = [
 	{'location': 'USA, North Carolina', 'server': 'ftp://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
 	{'location': 'USA, Minnesota', 'server': 'http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
 	{'location': 'USA, California', 'server': 'ftp://ftp.kingmont.com/flightsims/flightgear/'}
-];
-
+]
+"""
+"""
+## Done Import
+if DownloadServer.all().count() == 0:
+	for d in download_servers:
+		ftp = DownloadServer()
+		ftp.location = d['location']
+		ftp.server = d['server']
+		ftp.online = 1
+		ftp.save()
+"""

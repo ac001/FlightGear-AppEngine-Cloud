@@ -7,6 +7,16 @@
 	{% include "snip.dvd_box.html" %}
 
 
+	<div class="panel_box">
+		<h3>Mirror Servers</h3>
+		<p>You will be randomly assigned to one of these servers.</p>
+		<ul>
+		{% for serv in download_servers %}
+		<li><a href="#">{{ serv.location}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+
 
 {% endblock right_box %}
 

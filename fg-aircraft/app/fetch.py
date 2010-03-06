@@ -216,7 +216,10 @@ def mpservers_status_update():
 	""" Parses out the http://mpmap01.flightgear.org/mpstatus/ page """
 
 	## fetch content 
-	result = urlfetch.fetch(conf.MP_STATUS_URL)
+	try:
+		result = urlfetch.fetch(conf.MP_STATUS_URL)
+	except:
+		return False
 	if result.status_code == 200:
 			
 		soup = BeautifulSoup.BeautifulSoup(result.content)

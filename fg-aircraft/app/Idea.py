@@ -16,6 +16,9 @@ import app.fetch
 from app.Aircraft import Aircraft
 from models.models import Aero
 
+from models.models import DownloadServer
+
+
 class IdeaPage(webapp.RequestHandler):
 
 
@@ -50,6 +53,11 @@ class LashUpPage(webapp.RequestHandler):
 
 		if section == "multiplayer":
 				template_values['servers'] = app.fetch.mpservers()
+
+		if section == "download":
+				sql = "SELECT * FROM DownloadServer ORDER BY location"
+				query = db.GqlQuery(sql)
+				template_values['download_servers'] = query.fetch(100)
 
 
 		path = os.path.join(os.path.dirname(__file__), 'templates/idea.%s.html' % section)

@@ -53,4 +53,11 @@ class AeroLog(db.Model):
 	aero = db.ReferenceProperty(Aero)
 	dated = db.DateTimeProperty(auto_now_add=True)
 	log = db.StringProperty(multiline=True)
+
+class DownloadServer(db.Model):
+	location = db.StringProperty()
+	server = db.StringProperty()
+	online = db.IntegerProperty()
+	notes =  db.StringProperty()
+	hits = db.IntegerProperty()
 	
