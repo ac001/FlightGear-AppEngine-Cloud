@@ -1,0 +1,52 @@
+{% extends "idea.html" %}
+
+
+{% block right_box %}
+
+	<div class="panel_box">
+		<h3>Bug Tracker</h3>
+		<p>The Issues list is at the <b><a href="http://code.google.com/p/flightgear-bugs/">flightgear-bugs</a></b>, a Google code prooject</P>
+	</div>
+
+
+{% endblock %}
+
+
+{% block content %}
+<h1>Developers</h1>
+
+<p>Here are the steps required to compile FlightGear from source</p>
+
+<h3>Prerequisites</h3>
+
+<UL> 
+  <LI><p><b><A HREF="http://www.openscenegraph.org">Open
+       Scene Graph</A></b><br>- an open source scene graph management and
+       graphics effects library.  You will need OSG version 2.9.6 or higher
+       for best results.</p></li>
+  <LI><p><b><A HREF="http://www.boost.org">Boost</A></b><br>- free
+       peer-reviewed portable C++ source libraries.  You will need
+       boost-1.37.0 or newer.  (A suitable version is included with
+       many (most?) Linux distributions.)</p></li>
+  <LI><p><b><A HREF="http://freeglut.sf.net">Glut (FreeGlut)</A></b><br>-
+       OpenGL Utility Toolkit (GLUT) library.</p></li>
+  <LI><p>
+       <b><A HREF="http://kcat.strangesoft.net/openal.html">OpenAL</A></b><br>(Audio Layer) 
+       - We recommend OpenAl Soft 1.11.753 (or higher).  Many current
+       Linux distributions now include OpenAL Soft so check and you
+       may already have this installed or available.</p></li>
+  <LI><p><b><A HREF="http://plib.sourceforge.net">plib</A></b><br> -
+       portability libraries and scene graph.  You need plib-1.8.5 or
+       newer to build FlightGear 2.0.0.</p></li>
+  <LI><p><b><A HREF="http://www.simgear.org">SimGear</A></b><br> - simulation
+       construction tools.  You need SimGear-2.0.0 to compile
+       FlightGear-2.0.0.</p></li>
+  <LI><p>Note - Documentation is included with the base package.</p></li>
+</UL> 
+ 
+<p>&nbsp;</p>
+<p>The Flight Gear source code and base package are managed with CVS (Concurrent Versions System.) CVS lets you check out your own copy of the latest source code (or even previous versions.) CVS will let you update your local copy to keep in sync with the master repostory as development progresses. It will even make it's best attempt to merge new repository versions in with your local changes.</p>
+
+
+<h3>Source Code Release: Version 2.0.0 (Updated February 25, 2010)</h3>
+{% endblock content %}

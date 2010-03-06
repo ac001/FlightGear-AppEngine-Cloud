@@ -1,18 +1,38 @@
 {% extends "idea.html" %}
 
-{% block right_box %}
 
+	{% block right_box %}
 
 	<div class="panel_box">
-		<h3>TerraSync</h3>
-		<p>Wiki instructions on how to run <a href="http://wiki.flightgear.org/index.php/Terrasync"> TerraSync</a></P>
+		<h3>New</h3>
+		<p><img src="http://mapserver.flightgear.org/git/?p=fgdata;a=blob_plain;f=Aircraft/Citation-Bravo/thumbnail.jpg;hb=HEAD"></p>
+		<p><b>Cessna Citation Bravo</b></p>
 	</div>
 
-{% endblock %}
+	<div class="panel_box">
+		<h3>Recent Updates</h3>
+		<ul>
+		<li><a href="#">Airbus A380</a></li>
+		<li><a href="#">Booeing 747</a></li>
+		<li><a href="#">Pa 596</a></li>
+		</ul>
+	</div>
+
+	{% endblock right_box %}
 
 {% block content %}
 
-<h1>Aircraft Download</h1>
 
 
+{% if aero %}
+<h1>{{ aero.description }}</h1>
+
+<p class="back_link_block"><a href="javascript:history.back();" ssonclick="">&lt;&lt; Back</a>
+{% include "aero_include.html" %}
+{% else %}
+
+<h1>Aircraft Downloads</h1>
+{% include "aircraft_grid.html" %}
+
+{% endif %}
 {% endblock content %}

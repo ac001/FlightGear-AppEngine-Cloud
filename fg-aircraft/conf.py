@@ -65,7 +65,7 @@ front_nav.append( {'path':'/idea/download/', 'label': 'Download',
 			'subnav': [	
 				{'path':'/idea/download/requirements/', 'label': 'Requirements'}, 	
 				{'path':'/idea/download/flightgear/', 'label': 'FlightGear'}, 	
-				#{'path':'/idea/download/aircraft/', 'label': 'Aircraft'},
+				{'path':'/idea/download/aircraft/', 'label': 'Aircraft'},
 				{'path':'/idea/download/scenery/', 'label': 'Scenery'},
 				{'path':'/idea/download/versions/', 'label': 'ChangeLog'},
 			]
@@ -89,12 +89,33 @@ front_nav.append( {'path':'/idea/multiplayer/', 'label': 'Multi Player'
 					{'path':'/idea/multiplayer/map/', 'label': 'Online Map'}
 			]
 })
-front_nav.append( {'path':'/developers/', 'label': 'Links'} )
-front_nav.append( {'path':'/code/', 'label': 'Developers'} )
+front_nav.append( {'path':'/idea/links/', 'label': 'Links',
+			'subnav': [	
+					{'path':'/idea/links/sites/', 'label': 'Related Sites'},
+					{'path':'/idea/links/projects/', 'label': 'Projects'}
+			]
+})
+front_nav.append( {'path':'/idea/developers/', 'label': 'Developers',
+			'subnav': [	
+					{'path':'/idea/developers/src/', 'label': 'Source Code'},
+					{'path':'/idea/developers/credits/', 'label': 'Credits'}
+			]
+})
 
 langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'Fi', 'label': 'French'},
 			{'code': 'Es', 'label': 'Spanish'},
 			{'code': 'De', 'label': 'German'}
 ]
+
+
+ftp_servers = [
+	'ftp://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/',
+	'http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/',
+	'ftp://ftp.ibiblio.org/pub/mirrors/flightgear/ftp/',
+	'ftp://ftp.kingmont.com/flightsims/flightgear/',
+	'ftp://ftp.de.flightgear.org/pub/fgfs/',
+	'ftp://ftp.linux.kiev.ua/pub/mirrors/ftp.flightgear.org/flightgear/',
+	'http://ftp.linux.kiev.ua/pub/fgfs/'
+];
 

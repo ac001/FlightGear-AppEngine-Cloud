@@ -8,7 +8,16 @@
 	<p>If you are interested in hosting your own Multiplayer server, you may want to check out <a href="http://wiki.flightgear.org/index.php/Howto:_Set_up_a_multiplayer_server">this wiki page</a></p>
 </div>
 
-{% include "snip.fgcom_box.html" %}
+<div class="panel_box">
+	<h3>FGMS</h3>
+	<p>The FlightGear Multiplayer Server</p>
+	<ul class="vnav">
+	<li><a href="http://fgms.sourceforge.net/">FGMS Homepage</a></li>
+	<li><a href="http://fgms.sourceforge.net/download.php">Download</a></li>
+</ul>
+</div>
+
+
 
 
 {% endblock %}
@@ -19,7 +28,7 @@
 
 
 <h1>Multi Player Servers</h1>
-<input type="button" style="float: right; margin: 5px;" value="Refresh">
+
 
 <table width="100%" class="listing">
 <tr>
@@ -48,5 +57,5 @@
 {% endfor %}
 </table>
 
-	
+	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/servers/" class="refresh_button">Refresh</a></p>
 {% endblock %}

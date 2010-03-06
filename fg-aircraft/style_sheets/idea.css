@@ -18,6 +18,76 @@
 	text-align: center;
 }
 
+
+
+a.download_button {
+	border: 2px outset #dddddd;
+	text-decoration: none;
+	background-color: #425F8C;
+	color: white;
+	margin: 20px;
+	padding: 5px;
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+a.download_button:hover {
+	text-decoration: none;
+	background-color: #84A7D6;
+	color: black;
+	margin: 20px;
+	padding: 5px;
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+
+a.refresh_button {
+	border: 2px outset #dddddd;
+	text-decoration: none;
+	background-color: #AEB7C3;
+	color: black;
+	margin: 20px;
+	padding: 2px 10px;
+	font-family: sans-serif;
+	font-size: 9pt;
+}
+a.refresh_button:hover {
+	background-color: #D0D8E4;
+	color: #000099;
+}
+
+#content_box .back_link_block{
+	text-align: right;
+	margin-right: 0px;
+}
+
+#content_box  .back_link_block a{
+	text-align: right;
+	margin-right: 0px;
+	font-size: 9pt;
+	font-family: sans-serif;
+	text-decoration: none;
+	color: #333333;
+}
+#content_box  .back_link_block a:hover{
+	text-decoration: underline;
+	color: blue;
+}
+
+
+#content_box pre{
+	margin-left: 100px; 
+	margin-right: 0px;
+}
+
+#content_box pre.shell{
+	background-color: #444444;
+	color: white;
+	margin-right: 20px;
+	margin-left: 70px; 
+	padding: 8px;
+	font-size: 8pt;
+}
+
 /***************************************/
 body{
 
@@ -72,15 +142,15 @@ body{
 .panel_box{
 	margin-bottom: 30px;
 	border: 1px solid #dddddd;
-	background-color: #D6E7EB;
+	background-color: #efefef;
 }
 
 .panel_box h3{
-	color: black;
-	background-color: #99aacc;
+	color: #444444;
+	background-color: #ABB5C9;
 	border-bottom: 1px solid #dddddd;
 	padding: 4px;
-	font-size: 11pt;
+	font-size: 10pt;
 	font-family: sans-serif;
 }
 
@@ -537,3 +607,64 @@ llfloat: left;
 	border-right-color: #445577;
 	background-color: #D7E8EC;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+#content_box table.aircraft_list{
+
+}
+#content_box table.aircraft_list tr{
+	border-bottom: 1px solid white;
+}
+#content_box table.aircraft_list td{
+	vertical-align: top;
+	border-bottom: 1px solid white;
+	padding: 5px;
+}
+#content_box table.aircraft_list h6{
+	border-right: 1px solid #D6E7EB;
+	border-top: 1px solid #D6E7EB;
+	font-size: 8pt;
+	line-height: 110%;
+	padding: 3px 0px 3px 5px;
+}
+#content_box table.aircraft_list td p{
+	font-size: 8pt;
+	line-height: 110%;
+	margin: 0px;
+	vertical-align: top;
+}
+#content_box table.aircraft_list a{
+	border-top: 1px solid #efefef;
+	padding: 2px;
+}
+
+
+
+#content_box table.aero th{
+	padding: 5px;
+
+	text-align: right;
+	border-right: 2px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
+	width: 33%;
+	font-size: 10pt;
+	font-weight: normal;
+}
+#content_box table.aero td{
+	padding: 8px;
+	font-weight: bold;
+	font-size: 10pt;
+	border-bottom: 1px solid #eeeeee;
+	color: #222222;
+}
+
