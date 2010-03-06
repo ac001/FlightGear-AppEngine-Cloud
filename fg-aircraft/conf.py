@@ -110,12 +110,12 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 
 
 ftp_servers = [
-	'ftp://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/',
-	'http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/',
-	'ftp://ftp.ibiblio.org/pub/mirrors/flightgear/ftp/',
-	'ftp://ftp.kingmont.com/flightsims/flightgear/',
-	'ftp://ftp.de.flightgear.org/pub/fgfs/',
-	'ftp://ftp.linux.kiev.ua/pub/mirrors/ftp.flightgear.org/flightgear/',
-	'http://ftp.linux.kiev.ua/pub/fgfs/'
+	{'location': 'Germany', 'server': 'ftp://ftp.de.flightgear.org/pub/fgfs/'},
+	{'location': 'Germany', 'server': 'http://flightgear.mxchange.org/pub/fgfs/'},
+	{'location': 'South Africa', 'server': '	 ftp://ftp.is.co.za/pub/games/flightgear/'},
+	{'location': 'Ukraine', 'server': 'ftp://ftp.linux.kiev.ua/pub/mirrors/ftp.flightgear.org/flightgear/'},
+	{'location': 'USA, North Carolina', 'server': 'ftp://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
+	{'location': 'USA, Minnesota', 'server': 'http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
+	{'location': 'USA, California', 'server': 'ftp://ftp.kingmont.com/flightsims/flightgear/'}
 ];
 

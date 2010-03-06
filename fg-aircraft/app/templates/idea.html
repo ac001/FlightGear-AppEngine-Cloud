@@ -15,9 +15,9 @@
 <script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>-->
 <!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
 
-<!--
-<script type="text/javascript" src="/js/main.js"></script>
--->
+
+<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="/js/front.js"></script>
 <link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
 <link rel="stylesheet" type="text/css" href="/style_sheets/idea.css">
 <!--<script type="text/javascript" src="js/FG_PilotsGrid.js"></script>-->
@@ -51,6 +51,8 @@
 			{% endfor %}
 		</ul>
 	</div>
+
+	<p style="text-align: right; margin-top: 5px;"><a href="#"><img src="/images/missc/feed_atom.gif"></a></p>
 
 </div>
 
@@ -104,6 +106,13 @@
 
 </form>
 </td></tr></table>
+
+<ul id="top_nav">
+<li><a href="http://wiki.flightgear.org">&nbsp;Wiki&nbsp;</a></li>
+<li><a href="http://www.flightgear.org/forums/">Forums</a></li>
+<li><a href="http://mpmap01.flightgear.org">MP Map #1</a></li>
+<li><a href="http://mpmap02.flightgear.org">MP Map #2</a></li>
+</ul>
 
 </div>
 
@@ -177,7 +186,11 @@
 
 <div id="footer_box">
 
-<p>&copy; FlightGear - all right reserved etc<p>
+<p>
+<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
+<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a> - 
+
+&copy; 2010+ FlightGear - all right reserved etc<p>
 
 </div><!-- end footer-->
 
