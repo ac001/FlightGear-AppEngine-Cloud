@@ -1,0 +1,21 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+
+{% include "snip.servers_box.html" %}
+{% endblock %}
+
+{% block content %}
+<h1>MultiPlayer</h1>
+
+<p>With the Multiplayer function of FlightGear you are able to see other pilots and vice-versa. This makes it possible to fly in formation, connect to tankers controlled by real people or contact real ATCers to ask for landing/takeoff clearence.</p>
+
+<p>For more information, check out <a href="http://wiki.flightgear.org/index.php/Multiplayer">this wiki page</a></p>
+
+<div class="important_box">
+<p>Multiplay may cause extreme framerate drops during loading of aircraft models. Especially heavy models can cause severe lag. Therefore, it is suggested to fly in locations other than KSFO where there are fewer pilots flying around.</p>
+</div>
+{% endblock content %}
+
+
+

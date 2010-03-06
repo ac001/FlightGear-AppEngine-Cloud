@@ -1,0 +1,13 @@
+
+
+
+	<div class="panel_box">
+		<h3>Supported Platforms</h3>
+			<ul>
+			{% for p in conf.platforms %}
+			<li><a href="/idea/download/flightgear/#{{ p.platform }}" class="link">{{ p.label }}</a></li>
+			{% endfor %}
+			</ul>
+	</div>
+
+

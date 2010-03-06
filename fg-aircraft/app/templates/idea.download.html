@@ -1,8 +1,20 @@
 {% extends "idea.html" %}
 
+
+{% block right_box %}
+
+
+	{% include "snip.dvd_box.html" %}
+
+
+
+{% endblock right_box %}
+
 {% block content %}
 
 <h1>Download Central</h1>
+
+<p>If this is your first time then you are advised to read the <a href="/idea/download/requirements/">requirements page</a> before downloading.<p>
 
 <div class="important_box">
 <img src="/images/missc/important.png">
@@ -15,29 +27,38 @@
 <table>
 
 <tr>
-<td>
-<div class="column_box">
+<td width="33%">
+<div class="column_box"  onclick="location.href='/idea/downloads/aircraft/'">
 <h2>FlightGear</h2>
-<img src="/images/flightgear.png" style="float: right; margin: 10px;">
-<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+<p><img src="/images/flightgear.png" style="height: 50px;"></p>
+<p>Download installer for:</p>
 <ul>
-{% for p in iconf.platforms %}
-<li><a href="/idea/download/{{ p.platform }}/" class="link">{{ p.label }}</a></li>
+{% for p in conf.platforms %}
+<li><a href="/idea/download/flightgear/#{{ p.platform }}" class="link">{{ p.label }}</a></li>
 {% endfor %}
 </ul>
 </div>
 </td><td>
-<div class="column_box">
+<div class="column_box" onclick="location.href='/idea/downloads/aircraft/'">
 <h2>Aircraft</h2>
-<img src="/images/missc/aircraft.jpg" style="float: right; margin: 10px;">
-<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+<p><img src="/images/missc/aircraft.jpg" style="height: 50px;"></p>
+<p>Download from over 300+ aircraft</p>
+
+<ul>
+<li><a href="#">helicopters</a></li>
+<li><a href="#">airliners</a></li> 
+<li><a href="#">sports aircraft</a></li> 
+<li><a href="#">Buiness Jets</a></li> 
+<li><a href="#">Specials</a></li>  
+</ul>
+
 </div>
 
-</td><td>
+</td><td  width="33%">
 <div class="column_box">
 <h2>Scenery</h2>
-<img src="/images/missc/scenery.jpg" style="float: right; margin: 10px;">
-<p>Ready to run versions of FlightGear are available for many different platforms:</p>
+<p><img src="/images/missc/scenery.jpg" style="height: 50px;"></p>
+<p>Download scenery for anypart of the world.</p>
 </div>
 
 </td>

@@ -1,0 +1,21 @@
+{% extends "idea.html" %}
+
+
+{% block right_box %}
+
+
+
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Version Summary</h1>
+
+{% for ver in versions %}
+	<h3>{{ ver.version}}</h3>
+	<p>{{ ver.info }}</p>
+
+{% endfor %}
+
+{% endblock content %}

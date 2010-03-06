@@ -1,0 +1,161 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+
+
+	{% include "snip.platforms.html" %}
+	
+	{% include "snip.dvd_box.html" %}
+
+{% endblock %}
+
+{% block content %}
+
+<h1>Download FlightGear</h1>
+
+
+<H3>Important Information</H3>
+
+<FONT SIZE=-1>
+<UL>
+  <LI> If you have a slow/expensive net connection, prefer physical
+       media, or want to help the FlightGear project, please consider
+       <A HREF="../dvd/">FlightGear on DVD</A>
+       <P>
+
+  <LI> For a complete FGFS manual, please refer to the official
+       <A HREF="../Docs/getstart/getstart.html">FlightGear Manual</A>
+
+       or download the 
+       <A HREF="http://mapserver.flightgear.org/getstart.pdf">PDF Version</A>.
+       <P>
+
+  <LI> If you have trouble connecting, please visit one of our
+       <A HREF="../mirrors.html#ftp">FTP mirrors</A>
+       <P>
+
+  <LI> <EM>Caution:</EM> Check the version numbers of the following
+       prebuilt packages.  There is usually a several day delay
+       between the official source code release and when the ready to
+       run binaries of the same version begin to show up here.
+
+</UL>
+</FONT>
+
+<H3><A NAME="windows"></A>Windows 98, 2000, ME, XP, Vista (v2.0.0)</H3>
+
+<UL>
+  <LI> Download the self extracting/installing
+       fgsetup-2.0.0.exe (298 Mb):
+       <SCRIPT>RandomURLS("Win32/fgsetup-2.0.0.exe");</SCRIPT>
+       <P>
+
+  <LI> After downloading the fgsetup-2.0.0.exe file, launch it and
+       follow the on screen instructions to complete the installation.
+       The installer will create start menu entries, install
+       documentation, optionally install a desktop icon, and also will
+       provide a well behaved uninstaller.
+       <P>
+
+  <LI> When you start FlightGear you will be presented with an initial
+       "launch control" screen which allows you to select your
+       aircraft, as well as a starting airport and runway.
+       <P>
+
+  <LI> FlightGear ships with an extensive 218 page manual.  We
+       encourage people to at least take a glance through it,
+       especially if they have questions or problems.
+       <P>
+
+  <LI> 64-bit overlay: If you run 64-bit windows, you can download the
+       self extracting 64-bit version of FlightGear.  This installs
+       over the top of the standard 32 bit version so you will need to
+       install that first.  fgsetup64-2.0.0.exe (14 Mb overlay):
+       <SCRIPT>RandomURLS("Win32/fgsetup64-2.0.0.exe");</SCRIPT>
+       <P>
+
+  <LI> The MSVC Win32 build is provided courtesy of Frederic Bouvier</A>.
+</UL>
+
+
+<H3><A NAME="mac"></A>Macintosh OS X (requires 10.4)</H3>
+
+<UL>
+  <LI> Download prebuilt Mac OS X binaries courtesy of Tatsuhiro Nishioka.
+       <A HREF="http://macflightgear.sourceforge.net/">Available from the
+       macflightgear.sourceForge.net project page.</A> (v1.9.1)
+
+</UL>
+
+
+<H3><A NAME="linux"></A>Linux</H3>
+
+<UL>
+  <LI> Download
+       <A HREF="http://packages.flightgear.org.uk/">
+       pre-built Slackware packages</A> courtesy of Jon Stockill. (v2.0.0)
+  <LI> Ubuntu: On Ubuntu, FlightGear can now be installed using the "synaptic" tool.
+  <LI> Download
+       <A HREF="http://packages.debian.org/sid/flightgear">
+
+       pre-built Debian packages</A> courtesy of Ove Kaaven.
+       (v1.0.0)
+  <LI> Download pre-built Fedora Core [2,3,4] packages courtesy of Steve
+       Hosgood.  (v0.9.10)
+       <SCRIPT>RandomURLS("Fedora");</SCRIPT>
+  <LI> Download pre-built <A HREF="http://pardus.org.tr/eng/index.html">
+       Pardus</A> binary packages. (v0.9.10)
+       <A HREF="http://paketler.pardus.org.tr/pardus-2007/flightgear-0.9.10-3-4.pisi">
+
+       1. Program executable</A>.
+       <A HREF="http://paketler.pardus.org.tr/pardus-2007/flightgear-data-base-0.9.10-2-2.pisi">
+       2. Program data</A>.
+</UL>
+
+
+
+<H3><A NAME="sun"></A>Solaris (Sparc/x86)</H3>
+
+<UL>
+  <LI> Download
+       <A HREF="ftp://ftp.uni-duisburg.de/FlightGear/Solaris/">
+
+       pre-built Solaris (sparc) binaries</A> courtesy of Martin
+       Spott. (v0.9.8)
+  <LI> (Sparc Alternate) Download
+       <A HREF="http://www.blastwave.org/packages.php/flightgear">
+       pre-built Solaris (Sparc) binaries</A> courtesy of Ken Mays. (v0.9.9)
+  <LI> Download
+       <A HREF="http://www.blastwave.org/packages.php/flightgear">
+       pre-built Solaris (x86) binaries</A> courtesy of Ken Mays. (v0.9.9)
+
+</UL>
+
+
+<H3><A NAME="sgi"></A>Sgi Irix</H3>
+
+<UL>
+  <LI> Download <A HREF="http://www.mechanics.citg.tudelft.nl/~everdij/nekoware/current/neko_flightgear-0.9.9.tardist">pre-built sgi
+       binaries</A> courtesy of Erik Hofman.  (v0.9.9)
+</UL>
+
+
+<H3><A NAME="freebsd"></A>FreeBSD (v0.9.10)</H3>
+
+<UL>
+  <LI> <A HREF="http://www.freebsd.org/cgi/ports.cgi?query=flightgear&stype=all">
+       This is the link to the FreeBSD FlightGear ports</A> courtesy
+       of des *at* FreeBSD.org.
+       <P>
+       <STRONG>Option 1:</STRONG> run "pkg_add -r FlightGear" to
+       download and install the binary package.
+       <P>
+       <STRONG>Option 2:</STRONG> Run "cd /usr/ports/games/flightgear/
+       && make package install" to retrieve the source code, compile
+       it on your system, make a package, and install the resulting
+       package on your system.
+
+</UL>
+
+
+{% endblock content %}

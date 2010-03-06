@@ -20,7 +20,9 @@ import app.Code
 import app.Idea
 # 										('/cron/pilots_online', app.PilotsOnline.PilotsOnl
 application = webapp.WSGIApplication([	('/idea/', app.Idea.IdeaPage),
+										('/idea/(.*)/(.*)/', app.Idea.LashUpSubPage),
 										('/idea/(.*)/', app.Idea.LashUpPage),
+										
 									],
 									debug=True)
 

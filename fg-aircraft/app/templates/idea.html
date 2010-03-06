@@ -39,12 +39,12 @@
 	<!--## Navigation  ##-->
 	<div id="navcontainer">
 		<ul>
-			{% for n in iconf.nav %}
+			{% for n in conf.front_nav %}
 			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a>
 			{% if n.subnav %}
 			<ul>
 			{% for sn in n.subnav %}
-			<li><a href="#">{{ sn.label }}</a></li>
+			<li><a {% ifequal path sn.path  %}class="selected"{% endifequal %} href="{{ sn.path }}">{{ sn.label }}</a></li>
 			{% endfor %}
 			</ul>
 			{% endif %}
@@ -65,16 +65,17 @@
 <div id="top_box">
 	<!-- Language Icons and links -->
 	<div id="lang_box">
-		{% for lang in iconf.langs %}
+		{% for lang in conf.langs %}
 		<a href="#"><img src="/images/langs/{{ lang.code }}.gif" title="{{ lang.label }}"></a>
 		{% endfor %}
 	</div>
 	<h1>FlightGear Simulator Project</h1>
 	<table>
 	<tr>
-	<th>The world's leading Open Source flight simulator</th>
-	<td><a href="#">Pilots Online: 23</a></td>
-	<td><a href="#">Servers: <span style="color: green">3 Up</span> / <span style="color: red">2 down</span></a></td>
+	<th><i>The world's leading Open Source flight simulator<i></th>
+	<td><a href="/idea/multiplayer/pilots/">Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</a></td>
+	<td><a href="/idea/multiplayer/atc/">ATC: {{ conf.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
+	<td><a href="/idea/multiplayer/servers/">Servers: <span style="color: green">{{ conf.app_vars.mpservers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ conf.app_vars.mpservers_info.down|default:"--" }} down</span></a></td>
 	</tr>
 	</table>
 </div><!-- end top_box -->
@@ -82,24 +83,56 @@
 
 
 <div id="toolbar_box">
-<ssform action="http://www.google.com/cse" ssid="cse-search-box">
+<table>
+<tr>
+<td>
+<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
   <div>
     <input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
     <input type="hidden" name="ie" value="UTF-8" />
-    <input type="text" name="q" size="31" />
+    <input type="text" name="q" size="21" />
     <input type="submit" name="sa" value="Search" />
   </div>
 </form>
 <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+</td>
+<td style="text-align:right;">
+<form  class="toolbar_form">
+<label>Callsign: <input type="text" size="10"></label>
+<label>Password: <input type="text" size="10"></label>
+<input type="submit" name="sa" value="Login" />
+
+</form>
+</td></tr></table>
+
 </div>
 
-
+<!--######################################################-->
+<!-- ### Right Box ###-->
+<!--######################################################-->
 <div id="right_box">
+
+	{% block right_box %}
+
 	<div class="panel_box">
-		<h3>Buy the DVD</h3>
-		<img src="/images/missc/dvd-icon.jpg" style="float: right;">
-		<p>For those with slow or expensive net connections or for those that like spiffy DVD's with cool stuff on them you can purchase a DVD distribution of the latest {{ iconf.tm }} program and the {{ iconf.tm }} world scenery.</P>
+		<h3>Latest Version</h3>
+		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
+		<p>A new major update of the glihht gear simulator. Please check the readme</p>
 	</div>
+	{% include "snip.notam_box.html" %}
+
+	{% include "snip.servers_box.html" %}
+
+	
+
+	
+	<div class="panel_box">
+		<h3>New to FlightGear?</h3>
+		<p>There is tons of information and help on the <a href="http://wiki.flightgear.org">FlightGear Wiki</a>  and the  FlightGear FAQ!</P>
+	</div>
+
+<!---
+
 
 
 
@@ -113,17 +146,40 @@
 		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
 		<p>A new major update of the glihht gear simulator. Please check the readme</p>
 	</div>
+
+	-->
+
+	{% endblock right_box %}
 </div><!-- right box -->
 
-<div id="content_box" ssstyle="clear: right;">
+<div id="content_box">
+
+
 {% block content %}
-<p>Somethign here</p>
-dsaa
+
+<h1>Welcome</h1>
+<p>The {{ conf.tm }} flight simulator project is an open-source, multi-platform, cooperative flight simulator development project. Source code for the entire project is available and licensed under the <a href="/idea/about/license/">GNU General Public License.</a>.</p>
+
+<h1>Headlines</h1>
+
+<p>FlightGear v2.0 is now available. Check out the <a href="/idea/download/">gallery page</a> and <a href="/idea/download/">start downloading.</a>
+</p>
+
+<img src="http://www.flightgear.org/Gallery-v2.0/images/{{ random_image }}" style=" margin: 50px; width: 500px">
+
+
+
 {% endblock content %}
 </div><!-- content box -->
 
 </div><!-- midle box -->
 
+
+<div id="footer_box">
+
+<p>&copy; FlightGear - all right reserved etc<p>
+
+</div><!-- end footer-->
 
 </div><!-- end main_container -->
 

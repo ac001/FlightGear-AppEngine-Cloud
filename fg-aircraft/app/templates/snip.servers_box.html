@@ -1,0 +1,18 @@
+
+
+
+	<div class="panel_box">
+		<h3>MP Servers</h3>
+<table width="100%">
+{% for server in servers %}
+	<tr>
+		<td style="text-align: right">{{ server.server }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+		</td>
+    </tr>
+{% endfor %}
+</table>
+	</div>
+
+

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import datetime
-
+import random
 
 from google.appengine.ext import db
 from google.appengine.api import memcache
@@ -293,3 +293,77 @@ def TODOprocess_issue_entry(issue):
 	dic['state'] = issue.state.text
 	dic['status'] = issue.status.text
 	return dic
+
+#######################################################
+## Gallery
+#######################################################
+def gallery_thumbs():
+	gallery =	memcache.get("gallery_thumbs")
+	if gallery:
+		return gallery
+	gallery =  fetch_gallery_thumbs()
+	if not memcache.set("gallery_thumbs", gallery, 240):
+		print "error"
+	return gallery
+
+def fetch_gallery_thumbs():
+	## fetch content 
+	result = urlfetch.fetch("http://flightgear.org/Gallery-v2.0/thumbnails/")
+	if result.status_code == 200:
+			
+		soup = BeautifulSoup.BeautifulSoup(result.content)
+		links = soup.findAll('a')
+		images = []
+		for link in links:
+			
+			if link['href'].endswith(".jpg"):
+				images.append(link['href'])
+		return images #[0:5]
+
+def gallery_random():
+	gallery = gallery_thumbs()
+	randy = random.choice(gallery)
+	return randy
+
+
+#######################################################
+## Versions
+#######################################################
+def versions():
+	versions =	memcache.get("versions")
+	if versions:
+		return versions
+	versions =  fetch_versions()
+	if not memcache.set("versions", versions, 240):
+		print "error"
+	return versions
+
+def fetch_versions():
+	## fetch content 
+	result = urlfetch.fetch("http://www.flightgear.org/version.html")
+	if result.status_code == 200:
+			
+		soup = BeautifulSoup.BeautifulSoup(result.content)
+		table = soup.findAll('table')[1]
+		cell = table.findAll("td")[0]
+		#lines = cell.split("\n")
+		lines = str(cell).split("\n")
+		in_h3 = False
+		versions = []
+		info = ''
+		h3 = None
+		for line in lines:
+			#print "#", line
+			if line.upper().startswith("<H3"):
+				if h3:
+					versions.append({'version': h3.strip(), 'info': info})
+					info = ''
+				in_h3 = True
+				h3 = BeautifulSoup.BeautifulSoup(line).text
+				#print "H3=", h3
+				curr_ver = h3
+			elif in_h3:
+				info += line
+		#print "############", versions
+		return versions
+

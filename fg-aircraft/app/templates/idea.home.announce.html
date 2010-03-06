@@ -1,0 +1,396 @@
+{% extends "idea.html" %}
+
+	{% block right_box %}
+
+	{% include "snip.notam_box.html" %}
+
+	<div class="panel_box">
+		<h3>Latest Version</h3>
+		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
+		<p>A new major update of the glihht gear simulator. Please check the readme</p>
+	</div>
+
+
+
+
+	
+
+
+
+
+	{% endblock right_box %}
+
+{% block content %}
+
+
+ <H1>FlightGear Announcements</H1>
+
+  <h3><A NAME="v2.0.0"></A>Februar 25, 2010 - FlightGear v2.0.0
+    released.</h3>
+    <p>Version 2.0.0 is now available for download.<BR>  This is primarily a
+    bug fix release.
+    (Requires SimGear-2.0.0 if compiling from source.)<BR>
+
+    <A HREF="Downloads/">Download FlightGear here.</A>
+    </P>
+
+  <h3><A NAME="v1.9.1"></A>January 25, 2009 - FlightGear v1.9.1
+    released.</h3><p>
+    Version 1.9.1 is now available for download.<BR>  This is primarily a
+    bug fix release.
+    (Requires SimGear-1.9.1 if compiling from source.)<BR>
+    <A HREF="Downloads/">Download FlightGear here.</A>
+
+    </P>
+
+  <h3><A NAME="v1.9.0"></A>December 21, 2008 - FlightGear v1.9.0
+    released.</h3><p>
+    Version 1.9.0 is now available for download.<BR>  An updated set
+    of aircraft are also available on the aircraft downloads page.
+    <!-- <A HREF="/Downloads/">Download a ready to run version for your platform</A> (as they become available.)<BR>  You can also download additional aircraft, scenery, and the entire source code. -->
+    (Requires SimGear-1.9.0 if compiling from source.)<BR>
+    <A HREF="Downloads/">Download FlightGear here.</A>
+
+    </P>
+
+  <h3><A NAME="scenery-1.0.1"></A>October 27, 2008 - World Scenery
+    v1.0.1 released.</h3><p>  The World Scenery is made in preparation
+    for the FlightGear 1.9.0 release, but from a technical point is
+    should also work with the previous v1.0 version of FlightGear
+    <P>
+
+    In addition to the bugfix the release contains some very fine bits
+    of custom scenery work, namely:
+    <UL>
+      <LI> 6 Caribbean islands plus Helgoland (John Holden, Christian Schmitt)
+      <LI> Revised ParisV2 scenario from
+           http://helijah.free.fr/flightgear/scenery/ParisV2/ParisV2.htm
+           (cleanup and import by Jon Stockill)
+      <LI> Taxiway signs at 6 airfields: KSFO, KBWI, KLVK, KRHV, TFFF, TJSJ
+      <LI> Major progress in crowding the Scenery with 3D models - by Alexis
+           Bory, Gijs de Rooy, Alex Park, Christian Schmitt, Hugo Devon , Paolo
+           Savini ....  just to name a few of the many involved contributors;
+    </UL>
+
+    <P>
+
+    Acknowledgements:
+    <P>
+
+    The scenery was built on a quad-processor machine in San Diego
+    with access provided to us by John Graham of Telascience.
+    <P>
+
+    Jon Stockill and Martin Spott maintain the static scenery objects
+    database at http://scenemodels.flightgear.org/ and provided the
+    adjustments of the elevations in the objects DB.
+    <P>
+
+    Curt Olson provided us with valuable hints as a long-time scenery
+    builder and TerraGear development.
+    <P>
+
+    Special thanks go to John Holden and Christian Schmitt, who by
+    their work on manual digitizing of Landsat imagery in the
+    Caribbeans and at Helgoland have helped us pushing the envelope of
+    custom scenery in the official scenery release. We sincerely hope
+    that by this newfound experience more people will go this way of
+    improving the data in the landcover database.
+    <P>
+
+    Base data:
+    <P>
+
+    The scenery was generated with terragear-cs, the Custom Scenery
+    version of TerraGear, available at
+    http://mapserver.flightgear.org/git.
+    <P>
+
+    Except for the obvious cases listed above the following base data was used:
+    <UL>
+      <LI> landcover and line data: VMAP0, as available on
+           http://mapserver.flightgear.org/
+      <LI> airport data (apt.dat): as included in FlightGear Release 1.0
+      <LI> elevation data: SRTM v2 3arcsec and 30arcsec data
+      <LI> static objects: current status of the FlightGear Static
+           Scenery Database (http://scenemodels.flightgear.org/) as of
+           29th of October 2008
+    </UL>
+
+    <P>
+
+    As apt.dat is distributed with the base package instead of the
+    scenery itself we were unable to use up-to-date airport data. This
+    scenery release is intended to serve as official scenery for the
+    current FlightGear release and therefore its contents must be
+    synchronized with the contents of the released base package.
+    <P>
+
+ <h3><A NAME="scenery-1.0.0"></A>March 4, 2008 - World Scenery v1.0.0 released.</h3><p>
+    The World Scenery is made for FlightGear 1.0.0, but from a technical
+    point is should also work with the previous v0.9.8 - v0.9.10 versions of
+    FlightGear. The scenery is based on the following data sources:
+    <UL>
+      <LI>landcover/landmass data provided from the
+        <A HREF="http://mapserver.flightgear.org/">FlightGear MapServer</A>,
+        identical with VMap0 data
+      <LI>elevation data: SRTM3 version 2, SRTM30/GTOPO30 version 2 (both
+        from ftp://e0srp01u.ecs.nasa.gov/srtm/version2/)
+      <LI>airport data: apt.dat as released with the V1.0 base package
+      <LI>Most objects and models from the <A HREF="http://scenemodels.flightgear.org/">
+
+        Scenery Objects Database</A>
+    </UL>
+    The main changes relative to the old world scenery are:
+    <UL>
+      <LI>points previously classified as "town", but not having much in
+        common with settlements at all, have been removed
+      <LI>airport layouts updated
+      <LI>objects from the Scenery Objects Database updated
+    </UL>
+    In addition, the order of taxiways from the airport database is now used
+    as specified in the apt.dat-file - in contrast to being sorted by size
+    as in previous scenery builds. Many taxidraw users have been using the
+    sorting of the taxiways to achieve specific visual effects, which are
+    visible now in the scenery.
+    <P>
+
+ <h3><A NAME="v1.0.0"></A>December 17, 2007 - FlightGear v1.0.0
+    released.</h3><p>
+    Version 1.0.0 is now available for download.<BR>  An updated set
+    of aircraft are also available on the aircraft downloads page.
+    <!-- <A HREF="/Downloads/">Download a ready to run version for your platform</A> (as they become available.)<BR>  You can also download additional aircraft, scenery, and the entire source code. -->
+    (Requires SimGear-1.0.0 to compile from source.)<BR>
+    <A HREF="Downloads/">Download FlightGear here.</A>
+    <P>
+
+ <h3><A NAME="flightsim.com"></A>May 26, 2007 - FlightGear review on
+    FlightSim.com.</h3><p>
+    <A HREF="http://www.flightsim.com">FlightSim.com</A> has a new
+    review of FlightGear by Chris Hodge.  Chris made some wice screen shots
+    and said many kind things.  FlightSim.com is a very high profile flight
+    simming web site.
+    <P>
+
+<h3><A NAME="sourcetrunk"></A>May 16, 2007 - FlightGear review on
+    Sourcetrunk.</h3><p>
+    <A HREF="http://www.sourcetrunk.com">Sourcetrunk</A> has a very
+    nice podcast style review of FlightGear by Dimitri Larmuseau.
+    Dimitri clearly understands FlightGear, covers the most important
+    features, and is very entertaining.  Definitely worth a listen.
+    <P>
+
+<h3><A NAME="v0.9.11"></A>May 14, 2007 - FlightGear v0.9.11-pre1
+    released.</h3><p>
+    Version 0.9.11-pre1 is available for download (source
+    code only.)<BR>
+    <!-- <A HREF="/Downloads/">Download a ready to run version for
+    your platform</A> (as they become available.)<BR>  You can also download
+    additional aircraft, scenery, and the entire source code. -->
+    (requires SimGear-0.3.11-pre1)
+    <P>
+
+ <h3><A NAME="atlas-0.3.1"></A>October 30, 2006 - Atlas-0.3.1 released.</h3><p>
+    <A HREF="http://atlas.sf.net">Atlas</A> is a real time moving map
+    (and background bitmap generator)
+    designed to work with FlightGear.  The latest version can fetch
+    background images from a wms server and includes several bug fixes.
+    <P>
+
+ <h3><A NAME="fgflightplanner"></A>October 9, 2006 - Trevor Campell
+    announces</h3><p> the latest version of his <A
+    HREF="http://sourceforge.net/projects/fgflightplanner/">FlightGear
+    Flight Planner</A> is available for download.  This is a Java/SWT
+    based Gui flight planner which uses the airport and navaid
+    databases of Flightgear, allowing the user to search for airports
+    and navigation aids and plan flights between them.
+    <P>
+
+ <h3><A NAME="widowpc"></A>September 28, 2006 - <A
+    HREF="http://store.widowpc.com/?aid=3">WidowPC</A></h3><p> in partnership
+    with FlightGear.org is now offering FlightGear PC's that are based
+    on their insanely fast hardware and include FlightGear preloaded
+    and optimized for maximum peformance.  If you are thinking of
+    upgrading your hardware anyway, why not check out the best and
+    fastest possible option.
+    <P>
+
+<h3><A NAME="manual"></A>June 8, 2006 - Updates to "The FlightGear Manual".</h3><p>
+    Updates include improved instructions for carrier operations, instructions
+    for the multiplayer system, a discussion of the tutorial system, and a new
+    chapter on Air-to-Air-refuelling:
+    <A HREF="docs.html">FlightGear documentation page</A>.
+    </P>
+
+ <h3><A NAME="softpedia"></A>June 3, 2006 - FlightGear-v0.9.10 wins
+     <A HREF="http://games.softpedia.com/get/Freeware-Games/FlightGear.shtml">
+     Softpedia's "Pick" award with 5 out of 5 stars.</A></h3><p>
+     Softpedia labs has independently tested our latest release and
+     have granted it with the
+     <A HREF="http://games.softpedia.com/progClean/FlightGear-Clean-7983.html">
+
+     "100% CLEAN" Softpedia award.</A>
+     <P>
+
+ <h3><A NAME="wiki"></A>May 28, 2006 - New FlightGear wiki site.</h3><p>
+    We have a newer, better, updated FlightGear wiki site setup at
+    <A HREF="http://wiki.flightgear.org">http://wiki.flightgear.org</A>
+    <P>
+
+ <h3><A NAME="fglive-0.1-linuxtag"></A>May 5, 2006 - FGLive, FlightGear
+    Live-CD 0.1 LinuxTag edition</h3><p>
+
+    First 'official' FlightGear Live-CD is available for download via
+    <A HREF="//pigeond.net/flightgear/fglive-0.1-linuxtag.torrent">
+    BitTorrent</A> or
+    <A HREF="ftp://ftp.ihg.uni-duisburg.de/FlightGear/FGLive/fglive-0.1-linuxtag.iso">
+    FTP</A>, including South-Germany and Wiesbaden Scenery. You are
+    invited to have a look at the
+    <A HREF="http://pigeond.net/flightgear/README.fglive.html">
+    README</A>.<BR>
+    Please verify the
+    <A HREF="ftp://ftp.ihg.uni-duisburg.de/FlightGear/FGLive/MD5SUM">
+
+    MD5 checksum</A>.
+    <P>
+
+ <h3><A NAME="scenery-0.9.10"></A>January 17, 2006 - World Scenery
+    v0.9.10 released.</h3><p>
+    A brand new scenery release is now available.  I am calling this
+    v0.9.10 because it was created after the v0.9.9 source code
+    release, but it should work with FlightGear-v0.9.8, v0.9.9 and the
+    current cvs code.<BR>
+    New in this build is: the latest airport and taxiway updates from
+    Robin Peel, SRTM2 based terrain, the latest objects from Jon
+    Stockill's world object database, updated airport surfaces, and 2d
+    data from the new shapefile database at <A
+    HREF="http://www.custom-scenery.org/.">http://www.custom-scenery.org/</A>
+    Also included are a myriad of little bug fixes and glitch-be-gones.
+    <P>
+
+ <h3><A NAME="spanish"></A>January 8, 2006 - The Paraisoft Team</h3><p> has begun
+    translating the FlightGear web pages into Spanish.
+    <P>
+
+ <h3><A NAME="sfmail"></A>December 20, 2005 - All FlightGear mailing lists
+    moved to SourceForge.net.</h3><p>
+    In order to reduce local server load and bandwidth consumption I have
+    moved all the FG mailing lists to SF.  All existing subscriptions will
+    be migrated to the new lists automatically.  The only thing you will
+    need to do is post to the new list addresses.  These are detailed on
+    our <A HREF="http://sourceforge.net/mail/?group_id=583">SF project
+    page.</A>
+    <P>
+
+ <h3><A NAME="v0.9.9"></A>November 17, 2005 - FlightGear v0.9.9 released.</h3><p>
+    Version 0.9.9 is available for download (initially only source
+    code available.)<BR>
+    <!-- <A HREF="/Downloads/">Download a ready to run version for your platform</A> (as they become available.)<BR>  You can also download additional aircraft, scenery, and the entire source code. -->
+    (requires SimGear-0.3.9)
+    <P>
+
+ <h3><A NAME="obam"></A>September 19, 2005 - OV-10 Bronco Association
+     Museum Simulator Project.</h3><p>s
+     Dave Culp, a former USAF Bronco pilot, constructed a
+     FlightGear-based OV-10 Bronco flight simulator for the OV-10
+     Bronco Association at Meacham Field, Fort Worth Texas.
+     <A HREF="Projects/obam">More details ...</A>
+
+     <P>
+
+ <h3><A NAME="taxidraw-0.3.2"></A>August 16, 2005 - TaxiDraw-0.3.2
+    released.</h3><p>
+    The next version of TaxiDraw is available at
+    <A HREF="http://taxidraw.sf.net/">http://taxidraw.sf.net/</A><BR>
+    This is new version has been moved to SourceForge.  It supports
+    X-Plane v810 file formats, includes a few bug fixes, build system
+    improvements, and new features.
+    <P>
+
+ <h3><A NAME="atlas-0.3.0"></A>August 10, 2005 - Atlas-0.3.0 released.</h3><p>v
+
+    <A HREF="http://atlas.sf.net">Atlas</A> is a real time moving map
+    (and background bitmap generator)
+    designed to work with FlightGear.  The latest version can display
+    ILS approaches and has several other improvements and bug fixes.
+    <P>
+
+ <h3><A NAME="aerospace2"></A>July 11, 2005 - The MathWorks Announces
+    Aerospace Blockset 2.</h3><p>
+
+    <EM>New FlightGear Flight Simulator Interface Brings Vehicle
+    Modeling, Simulation, and Visualization Capabilities to the
+    Desktop.</EM>
+    <P>
+
+    NATICK, Mass. - (BUSINESS WIRE) - July 11, 2005
+    <A HREF="http://www.mathworks.com">The MathWorks</A>
+
+    today announced the availability of the
+    <A HREF="http://www.mathworks.com/products/aeroblks/">Aerospace
+    Blockset 2</A>,
+    which builds on the foundation of Simulink(R) and Model-Based
+    Design for aerospace vehicle modeling, simulation, and
+    visualization. New features bring high-quality flight simulation
+    graphics to the desktop, where modeling and simulation is more
+    accessible and economical than design and test conducted in a
+    lab. Additionally, the new version provides off-the-shelf,
+    drag-and-drop representations of aerospace components using
+    standards-based reference models. Consequently, engineers can use
+    the Aerospace Blockset 2 to optimize vehicle subsystem
+    configurations and rapidly perform subsequent tradeoff studies
+    earlier in the design stage.
+    <P>
+
+    Interfacing with FlightGear flight simulator software, new
+    animation blocks in the Aerospace Blockset 2 enable users to
+    visualize vehicle dynamics in a sophisticated 3-D simulation
+    framework. Engineers can now quickly evaluate and verify complex
+    flight dynamics before committing to a final design by using
+    Simulink for multidomain simulation and Model-Based Design.
+    <P>
+
+    Contact: <A HREF="http://www.mathworks.com">The MathWorks,
+    Inc.</A> Dave Smith, 508-647-7427.
+    <P>
+
+    <A HREF="http://www10.mcadcafe.com/nbc/articles/view_article.php?section=CorpNews&articleid=192193">Click
+    here for the full text of the announcement.</A>
+    <P>
+
+ <h3><A NAME="taxidraw"></A>March 24, 2005 - TaxiDraw-0.3.1 released.</h3><p>
+    The next version of TaxiDraw is available at
+    <A HREF="http://www.nottingham.ac.uk/~eazdluf/taxidraw.html">
+    http://www.nottingham.ac.uk/~eazdluf/taxidraw.html</A><BR>
+    This is primarily a bug-fix release - a couple of X-Plane format
+    writing bugs are fixed so all users should upgrade.
+    <P>
+
+ <h3><A NAME="aircraft"></A>January 25, 2005 - New Aircraft.</h3><p>
+    We have just added a new
+    Boeing 314 Seaplane, the Concorde has been updated to v2.0, and
+    several updates have been made to the B-52F Stratofortress.  These
+    can all be downloaded from the aircraft download page.  (Note some
+    mirror sites may lag ...)
+    <P>
+
+ <h3><A NAME="v0.9.8"></A>January 18, 2005 - FlightGear v0.9.8
+    released.</h3><p>
+    Version 0.9.8 is available for download.<BR>
+    <A HREF="/Downloads/">Download a ready to run version for your
+    platform</A> (as they become available.)<BR>  You can also
+    download additional aircraft, scenery, and the entire source code.
+    (requires SimGear-0.3.8)
+    <P>
+
+<h3><A NAME="simgear"></A>January 18, 2005 - SimGear v0.3.8
+    released.</h3><p>
+    Version 0.3.8 (source code) is available for download.<BR>
+    <A HREF="http://www.simgear.org">Download source code.</A>
+    <P>
+
+ <h3><A HREF="http://www.flightgear.org/oldnews.html">Older news ...</A></h3>
+
+
+	
+{% endblock %}

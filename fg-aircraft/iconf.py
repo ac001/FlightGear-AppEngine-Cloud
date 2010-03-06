@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#import app.fetch
+import app.fetch
 
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
 
@@ -31,21 +31,29 @@ platforms = [	{'platform': 'windows', 'label': 'Windows'},
 nav = []
 nav.append( {'path':'/idea/', 'label': 'Home'} )
 nav.append( {'path':'/idea/about/', 'label': 'About', 
-				'subnav': [	{'path':'/idea/about/features/', 'label': 'Features'}, 	{'path':'/idea/about/features/', 'label': 'Features'}]
+				'subnav': [	
+					{'path':'/idea/about/features/', 'label': 'Features'},
+					{'path':'/idea/about/license/', 'label': 'License'}]
 			})
-nav.append( {'path':'/idea/features/', 'label': 'Features'} )
+#nav.append( {'path':'/idea/features/', 'label': 'Features'} )
 nav.append( {'path':'/idea/news/', 'label': 'News'} )
 nav.append( {'path':'/idea/download/', 'label': 'Download',
 			'subnav': [	
-				{'path':'/idea/about/features/', 'label': 'FlightGear'}, 	
-				{'path':'/idea/about/features/', 'label': 'Aircraft'},
-				{'path':'/idea/about/features/', 'label': 'Scenery'}
+				{'path':'flightgear/', 'label': 'FlightGear'}, 	
+				{'path':'aircraft/', 'label': 'Aircraft'},
+				{'path':'scenery/', 'label': 'Scenery'}
 			]
 })
 nav.append( {'path':'/mpservers/', 'label': 'Aircraft'} )
 #nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )
-nav.append( {'path':'/issues/', 'label': 'Multiplayer'} )
+nav.append( {'path':'/idea/multiplayer/', 'label': 'Multi Player'
+, 			'subnav': [	
+					{'path':'/idea/multiplayer/status/', 'label': 'Server Status'},
+					{'path':'/idea/multiplayer/online/', 'label': 'Pilots Online'},
+					{'path':'/idea/multiplayer/map/', 'label': 'Online Map'}
+			]
+})
 nav.append( {'path':'/developers/', 'label': 'Links'} )
 nav.append( {'path':'/code/', 'label': 'Developers'} )
 
@@ -54,6 +62,12 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'Es', 'label': 'Spanish'},
 			{'code': 'De', 'label': 'German'}
 ]
+
+app_vars = { 'foo': 'bar',
+			'pilots_info': app.fetch.pilots_info(),
+			'mpservers_info': app.fetch.mpservers_info()
+}
+
 
 """
 app_vars = { 'foo': 'bar',
