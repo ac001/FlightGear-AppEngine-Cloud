@@ -91,10 +91,6 @@ def process_vid_entry( entry):
 	dic['id'] = entry.id.text.split("/")[-1]
 	dic['title'] = entry.title.text
 	dic['thumbnail'] = entry.media.thumbnail[0].url
-	#print dic
-	#dic['stars'] = issue.stars.text
-	#dic['state'] = issue.state.text
-	#dic['status'] = issue.status.text
 	return dic
 
 

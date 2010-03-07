@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import app.fetch
-from google.appengine.api import users
-#from google.appengine.ext import db
-#from models.models import DownloadServer
-#FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
+
 
 tm = "<span class='tm'>FlightGear&#0174;</span>"
 
@@ -21,89 +17,74 @@ MP_PILOTS_URL = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flig
 
 GIT_ATOM = "http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=atom"
 
-
-nav = []
-nav.append( {'path':'/', 'label': 'Home'} )
-nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
-nav.append( {'path':'/online/', 'label': 'Pilots Online'} )
-nav.append( {'path':'/mpservers/', 'label': 'MP Servers'} )
-#nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
-#nav.append( {'path':'/developers/', 'label': 'Developers'} )
-nav.append( {'path':'/issues/', 'label': 'Isssues'} )
-nav.append( {'path':'/developers/', 'label': 'Developers'} )
-nav.append( {'path':'/code/', 'label': 'Code'} )
-
-
+"""
 user = users.get_current_user()
 if user:
 	nickname = user.nickname()
-	auth_url = users.create_logout_url("/idea/")
+	auth_url = users.create_logout_url("/")
 else:
 	nickname = None
-	auth_url = users.create_login_url("/idea/")
+	auth_url = users.create_login_url("/")
 
 app_vars = { 'nickname': nickname, 'auth_url': auth_url,
 			'pilots_info': app.fetch.pilots_info(),
 			'mpservers_info': app.fetch.mpservers_info()
 }
-
-
-
-
-
+"""
+"""
 platforms = [	{'platform': 'windows', 'label': 'Windows'},
 				{'platform': 'linux', 'label': 'Linux'},
 				{'platform': 'mac', 'label': 'Mac OSX'},
 				{'platform': 'freebsd', 'label': 'Free BSD'},
 				{'platform': 'sgi', 'label': 'SGI'}
 ]
-
+"""
 ###############################################################################
 ## Front Website Navigation
 ###############################################################################
 front_nav = []
-front_nav.append( {'path':'/idea/', 'label': 'Home', 
+front_nav.append( {'path':'/', 'label': 'Index', 
 				'subnav': [	
-					{'path':'/idea/home/announce/', 'label': 'Announcements'},
-					{'path':'/idea/home/calendar/', 'label': 'Calendar'},
+					{'path':'/index/announce/', 'label': 'Announcements'},
+					{'path':'/index/calendar/', 'label': 'Calendar'},
 				]
 })
 
-front_nav.append( {'path':'/idea/about/', 'label': 'About', 
+front_nav.append( {'path':'/about/', 'label': 'About', 
 				'subnav': [	
-					{'path':'/idea/about/features/', 'label': 'Features'},
-					{'path':'/idea/about/license/', 'label': 'License'}
+					{'path':'/about/features/', 'label': 'Features'},
+					{'path':'/about/license/', 'label': 'License'}
 				]
 })
-front_nav.append( {'path':'/idea/media/', 'label': 'Media', 
+front_nav.append( {'path':'/media/', 'label': 'Media', 
 				'subnav': [	
-					{'path':'/idea/media/videos/', 'label': 'Videos'},
-					{'path':'/idea/media/gallery/', 'label': 'Image Gallery'}
+					{'path':'/media/videos/', 'label': 'Videos'},
+					{'path':'/media/gallery/', 'label': 'Image Gallery'}
 				]
 })
-front_nav.append( {'path':'/idea/support/', 'label': 'Support', 
+front_nav.append( {'path':'/support/', 'label': 'Support', 
 				'subnav': [	
-					{'path':'/idea/support/docs/', 'label': 'Documentation'},
-					{'path':'/idea/support/faq/', 'label': 'FAQ'}
+					{'path':'/support/docs/', 'label': 'Documentation'},
+					{'path':'/support/faq/', 'label': 'FAQ'}
 				]
 })
-front_nav.append( {'path':'/idea/download/', 'label': 'Download',
+front_nav.append( {'path':'/download/', 'label': 'Download',
 			'subnav': [	
-				{'path':'/idea/download/requirements/', 'label': 'Requirements'}, 	
-				{'path':'/idea/download/flightgear/', 'label': 'FlightGear'}, 	
-				#{'path':'/idea/download/aircraft/', 'label': 'Aircraft'},
-				{'path':'/idea/download/scenery/', 'label': 'Scenery'},
-				{'path':'/idea/download/versions/', 'label': 'ChangeLog'},
+				{'path':'/download/requirements/', 'label': 'Requirements'}, 	
+				{'path':'/download/flightgear/', 'label': 'FlightGear'}, 	
+				#{'path':'/download/aircraft/', 'label': 'Aircraft'},
+				{'path':'/download/scenery/', 'label': 'Scenery'},
+				{'path':'/download/versions/', 'label': 'ChangeLog'},
 			]
 })
-#nav.append( {'path':'/idea/features/', 'label': 'Features'} )
-front_nav.append( {'path':'/idea/aircraft/', 'label': 'Aircraft'} )
-front_nav.append( {'path':'/idea/multiplayer/', 'label': 'Online Multi Player'
+#nav.append( {'path':'/features/', 'label': 'Features'} )
+front_nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
+front_nav.append( {'path':'/multiplayer/', 'label': 'Online Multi Player'
 , 			'subnav': [	
-					{'path':'/idea/multiplayer/servers/', 'label': 'Servers'},
-					{'path':'/idea/multiplayer/pilots/', 'label': 'Pilots'},
-					{'path':'/idea/multiplayer/atc/', 'label': 'ATC'},
-					{'path':'/idea/multiplayer/map/', 'label': 'Online Map'}
+					{'path':'/multiplayer/servers/', 'label': 'Servers'},
+					{'path':'/multiplayer/pilots/', 'label': 'Pilots'},
+					{'path':'/multiplayer/atc/', 'label': 'ATC'},
+					{'path':'/multiplayer/map/', 'label': 'Online Map'}
 			]
 })
 
@@ -117,16 +98,16 @@ front_nav.append( {'path':'/idea/multiplayer/', 'label': 'Online Multi Player'
 #nav.append( {'path':'/developers/', 'label': 'Developers'} )
 
 
-front_nav.append( {'path':'/idea/developers/', 'label': 'Developers',
+front_nav.append( {'path':'/developers/', 'label': 'Developers',
 			'subnav': [	
-					{'path':'/idea/developers/src/', 'label': 'Source Code'},
-					{'path':'/idea/developers/credits/', 'label': 'Credits'}
+					{'path':'/developers/src/', 'label': 'Source Code'},
+					{'path':'/developers/credits/', 'label': 'Credits'}
 			]
 })
-front_nav.append( {'path':'/idea/links/', 'label': 'Links',
+front_nav.append( {'path':'/links/', 'label': 'Links',
 			'subnav': [	
-					{'path':'/idea/links/sites/', 'label': 'Related Sites'},
-					{'path':'/idea/links/projects/', 'label': 'Projects'}
+					{'path':'/links/sites/', 'label': 'Related Sites'},
+					{'path':'/links/projects/', 'label': 'Projects'}
 			]
 })
 

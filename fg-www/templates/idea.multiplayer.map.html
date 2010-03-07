@@ -1,0 +1,45 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+	<div class="panel_box">
+		<h3>MPMap</h3>
+		<ul>
+		<li><a href="http://pigeond.net/blog/tag/fgmap/">Developers Blog</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/Mpmap">Wiki Help</a></li>
+		<li><a href="http://pigeond.net/git/?p=flightgear/fgmap.git;a=summary">Source Code</a></li>
+		</ul>
+	</div>
+
+	<div class="panel_box">
+		<h3>Google Earth</h3>
+		<P>You can also view Online Pilots  with Google Earth. Just cut and 
+			paste the link into a new Network Node (TODO)</p>
+	</div>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1>Multi Player Map</h1>
+
+<p><b>MPMap</b> is a utility that shows us where other pilots are on the world map. It's based on Google Maps, so you could use map or satellite view.</P>
+
+<h3>View in a web browser</h3>
+<p>Select one of the following links for the MP Map in a browser</p>
+
+<ul>
+	<li><p><a href="http://mpmap01.flightgear.org"><b>mpmap01</b></a>.flightgear.org</p></li>
+	<li><p><a href="http://mpmap02.flightgear.org"><b>mpmap02</b></a>.flightgear.org</p></li>
+</ul>
+
+	
+<p>&nbsp;</p>
+
+<h3>View with Google Earth</h3>
+<p>Paste this as a new network node (TODO)<p>
+
+<input type="text" size="40" value="http://mpmap01.flightgear.org/kxl_to_do.kml">
+{% endblock %}

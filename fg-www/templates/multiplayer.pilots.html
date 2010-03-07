@@ -1,0 +1,40 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+
+{% include "snip.fgcom_box.html" %}
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1>Pilots Online</h1>
+
+<table width="100%" class="listing">
+<tr>
+	<th>Callsign</th>
+	<th>Aircraft</th>
+	<th>Lat</th>
+	<th>Lng</th>
+	<th>Altitude</th>
+	<th>Heading</th>
+	<th>Server</th>
+</tr>
+{% for pilot in pilots_online %}
+	<tr class="hover">
+		<td><b>{{ pilot.callsign }}</a></td>
+		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
+		<td style="text-align: right;">{{ pilot.lat|floatformat:2 }}</td>
+		<td style="text-align: right;">{{ pilot.lng|floatformat:2  }}</td>	
+		<td style="text-align: right;">{{ pilot.alt|floatformat:0 }}</td>
+		<td style="text-align: right;">{{ pilot.heading|floatformat:0  }}</td>
+		<td>{{ pilot.server }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/pilots/?do_refresh=1" class="refresh_button">Refresh</a></p>
+	
+{% endblock %}

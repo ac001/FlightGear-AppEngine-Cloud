@@ -1,0 +1,77 @@
+{% extends "MAIN.html" %}
+
+
+{% block right_box %}
+
+
+	{% include "snip.dvd_box.html" %}
+
+
+	<div class="panel_box">
+		<h3>Mirror Servers</h3>
+		<p>You will be randomly assigned to one of these servers.</p>
+		<ul>
+		{% for serv in download_servers %}
+		<li><a href="#">{{ serv.location}}</a></li>
+		{% endfor %}
+		</ul>
+	</div>
+
+
+{% endblock right_box %}
+
+{% block content %}
+
+<h1>Download Central</h1>
+
+<p>If this is your first time then you are advised to read the <a href="/idea/download/requirements/">requirements page</a> before downloading.<p>
+
+<div class="important_box">
+<img src="/images/missc/important.png">
+<h5>Important</h5>
+<p><b>Please do not use a download accelearator.</b> At peak periods, this overloads our server. Be pateient instead.</p>
+</div>
+
+
+
+<table>
+
+<tr>
+<td width="33%">
+<div class="column_box"  onclick="location.href='/idea/downloads/aircraft/'">
+<h2>FlightGear</h2>
+<p><img src="/images/flightgear.png" style="height: 50px;"></p>
+<p>Download installer for:</p>
+<ul>
+{% for p in conf.platforms %}
+<li><a href="/idea/download/flightgear/#{{ p.platform }}" class="link">{{ p.label }}</a></li>
+{% endfor %}
+</ul>
+</div>
+</td><td>
+<div class="column_box" onclick="location.href='/idea/downloads/aircraft/'">
+<h2>Aircraft</h2>
+<p><img src="/images/missc/aircraft.jpg" style="height: 50px;"></p>
+<p>Download from over 300+ aircraft</p>
+
+<ul>
+<li><a href="/idea/download/aircraft/">Helicopters</a></li>
+<li><a href="/idea/download/aircraft/">Airliners</a></li> 
+<li><a href="/idea/download/aircraft/">Sports aircraft</a></li> 
+<li><a href="/idea/download/aircraft/">Buiness Jets</a></li> 
+<li><a href="/idea/download/aircraft/">Special</a></li>  
+</ul>
+
+</div>
+
+</td><td  width="33%">
+<div class="column_box">
+<h2>Scenery</h2>
+<p><img src="/images/missc/scenery.jpg" style="height: 50px;"></p>
+<p>Download scenery for anypart of the world.</p>
+</div>
+
+</td>
+</tr>
+</table>
+{% endblock content %}

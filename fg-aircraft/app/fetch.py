@@ -23,6 +23,45 @@ import atom.core
 import conf
 from models.models import MPServer
 
+class FGApp:
+
+	def liveries(self):
+		return liveries()
+
+	
+	def devel_mailing_list(self):
+		return mailing_list('flightgear-devel@lists.sourceforge.net')
+
+	def users_mailing_list(self):
+		return mailing_list('flightgear-users@lists.sourceforge.net')
+
+	
+	def forums_list(self):
+		return  [ 
+			{'key': 'general', 'id': 2, 'title': 'General Help'},
+			{'key': 'install', 'id': 11,'title': 'Install Help'},
+			{'key': 'events', 'id': 10, 'title':'Events'},
+			{'key': 'aircraft', 'id': 4, 'title':'Aircraft Development'},
+			{'key': 'scenery', 'id': 5, 'title':'Scenery Enancment'},
+			{'key': 'stories', 'id': 3, 'title':'Stories and Humour'},
+			{'key': 'new_features', 'id': 6, 'title':'New Features'}
+		]
+
+	def irc_channels(self):
+		return [ 
+			{'channel': 'flightgear', 'title': 'Main Channel'},
+			{'channel': 'fg_cantene', 'title': 'Pilots Mess' },
+			{'channel': 'fg_school', 'title': 'Flight Training' },
+			{'channel': 'airliners', 'title': 'flightgear'},
+			{'channel': 'wiki', 'title': 'Wiki Chat' }
+		]
+		
+	
+
+
+
+
+
 ####################################################
 ## Pilots Online
 ####################################################
@@ -330,6 +369,76 @@ def gallery_random():
 
 
 #######################################################
+## Liveries
+#######################################################
+def liveries():
+	return fetch_liveries()
+	liveries =	memcache.get("liveries")
+	if liveries:
+		return liveries
+	liveries =  fetch_liveries()
+	if not memcache.set("liveries", liveries, 240):
+		print "error"
+	return liveries
+
+def fetch_liveries():
+	result = urlfetch.fetch("http://liveries.flightgear.org/rss.php")
+	if result.status_code == 200:
+		#print result.content
+		entries = BeautifulSoup.BeautifulSoup(result.content).findAll("item")
+		records = []
+		for entry in entries:
+			##TODO - link not work ??
+			rec = {	'author': entry.author.text
+					, 'title': entry.title.text
+					, 'link': entry.link.text
+			}
+			#print entry
+			records.append(rec)
+		if not memcache.set("liveries", json.dumps(records), 60):
+			pass # TODO
+		return records
+	else:
+		return None
+
+#######################################################
+## Mailing List latest Topics # TODO
+#######################################################
+def mailing_list(self, list_address):
+	return fetch_mailing_list(list_address)
+	maillist =	memcache.get(list_address, namespace="maillist")
+	if maillist:
+		return maillist
+	maillist =  fetch_liveries()
+	if not memcache.set("maillist", maillist, 240):
+		print "error"
+	return liveries
+
+def fetch_mailing_list(self, list_address):
+	
+	url ="http://www.mail-archive.com/%s/maillist.xml" % list_address
+	print list_address, url
+	result = urlfetch.fetch(url)
+	print result.content
+	if result.status_code == 200:
+		print result.content
+		entries = BeautifulSoup.BeautifulSoup(result.content).findAll("item")
+		records = []
+		for entry in entries:
+			##TODO - link not work ??
+			rec = {	'author': entry.author.text
+					, 'title': entry.title.text
+					, 'link': entry.link.text
+			}
+			#print entry
+			records.append(rec)
+		if not memcache.set("liveries", json.dumps(records), 60, namespace="maillist"):
+			pass # TODO
+		return records
+	else:
+		return None
+
+#######################################################
 ## Versions
 #######################################################
 def versions():
@@ -370,3 +479,38 @@ def fetch_versions():
 		#print "############", versions
 		return versions
 
+
+
+#######################################################
+## Videos
+#######################################################
+def videos( filter_str="", max_results=10):
+	videos = memcache.get(filter_str, namespace="videos")
+	if videos:
+		return videos
+	videos =  fetch_videos(filter_str, max_results)
+	if not memcache.set("videos", videos, 300, namespace="videos"):
+		print "error"
+	return videos
+
+def fetch_videos(filter_str, max_results):
+	query_str = filter_str
+	client = gdata.youtube.service.YouTubeService()
+	query = gdata.youtube.service.YouTubeVideoQuery()
+	query.vq = query_str
+	query.max_results = max_results
+	#query.order_by = "rating"
+	feed = client.YouTubeQuery(query)	
+	#print feed
+	videos = []
+	for entry in feed.entry:
+		v = process_vid_entry(entry)
+		videos.append(v)
+	return videos
+
+def process_vid_entry( entry):
+	dic = {}
+	dic['id'] = entry.id.text.split("/")[-1]
+	dic['title'] = entry.title.text
+	dic['thumbnail'] = entry.media.thumbnail[0].url
+	return dic

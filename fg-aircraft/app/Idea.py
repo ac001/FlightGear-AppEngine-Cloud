@@ -36,52 +36,38 @@ class IdeaPage(webapp.RequestHandler):
 		
 
 
-
+################################################################################
+## First Level
+################################################################################
 class LashUpPage(webapp.RequestHandler):
 
 
 	def get(self, section):
-	
+		fgApp = app.fetch.FGApp()
 		template_values = {
-			'title': 'Welcome', 
 			'path': '/idea/%s/' % section,
-			'conf': conf
+			'conf': conf,
+			'app': fgApp
 		}
 
-		if section == 'gallery':
-			template_values['gallery'] = app.fetch.gallery_thumbs()
+		#if section == 'gallery':
+		#	template_values['gallery'] = app.fetch.gallery_thumbs()
 
-		if section == "multiplayer":
-				template_values['servers'] = app.fetch.mpservers()
+		#if section == "multiplayer":
+		#		template_values['servers'] = app.fetch.mpservers()
 
 		if section == "download":
 				sql = "SELECT * FROM DownloadServer ORDER BY location"
 				query = db.GqlQuery(sql)
 				template_values['download_servers'] = query.fetch(100)
+				template_values['title'] = 'Download Central'
 
+		if section == 'about':
+			template_values['title'] = 'About FlightGear'
 
-		path = os.path.join(os.path.dirname(__file__), 'templates/idea.%s.html' % section)
-		self.response.out.write(template.render(path, template_values))
-		
-class LashUpSubPage(webapp.RequestHandler):
-
-
-	def get(self, section, subpage):
-		##print "sec/sub", section, subpage
-		template_values = {
-			'title': 'Welcome', 
-			'path': '/idea/%s/%s/' % (section, subpage),
-			'conf': conf,
-			'aero': None
-		}
-
-
-
-		if section == 'download' and subpage == "versions":
-			template_values['versions'] = app.fetch.versions()
-
-		if section == 'download' and subpage == "aircraft":
-
+		if section == 'aircraft': # and subpage == "aircraft":
+			
+			## 
 			aero_request = self.request.get("aero")
 			if aero_request:
 				query = db.GqlQuery("SELECT * FROM  Aero where aero = :1", aero_request) 
@@ -128,11 +114,62 @@ class LashUpSubPage(webapp.RequestHandler):
 				template_values['title'] = 'Aircraft'
 				template_values['aircraft'] = aircraft 
 				template_values['search_text'] = search_text
+				#template_values['liveries'] = app.fetch.liveries()
 
 
+
+
+		path = os.path.join(os.path.dirname(__file__), 'templates/%s.html' % section)
+		self.response.out.write(template.render(path, template_values))
+
+######################################################
+## Second Generation Down
+######################################################
+class LashUpSubPage(webapp.RequestHandler):
+
+
+	def get(self, section, subpage):
+		##print "sec/sub", section, subpage
+
+		fgApp = app.fetch.FGApp()
+		template_values = {
+			'title': '####', 
+			'path': '/idea/%s/%s/' % (section, subpage),
+			'conf': conf,
+			'aero': None,
+			'app': fgApp
+		}
+
+		if section == 'home':
+			if subpage == "announce":
+				template_values['title'] = 'News and Announcements'
+			
+			if subpage == "calendar":
+				template_values['title'] = 'Calendar'
+			
+		## Download Section
+		if section == 'download':
+			if subpage == "versions":
+				template_values['versions'] = app.fetch.versions()
+				template_values['title'] = 'Versions'
+			
+			if subpage == "requirements":
+				template_values['title'] = 'Hardware Requirements'
+
+
+		## Media
+		if section == 'media':
+			if subpage == "gallery":
+				template_values['title'] = 'Image Gallery'
+				template_values['gallery'] = app.fetch.gallery_thumbs()
+			if subpage == 'videos':
+				template_values['videos_tutorial'] = app.fetch.videos('+FlightGear +tutorial')
+				template_values['videos_howto'] = app.fetch.videos('+flightgear +howto')
+			
 		if section == "multiplayer": 
 			if subpage == 'pilots':
 				template_values['pilots_online'] = app.fetch.pilots_online()
+				template_values['title'] = 'Pilots Online'
 
 			if subpage == "servers":
 				servers = app.fetch.mpservers()
@@ -140,9 +177,10 @@ class LashUpSubPage(webapp.RequestHandler):
 					v = memcache.get("server_count_%s" % srv.server)
 					srv.pilots_count = "-" if v == None else v
 				template_values['servers'] = servers
+				template_values['title'] = 'Multi Player Servers'
 
+		
 
-
-		path = os.path.join(os.path.dirname(__file__), 'templates/idea.%s.%s.html' % (section, subpage))
+		path = os.path.join(os.path.dirname(__file__), 'templates/%s.%s.html' % (section, subpage))
 		self.response.out.write(template.render(path, template_values))
 		

@@ -1,0 +1,26 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+	<div class="panel_box">
+		<h3>Coming Soon</h3>
+		<p>Upload your own images, and a rankings system.</P>
+	</div>
+
+	<div class="panel_box">
+		<h3>New</h3>
+		<p>TODO</P>
+	</div>
+{% endblock right_box %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+{% for img in gallery %}
+	<div class="gallery_thumb_box">
+	<a href="http://flightgear.org/Gallery-v2.0/images/{{ img }}" 
+		rel="lightbox"><img src="http://flightgear.org/Gallery-v2.0/thumbnails/{{ img }}"></a>
+	</div>
+{% endfor %}
+
+{% endblock content %}

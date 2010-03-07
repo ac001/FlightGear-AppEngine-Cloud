@@ -1,0 +1,61 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+
+
+<div class="panel_box">
+	<h3>Setup A Server</h3>
+	<p>If you are interested in hosting your own Multiplayer server, you may want to check out <a href="http://wiki.flightgear.org/index.php/Howto:_Set_up_a_multiplayer_server">this wiki page</a></p>
+</div>
+
+<div class="panel_box">
+	<h3>FGMS</h3>
+	<p>The FlightGear Multiplayer Server</p>
+	<ul class="vnav">
+	<li><a href="http://fgms.sourceforge.net/">FGMS Homepage</a></li>
+	<li><a href="http://fgms.sourceforge.net/download.php">Download</a></li>
+</ul>
+</div>
+
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1>Multi Player Servers</h1>
+
+
+<table width="100%" class="listing">
+<tr>
+	<th>No</th>
+	<th>Server</th>
+	<th>Status</th>
+	<th>Last Updated</th>
+	<th>Location</th>
+	<th style="text-align:right;">IP</th>
+	<th style="text-align:left;">Port</th>
+	<th align="center">Online</th>
+</tr>
+{% for server in servers %}
+	<tr class="hover">
+		<td><a href="#">{{ server.no }}</a></td>
+		<td>{{ server.server }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+			</td>
+		<td>{{ server.status_updated|date:"Y-m-d H:i:s"|default:"&nbsp;" }}</td>
+		<td>{{ server.location }}</td>
+		<td align="right">{{ server.ip }}</td>
+		<td align="left">{{ server.port }}</td>
+		<td align="center">{{ server.pilots_count }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/servers/" class="refresh_button">Refresh</a></p>
+{% endblock %}

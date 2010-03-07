@@ -1,0 +1,59 @@
+
+{% extends "MAIN.html" %}
+
+	{% block right_box %}
+
+	<div class="panel_box">
+		<h3>Latest Version</h3>
+		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
+		<p>A new major update of the glihht gear simulator. Please check the readme</p>
+	</div>
+	{% include "snip.notam_box.html" %}
+
+	{% include "snip.servers_box.html" %}
+
+	
+
+	
+	<div class="panel_box">
+		<h3>New to FlightGear?</h3>
+		<p>There is tons of information and help on the <a href="http://wiki.flightgear.org">FlightGear Wiki</a>  and the  FlightGear FAQ!</P>
+	</div>
+
+<!---
+
+
+
+
+	<div class="panel_box">
+		<h3>Latest</h3>
+		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
+		<p>A new major update of the glihht gear simulator. Please check the readme</p>
+	</div>
+	<div class="panel_box">
+		<h3>Aircraft</h3>
+		<p><a href="#"><b>v2.0.0</b></a> - 18 Feb 2010</p>
+		<p>A new major update of the glihht gear simulator. Please check the readme</p>
+	</div>
+
+	-->
+
+	{% endblock right_box %}
+
+
+{% block content %}
+
+<h1>Welcome</h1>
+<p>The {{ conf.tm }} flight simulator project is an open-source, multi-platform, cooperative flight simulator development project. Source code for the entire project is available and licensed under the <a href="/idea/about/license/">GNU General Public License.</a>.</p>
+
+<h3>Headlines</h3>
+
+<p>FlightGear v2.0 is now available. Check out the <a href="/idea/download/">gallery page</a> and <a href="/idea/download/">start downloading.</a>
+</p>
+
+<img src="http://www.flightgear.org/Gallery-v2.0/images/{{ app.random_image }}" style=" margin: 50px; width: 500px">
+
+
+
+{% endblock content %}
+

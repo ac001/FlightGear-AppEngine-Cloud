@@ -1,0 +1,158 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+	<!--## Forum Links -->
+	<div class="panel_box">
+		<h3>Forum Links</h3>
+		<ul>
+			{% for forum in app.forums_list %}
+			<li><a href="http://www.flightgear.org/forums/viewforum.php?f={{ forum.id }}" >{{ forum.title }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!--## IRC Links -->
+	<div class="panel_box">
+		<h3>irc.flightgear.org</h3>
+		<ul>
+			{% for chan in app.irc_channels %}
+				<li>{{ chan.title }}<br>&nbsp;&nbsp;# 
+					<a href="irc://irc.flightgear.org/{{ chan.channel }}">{{ chan.channel }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<!--## Mailing list Browser -->
+	<div class="panel_box">
+		<h3>Mailing List Browser</h3>
+		<p>Browse and search the mailing list's, thanks to <a href="mail-archive.com">mail-archive.com</a></p>
+		<ul>
+			<li><a href="http://www.mail-archive.com/flightgear-devel@lists.sourceforge.net/maillist.html" >Developers List</a></li>
+			<li><a href="http://www.mail-archive.com/flightgear-users@lists.sourceforge.net/maillist.html">Users List</a></li>
+		</ul>
+	</div>
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1>Support</h1>
+
+<h2>Forums</h2>
+<p>The official FlightGear forums are at <a HREF="http://www.flightgear.org/forums/">www.flightgear.org/forums/</a></p>
+<p>Other forums:</p>
+		<ul>
+			<LI> <A HREF="http://forums.avsim.net/dcboard.php?az=show_topics&forum=198">
+				FlightGear forum sponsered by AVSIM.net</A>.</li>
+			<LI> <A HREF="http://ifsa.netfreehost.com/">FlightGear forum
+				sponsered by the Indian Flight Sim Association</A>.</li>
+			<LI> <A HREF="http://fr.flightgear.tuxfamily.org/forum/index.php">French
+				Language FlightGear forum</A>.</li>
+			<LI> <A HREF="http://www.flight-gear.de/">German Language FlightGear
+				forum</A>.</li>
+			<LI> <A HREF="http://www.forums.flightgear.pl/">Polish Language FlightGear
+				forum</A>.</li>
+		</ul>
+
+
+
+<h2>Internet Relay Chat</h2>
+<p>For live discussions and help there is the FlightGear IRC server. If your new to IRC there's the short <A HREF="http://wiki.flightgear.org/index.php/IRC">
+       FlightGear IRC tutorial</A>.</p>
+<UL>
+  <LI>
+     The main site and channel is <a href="irc://irc.flightgear.org/flightgear">irc.flightgear.org#flightgear</a>
+
+	</li>
+
+     <li>The backup channel in the event of the main server beind down is at freenode <a href="irc://irc.freenode.net#flightgear">irc.freenode.net#flightgear</a>
+	</li>
+</UL>
+
+
+
+<h2>Mailing Lists</h2>
+<p>The FlightGear mailing lists are hosted at
+       <A HREF="http://sourceforge.net/mail/?group_id=583">SourceForge.net</A>. Click the links below to subscribe or unsubscribe.
+</p>
+
+<UL>
+	<LI> <A HREF="http://lists.sourceforge.net/lists/listinfo/flightgear-announce">
+	FlightGear-Announce</A></li>
+	<LI> <A HREF="http://lists.sourceforge.net/lists/listinfo/flightgear-cvslogs">
+	FlightGear-CVSLogs</A></li>
+	<LI> <A HREF="http://lists.sourceforge.net/lists/listinfo/flightgear-devel">
+	FlightGear-Devel</A></li>
+
+	<LI> <A HREF="http://lists.sourceforge.net/lists/listinfo/flightgear-flightmodel">
+	FlightGear-FlightModel</A></li>
+	<LI> <A HREF="http://lists.sourceforge.net/lists/listinfo/flightgear-users">
+	FlightGear-Users</A></li>
+</UL>
+
+
+
+<H3>Mailing List Archives</H3>
+
+<p>On Dec 20, 2005 we moved our mailing lists from the FlightGear.org
+server to SourceForge.net.  This means our archives are divided into
+two locations, the pre-switchover FlightGear archives, and the
+post-switchover SourceForge archives.
+</P>
+
+
+    <h3>Current SourceForge Archives (20 Dec 2005 and newer)</h3>
+
+   <UL>
+    <LI> <A HREF="http://sourceforge.net/mailarchive/forum.php?forum_name=flightgear-announce">
+
+         FlightGear-Announce Archives</A>
+    <LI> <A HREF="http://sourceforge.net/mailarchive/forum.php?forum_name=flightgear-cvslogs">
+         FlightGear-CVSLogs Archives</A>
+    <LI> <A HREF="http://sourceforge.net/mailarchive/forum.php?forum_name=flightgear-devel">
+         FlightGear-Devel Archives</A>
+    <LI> <A HREF="http://sourceforge.net/mailarchive/forum.php?forum_name=flightgear-flightmodel">
+
+         FlightGear-FlightModel Archives</A>
+    <LI> <A HREF="http://sourceforge.net/mailarchive/forum.php?forum_name=flightgear-users">
+         FlightGear-Users Archives</A>
+
+   </UL>
+ 
+
+
+    <h3>Older FlightGear.org Archives (before 20 Dec 2005)</h3>
+
+   <UL>
+    <LI> <A HREF="http://mail.flightgear.org/pipermail/flightgear-announce">
+         FlightGear-Announce Archives</A>
+    <LI> <A HREF="http://mail.flightgear.org/pipermail/flightgear-cvslogs">
+
+         FlightGear-CVSLogs Archives</A>
+    <LI> <A HREF="http://mail.flightgear.org/pipermail/flightgear-devel">
+         FlightGear-Devel Archives</A>
+    <LI> <A HREF="http://mail.flightgear.org/pipermail/flightgear-flightmodel">
+         FlightGear-FlightModel Archives</A>
+    <LI> <A HREF="http://mail.flightgear.org/pipermail/flightgear-users">
+
+         FlightGear-Users Archives</A>
+    
+   </UL>
+
+<h3>Even..</h3>
+<ul>
+    <LI> <A HREF="http://www.menet.umn.edu/~curt/lists/fgfs/"> older
+         FlightGear mailing lists archives</A>.
+   </UL>
+
+
+
+	
+{% endblock %}
