@@ -42,74 +42,7 @@ platforms = [	{'platform': 'windows', 'label': 'Windows'},
 ###############################################################################
 ## Front Website Navigation
 ###############################################################################
-front_nav = []
-front_nav.append( {'path':'/', 'label': 'Index', 
-				'subnav': [	
-					{'path':'/index/announce/', 'label': 'Announcements'},
-					{'path':'/index/calendar/', 'label': 'Calendar'},
-				]
-})
 
-front_nav.append( {'path':'/about/', 'label': 'About', 
-				'subnav': [	
-					{'path':'/about/features/', 'label': 'Features'},
-					{'path':'/about/license/', 'label': 'License'}
-				]
-})
-front_nav.append( {'path':'/media/', 'label': 'Media', 
-				'subnav': [	
-					{'path':'/media/videos/', 'label': 'Videos'},
-					{'path':'/media/gallery/', 'label': 'Image Gallery'}
-				]
-})
-front_nav.append( {'path':'/support/', 'label': 'Support', 
-				'subnav': [	
-					{'path':'/support/docs/', 'label': 'Documentation'},
-					{'path':'/support/faq/', 'label': 'FAQ'}
-				]
-})
-front_nav.append( {'path':'/download/', 'label': 'Download',
-			'subnav': [	
-				{'path':'/download/requirements/', 'label': 'Requirements'}, 	
-				{'path':'/download/flightgear/', 'label': 'FlightGear'}, 	
-				#{'path':'/download/aircraft/', 'label': 'Aircraft'},
-				{'path':'/download/scenery/', 'label': 'Scenery'},
-				{'path':'/download/versions/', 'label': 'ChangeLog'},
-			]
-})
-#nav.append( {'path':'/features/', 'label': 'Features'} )
-front_nav.append( {'path':'/aircraft/', 'label': 'Aircraft'} )
-front_nav.append( {'path':'/multiplayer/', 'label': 'Online Multi Player'
-, 			'subnav': [	
-					{'path':'/multiplayer/servers/', 'label': 'Servers'},
-					{'path':'/multiplayer/pilots/', 'label': 'Pilots'},
-					{'path':'/multiplayer/atc/', 'label': 'ATC'},
-					{'path':'/multiplayer/map/', 'label': 'Online Map'}
-			]
-})
-
-
-
-
-
-
-#front_nav.append( {'path':'/mpservers/', 'label': 'Aircraft'} )
-#nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
-#nav.append( {'path':'/developers/', 'label': 'Developers'} )
-
-
-front_nav.append( {'path':'/developers/', 'label': 'Developers',
-			'subnav': [	
-					{'path':'/developers/src/', 'label': 'Source Code'},
-					{'path':'/developers/credits/', 'label': 'Credits'}
-			]
-})
-front_nav.append( {'path':'/links/', 'label': 'Links',
-			'subnav': [	
-					{'path':'/links/sites/', 'label': 'Related Sites'},
-					{'path':'/links/projects/', 'label': 'Projects'}
-			]
-})
 
 
 ##########################################################

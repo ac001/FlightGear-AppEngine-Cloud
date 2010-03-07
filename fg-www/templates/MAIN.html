@@ -46,7 +46,7 @@
 	<!--## Navigation  ##-->
 	<div id="navcontainer">
 		<ul>
-			{% for n in conf.front_nav %}
+			{% for n in nav.nav %}
 			<li><a {% ifequal path n.path  %}class="selected"{% endifequal %} href="{{ n.path }}" >{{ n.label}}</a>
 			{% if n.subnav %}
 			<ul>
