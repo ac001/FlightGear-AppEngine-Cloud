@@ -40,6 +40,13 @@ def pilots_online():
 			return data
 	return get_pilots_feed()
 
+def atc_online():
+	if 1 == 0:
+		data = memcache.get("atc_online")
+		if data is not None:
+			return data
+	return memcache.get("atc_online")
+
 def pilots_info():
 	data = memcache.get("pilots_info")
 	if data is not None:
@@ -136,7 +143,7 @@ def mp_servers():
 		print "error"
 	return data
 
-def mpservers_info():
+def mp_servers_info():
 	info =	memcache.get("mpservers_info")
 	return info
 	last = info['updated']	
@@ -145,7 +152,7 @@ def mpservers_info():
 	return info
 
 def server_ip_lookup():
-	servers = mpservers()
+	servers = mp_servers()
 	ret = {}
 	local = ''
 	for server in servers:
@@ -165,10 +172,11 @@ def mpservers_status_update():
 	## fetch content 
 	try:
 		result = urlfetch.fetch(conf.MP_STATUS_URL)
+		print result.content	
 	except:
 		return False
 	if result.status_code == 200:
-			
+		#print result.content	
 		soup = BeautifulSoup.BeautifulSoup(result.content)
 		
 		## find all tables
@@ -200,5 +208,5 @@ def mpservers_status_update():
 				
 		info = {'updated': datetime.datetime.now(), 'up': up, 'down': down, 'total': up + down}
 		memcache.set("mpservers_info", info)
-		return True
+		return info
 

@@ -21,8 +21,8 @@ class Index(webapp.RequestHandler):
 			'title': 'Welcome', 'conf': conf, 'path': self.request.path,
 			'servers': app.fetch.mpservers()
 			}
-		self.redirect("/idea/")
-		return
+		#self.redirect("/idea/")
+		#return
 		path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
 		self.response.out.write(template.render(path, template_values))
 		

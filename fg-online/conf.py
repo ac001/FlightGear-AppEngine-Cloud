@@ -20,3 +20,11 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'De', 'label': 'German'}
 ]
 
+
+sites_nav = [ 
+	{'url': 'http://fg-www.appspot.com', 'label': 'Website', 'id': 'fg-www'},
+	{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
+	{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},
+	{'url': 'http://wiki.flightgear.org', 'label': 'Wiki', 'id': 'wiki'},
+	{'url': 'http://www.flightgear.org/forums/', 'label': 'Forums', 'id': 'forums'}
+]

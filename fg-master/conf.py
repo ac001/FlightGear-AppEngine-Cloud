@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-APP_ID = 'fg-www'
+APP_ID = 'fg-master'
 
 tm = "<span class='tm'>FlightGear&#0174;</span>"
 
-SITE_TITLE = "FlightGear www Cloud Experiment"
-SITE_HEADER = "FlightGear Simulator Project"
+SITE_TITLE = "FlightGear Master Machine"
+SITE_HEADER = 'Master Machine'
 
 GOOGLE_PROJECT = "flightgear-bugs"
 ISSUES_FEED = 'http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full'
@@ -25,13 +25,6 @@ langs = [ 	{'code': 'En', 'label': 'English'},
 			{'code': 'Fi', 'label': 'French'},
 			{'code': 'Es', 'label': 'Spanish'},
 			{'code': 'De', 'label': 'German'}
-]
-sites_nav = [ 
-	{'url': 'http://fg-www.appspot.com', 'label': 'Website', 'id': 'fg-www'},
-	{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
-	{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},
-	{'url': 'http://wiki.flightgear.org', 'label': 'Wiki', 'id': 'wiki'},
-	{'url': 'http://www.flightgear.org/forums/', 'label': 'Forums', 'id': 'forums'}
 ]
 
 

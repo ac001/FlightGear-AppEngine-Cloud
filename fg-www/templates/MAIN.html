@@ -6,19 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
 <title>{{ title }} | {{ conf.SITE_TITLE }}</title>
 
-<!--<link rel="SHORTCUT ICON" href="images/favicon.png">-->
-<!--<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">-->
-<!--
-<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/ext-all.css">
-<link rel="stylesheet" type="text/css" href="/js/ext-3.1.1/resources/css/xtheme-gray.css">
-<script type="text/javascript" src="/js/ext-3.1.1/adapter/ext/ext-base.js"></script>
-<script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>-->
-<!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
+<script type="text/javascript" src="http://fg-master.appspot.com/js/jquery-1.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fg-master.appspot.com/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="http://fg-master.appspot.com/style_sheets/global.1.css">
 
-<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
-<link rel="stylesheet" type="text/css" href="/style_sheets/pedro-0.1.css">
 
-<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/js/front.js"></script>
 
 
@@ -60,7 +52,7 @@
 
 	<p style="text-align: right; margin-top: 5px;"><a href="#"><img src="/images/missc/feed_atom.gif"></a></p>
 
-</div>
+</div><!-- left_box -->
 
 
 
@@ -70,75 +62,59 @@
 <!--######################################################-->
 <!-- ### Top Banner ###-->
 <!--######################################################-->
-<div id="top_container">
 <div id="top_box">
-		<ul id="sites_nav">
-			{% for site in app.sites_nav %}
+	<div id="sites_nav">
+		<ul>
+			{% for site in conf.sites_nav %}
 			<li><a href="{{ site.url }}" 
 					{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
 					>{{ site.label }}</a></li>
 			{% endfor %}
-
 		</ul>
-	<!-- Language Icons and links -->
-	<div id="lang_box">
-		{% for lang in conf.langs %}
-		<a href="#"><img src="/images/langs/{{ lang.code }}.gif" title="{{ lang.label }}"></a>
-		{% endfor %}
 	</div>
-	<h1>FlightGear Simulator Project <small style="font-size: 7pt"> Est 1996</small></h1>
-	<table>
+
+		
+		
+		<h1>{{ conf.SITE_HEADER }}</h1>
+		<table class="top_bar">
+			<tr>
+			<th><i>The World's Leading Open Source Flight Simulator<i>  </th>
+			<td><a href="/idea/multiplayer/pilots/">Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</a></td>
+			<td><a href="/idea/multiplayer/atc/">ATC: {{ conf.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
+			<td><a href="/idea/multiplayer/servers/">Servers: <span style="color: green">{{ conf.app_vars.mpservers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ conf.app_vars.mpservers_info.down|default:"--" }} down</span></a></td>
+			</tr>
+		</table>
+
+
+
+	<table id="toolbar_box">
 	<tr>
-	<th><i>The World's Leading Open Source Flight Simulator<i>  </th>
-	<td><a href="/idea/multiplayer/pilots/">Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</a></td>
-	<td><a href="/idea/multiplayer/atc/">ATC: {{ conf.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
-	<td><a href="/idea/multiplayer/servers/">Servers: <span style="color: green">{{ conf.app_vars.mpservers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ conf.app_vars.mpservers_info.down|default:"--" }} down</span></a></td>
+
+		<td><!-- TODO Google Search -->
+			<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
+			<div>
+				<input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
+				<input type="hidden" name="ie" value="UTF-8" />
+				<input type="text" name="q" size="21" />
+				<input type="submit" name="sa" value="Search" />
+			</div>
+			</form>
+			<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+		</td>
+
+		<td style="text-align:right;"><!-- Profile +  Login/Out -->
+			<div class="account">
+			{% if conf.app_vars.nickname %}
+				<a href="/account/">{{ conf.app_vars.nickname }}</a><a href="{{ conf.app_vars.auth_url }}">Logout</a>
+			{% else %}
+				<a href="{{ conf.app_vars.auth_url }}">Login</a>
+			{% endif %}
+			</div>
+		</td>
 	</tr>
 	</table>
-</div><!-- end top_box -->
 
-
-
-<div id="toolbar_box">
-<table>
-<tr>
-	<td><!-- Web Links -->
-		<ul id="top_nav">
-			<li><a href="http://wiki.flightgear.org">&nbsp;Wiki&nbsp;</a></li>
-			<li><a href="http://www.flightgear.org/forums/">Forums</a></li>
-			<li><a href="http://mpmap01.flightgear.org">MP Map #1</a></li>
-			<li><a href="http://mpmap02.flightgear.org">MP Map #2</a></li>
-		</ul>
-	</td>
-
-	<td><!-- TODO Google Search -->
-		<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
-		<div>
-			<input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
-			<input type="hidden" name="ie" value="UTF-8" />
-			<input type="text" name="q" size="21" />
-			<input type="submit" name="sa" value="Search" />
-		</div>
-		</form>
-		<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
-	</td>
-
-	<td style="text-align:right;"><!-- Profile +  Login/Out -->
-		<div class="account">
-		{% if conf.app_vars.nickname %}
-			<a href="/account/">{{ conf.app_vars.nickname }}</a><a href="{{ conf.app_vars.auth_url }}">Logout</a>
-		{% else %}
-			<a href="{{ conf.app_vars.auth_url }}">Login</a>
-		{% endif %}
-		</div>
-	</td>
-</tr>
-</table>
-
-
-
-</div>
-</div><!-- top container -->
+</div><!-- top box -->
 
 <!--######################################################-->
 <!-- ### Right Box ###-->
@@ -156,13 +132,13 @@
 	{% endblock content %}
 </div><!-- content box -->
 
-</div><!-- midle box -->
+</div><!-- middle box -->
 
 
 <div id="footer_box">
 
 <p>
-<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
+<a href="http://code.google.com/appengine/"><img src="http://fg-master.appspot.com/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
 <a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a> - 
 <a href="http://localhost:8080">Local Site</a> - 
 <a href="http://localhost:8080/_ah/admin/">Local Admin</a> - 

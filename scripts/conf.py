@@ -21,4 +21,3 @@ CVS_DIC = '/home/flight-sim/fg-aircraft/temp/dic/'
 
 #YAML_PATH = '/home/flight-sim/fg-aircraft/fg-aircraft.appspot.com/aicraft_yaml'
 
-

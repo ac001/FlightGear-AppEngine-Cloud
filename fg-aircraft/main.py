@@ -5,44 +5,29 @@ import cgi
 
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-
+"""
 import app.Index
 import app.Online
 import app.MPServers
 import app.Aircraft
-import app.Rpc
+
 import app.Feeds
 import app.Issues
 import app.Devs
 import app.Code
-
+"""
+import app.Rpc
+import app.Handler
 # 										('/cron/pilots_online', app.PilotsOnline.PilotsOnlineCron),
 
-application = webapp.WSGIApplication([	('/', app.Index.Index),
+application = webapp.WSGIApplication([	('/', app.Handler.HandlerPage),
 										('/rpc/(.*)/', app.Rpc.RpcHandler),
-
-										('/online/', app.Online.OnlinePage),
-
-										('/mpservers/', app.MPServers.MPServersPage),
-										('/mpservers/import/', app.MPServers.MPServerImport),
-										('/mpservers/update/', app.MPServers.MPServersUpdateStatus),
-										('/mpserver/(.*)/', app.MPServers.MPServerPage),
-										('/rpc/mpservers', app.MPServers.MPServersRpc),
-
-										('/aircraft/', app.Aircraft.AircraftPage),
-										('/aircraft/(.*)/', app.Aircraft.AircraftPage),
+										('/(.*)/(.*)/', app.Handler.HandlerPage),
+										('/(.*)/', app.Handler.HandlerPage),
 										
-
-										('/import/aircraft/', app.Aircraft.AircraftImport),
-										('/import/revisions/', app.Aircraft.AircraftImportRevisions),
-
-										#('/feeds', app.Feeds.FeedsPage),
-										('/developers/', app.Devs.DevsPage),
-										('/code/', app.Code.CodePage),		
-										#('/aero/(.*)/', app.Aero.AeroPage),
-										('/issues/', app.Issues.IssuesPage),
+									
 									],
-									debug=True)
+									debug=False)
 
 def main():
 	run_wsgi_app(application)

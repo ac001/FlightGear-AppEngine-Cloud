@@ -1,5 +1,5 @@
-application: fg-aircraft
-version: 3
+application: fg-master
+version: 1
 runtime: python
 api_version: 1
 
@@ -16,10 +16,6 @@ handlers:
 - url: /robots.txt
   static_files: static/robots.txt
   upload: static/robots.txt
-
-- url: /admin/
-  script: admin.py
-  login: admin
 
 - url: /.*
   script: main.py

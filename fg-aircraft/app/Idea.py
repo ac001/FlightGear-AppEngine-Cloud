@@ -31,7 +31,7 @@ class IdeaPage(webapp.RequestHandler):
 			'random_image': app.fetch.gallery_random(),
 			'servers': app.fetch.mpservers()
 		}
-		path = os.path.join(os.path.dirname(__file__), 'templates/idea.html')
+		path = os.path.join(os.path.dirname(__file__), 'templates/MAIN.html')
 		self.response.out.write(template.render(path, template_values))
 		
 

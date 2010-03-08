@@ -6,9 +6,12 @@ from google.appengine.api import users
 #from models.models import DownloadServer
 #FEED = "http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full"
 
+APP_ID = 'fg-aircraft'
+
 tm = "<span class='tm'>FlightGear&#0174;</span>"
 
-SITE_TITLE = "FlightGear Cloud Experiment"
+SITE_TITLE = "FlightGear Aircraft Cloud Experiment"
+SITE_HEADER = "FlightGear Aircraft Database"
 
 GOOGLE_PROJECT = "flightgear-bugs"
 ISSUES_FEED = 'http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full'
@@ -34,19 +37,14 @@ nav.append( {'path':'/developers/', 'label': 'Developers'} )
 nav.append( {'path':'/code/', 'label': 'Code'} )
 
 
-user = users.get_current_user()
-if user:
-	nickname = user.nickname()
-	auth_url = users.create_logout_url("/idea/")
-else:
-	nickname = None
-	auth_url = users.create_login_url("/idea/")
 
-app_vars = { 'nickname': nickname, 'auth_url': auth_url,
-			'pilots_info': app.fetch.pilots_info(),
-			'mpservers_info': app.fetch.mpservers_info()
-}
-
+sites_nav = [ 
+	{'url': 'http://fg-www.appspot.com', 'label': 'Website', 'id': 'fg-www'},
+	{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
+	{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},
+	{'url': 'http://wiki.flightgear.org', 'label': 'Wiki', 'id': 'wiki'},
+	{'url': 'http://www.flightgear.org/forums/', 'label': 'Forums', 'id': 'forums'}
+]
 
 
 
@@ -62,48 +60,25 @@ platforms = [	{'platform': 'windows', 'label': 'Windows'},
 ## Front Website Navigation
 ###############################################################################
 front_nav = []
-front_nav.append( {'path':'/idea/', 'label': 'Home', 
-				'subnav': [	
-					{'path':'/idea/home/announce/', 'label': 'Announcements'},
-					{'path':'/idea/home/calendar/', 'label': 'Calendar'},
-				]
-})
 
-front_nav.append( {'path':'/idea/about/', 'label': 'About', 
+front_nav.append( {'path':'/', 'label': 'Latest Updates'})
+
+front_nav.append( {'path':'/aircraft/', 'label': 'Aircraft', 
 				'subnav': [	
-					{'path':'/idea/about/features/', 'label': 'Features'},
-					{'path':'/idea/about/license/', 'label': 'License'}
+					{'path':'/aircraft/large_jets/', 'label': 'Large Jets'},
+					{'path':'/aircraft/large_prop/', 'label': 'Large Props'},
+					{'path':'/aircraft/small_jets/', 'label': 'Small Jets'},
+					{'path':'/aircraft/small_prop/', 'label': 'Small Prop'},
+					{'path':'/aircraft/small_prop/', 'label': 'Helicopters'},
 				]
 })
-front_nav.append( {'path':'/idea/media/', 'label': 'Media', 
-				'subnav': [	
-					{'path':'/idea/media/videos/', 'label': 'Videos'},
-					{'path':'/idea/media/gallery/', 'label': 'Image Gallery'}
-				]
-})
-front_nav.append( {'path':'/idea/support/', 'label': 'Support', 
-				'subnav': [	
-					{'path':'/idea/support/docs/', 'label': 'Documentation'},
-					{'path':'/idea/support/faq/', 'label': 'FAQ'}
-				]
-})
-front_nav.append( {'path':'/idea/download/', 'label': 'Download',
+front_nav.append( {'path':'/livery/', 'label': 'Livery'})
+
+
+front_nav.append( {'path':'/design/', 'label': 'Design',
 			'subnav': [	
-				{'path':'/idea/download/requirements/', 'label': 'Requirements'}, 	
-				{'path':'/idea/download/flightgear/', 'label': 'FlightGear'}, 	
-				#{'path':'/idea/download/aircraft/', 'label': 'Aircraft'},
-				{'path':'/idea/download/scenery/', 'label': 'Scenery'},
-				{'path':'/idea/download/versions/', 'label': 'ChangeLog'},
-			]
-})
-#nav.append( {'path':'/idea/features/', 'label': 'Features'} )
-front_nav.append( {'path':'/idea/aircraft/', 'label': 'Aircraft'} )
-front_nav.append( {'path':'/idea/multiplayer/', 'label': 'Online Multi Player'
-, 			'subnav': [	
-					{'path':'/idea/multiplayer/servers/', 'label': 'Servers'},
-					{'path':'/idea/multiplayer/pilots/', 'label': 'Pilots'},
-					{'path':'/idea/multiplayer/atc/', 'label': 'ATC'},
-					{'path':'/idea/multiplayer/map/', 'label': 'Online Map'}
+					{'path':'/idea/developers/src/', 'label': 'Basics'},
+					{'path':'/idea/developers/credits/', 'label': 'Upload'}
 			]
 })
 
@@ -111,57 +86,3 @@ front_nav.append( {'path':'/idea/multiplayer/', 'label': 'Online Multi Player'
 
 
 
-
-#front_nav.append( {'path':'/mpservers/', 'label': 'Aircraft'} )
-#nav.append( {'path':'/mapservers/', 'label': 'Map Servers'} )
-#nav.append( {'path':'/developers/', 'label': 'Developers'} )
-
-
-front_nav.append( {'path':'/idea/developers/', 'label': 'Developers',
-			'subnav': [	
-					{'path':'/idea/developers/src/', 'label': 'Source Code'},
-					{'path':'/idea/developers/credits/', 'label': 'Credits'}
-			]
-})
-front_nav.append( {'path':'/idea/links/', 'label': 'Links',
-			'subnav': [	
-					{'path':'/idea/links/sites/', 'label': 'Related Sites'},
-					{'path':'/idea/links/projects/', 'label': 'Projects'}
-			]
-})
-
-
-##########################################################
-## Langs - TODO add links
-##########################################################
-langs = [ 	{'code': 'En', 'label': 'English'},
-			{'code': 'Fi', 'label': 'French'},
-			{'code': 'Es', 'label': 'Spanish'},
-			{'code': 'De', 'label': 'German'}
-]
-
-
-
-
-
-"""
-download_servers = [
-	{'location': 'Germany', 'server': 'ftp://ftp.de.flightgear.org/pub/fgfs/'},
-	{'location': 'Germany', 'server': 'http://flightgear.mxchange.org/pub/fgfs/'},
-	{'location': 'South Africa', 'server': '	 ftp://ftp.is.co.za/pub/games/flightgear/'},
-	{'location': 'Ukraine', 'server': 'ftp://ftp.linux.kiev.ua/pub/mirrors/ftp.flightgear.org/flightgear/'},
-	{'location': 'USA, North Carolina', 'server': 'ftp://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
-	{'location': 'USA, Minnesota', 'server': 'http://mirrors.ibiblio.org/pub/mirrors/flightgear/ftp/'},
-	{'location': 'USA, California', 'server': 'ftp://ftp.kingmont.com/flightsims/flightgear/'}
-]
-"""
-"""
-## Done Import
-if DownloadServer.all().count() == 0:
-	for d in download_servers:
-		ftp = DownloadServer()
-		ftp.location = d['location']
-		ftp.server = d['server']
-		ftp.online = 1
-		ftp.save()
-"""

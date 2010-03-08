@@ -24,7 +24,6 @@
 
 {% block content %}
 
-<p>TODO</p>
 <table width="100%" class="listing">
 <tr>
 	<th>Callsign</th>
@@ -35,7 +34,8 @@
 	<th>Heading</th>
 	<th>Server</th>
 </tr>
-{% for pilot in app.pilots_online %}
+{% if app.atc_online %}
+{% for pilot in app.atc_online %}
 	<tr class="hover">
 		<td><b>{{ pilot.callsign }}</a></td>
 		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
@@ -46,6 +46,9 @@
 		<td>{{ pilot.server }}</td>
     </tr>
 {% endfor %}
+{% else %}
+<tr><td colspan="7" align="center"><p>--- No Air Traffic Control at present ---</p></td></tr>
+{% endif %}
 </table>
 
 	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/atc/?do_refresh=1" class="refresh_button">Refresh</a></p>	

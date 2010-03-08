@@ -19,7 +19,7 @@
 	<th>Heading</th>
 	<th>Server</th>
 </tr>
-{% for pilot in pilots_online %}
+{% for pilot in app.pilots_online %}
 	<tr class="hover">
 		<td><b>{{ pilot.callsign }}</a></td>
 		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>

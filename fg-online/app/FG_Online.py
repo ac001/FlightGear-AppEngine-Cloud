@@ -42,17 +42,14 @@ class FG_Online:
 			reply['servers'].append(dic)
 		return reply
 
+	def mp_servers_info(self):
+		return app.fetch.mp_servers_info()
 
+	def pilots_online(self):
+		return app.fetch.pilots_online()
 
-
-	def sites_nav(self):
-		return [ 
-			{'url': 'http://fg-www.appspot.com', 'label': 'www', 'id': 'fg-www'},
-			{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
-			{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},
-			{'url': 'http://wiki.flightgear.org', 'label': 'Wiki', 'id': 'wiki'},
-			{'url': 'http://www.flightgear.org/forums/', 'label': 'Forums', 'id': 'forums'}
-		]
+	def atc_online(self):
+		return app.fetch.atc_online()
 	
 	def nav(self):
 		"""Return navigation - used in tempalte """
@@ -88,7 +85,7 @@ class FG_Online:
 		self._nav = []
 		self._paths = {}
 
-		self.nav_append( {'path':'/index/', 'label': 'Online Multi Player'
+		self.nav_append( {'path':'/index/', 'label': 'About Multi Player'
 		, 			'subnav': [	
 							{'path':'/index/setup/', 'label': 'Aircraft Setup'},
 							{'path':'/index/fgcom/', 'label': 'Voice Setup'},
@@ -100,16 +97,7 @@ class FG_Online:
 		})
 		self.nav_append( {'path':'/atc/', 'label': 'ATC'
 		})
-		"""
-		self.nav_append( {'path':'/', 'label': 'Online Multi Player'
-		, 			'subnav': [	
-							{'path':'/servers/', 'label': 'Servers'},
-							{'path':'/pilots/', 'label': 'Pilots'},
-							{'path':'/atc/', 'label': 'ATC'},
-							{'path':'/map/', 'label': 'Online Map'}
-					]
-		})
-		"""
+
 		servers = self.mp_servers()
 		servers_list = []
 		for server in self.mp_servers():

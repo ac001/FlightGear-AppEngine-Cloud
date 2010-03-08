@@ -49,6 +49,7 @@ class HandlerPage(webapp.RequestHandler):
 		## Application Calls Object
 		fgOnline = app.FG_Online.FG_Online()
 		template_vars['app'] = fgOnline
+		print fgOnline.mp_servers_info()
 
 		## Set up the enviroment based on section/subpage eg /download/scenery/
 		if section == None:
