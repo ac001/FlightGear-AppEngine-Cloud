@@ -28,8 +28,6 @@
 <script src="/js/lightbox2.04/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
 <script src="/js/lightbox2.04/js/lightbox.js" type="text/javascript"></script>
 
-<!--<script type="text/javascript" src="js/FG_PilotsGrid.js"></script>-->
-
 </head> 
 <body> 
 
@@ -42,7 +40,7 @@
 <div id="left_box">
 
 	<!--## Logo ##-->
-	<div id="flightgear_logo"><img src="/images/fg2.png"></div>
+	<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
 
 	<!--## Navigation  ##-->
 	<div id="navcontainer">
@@ -74,6 +72,14 @@
 <!--######################################################-->
 <div id="top_container">
 <div id="top_box">
+		<ul id="sites_nav">
+			{% for site in app.sites_nav %}
+			<li><a href="{{ site.url }}" 
+					{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
+					>{{ site.label }}</a></li>
+			{% endfor %}
+
+		</ul>
 	<!-- Language Icons and links -->
 	<div id="lang_box">
 		{% for lang in conf.langs %}
