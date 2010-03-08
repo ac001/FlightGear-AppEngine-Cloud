@@ -1,0 +1,55 @@
+{% extends "idea.html" %}
+
+{% block right_box %}
+
+	<div class="panel_box">
+		<h3>ATC Wiki Links</h3>
+		<img src="/images/missc/atc.png" style="float: right; margin: 10px;">
+		<ul>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC">ATC basics</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_phraseology">Phraseology</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/Howto:_Be_a_controller">Be a controller</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_Tutorial">Tutorial</a></li>
+		</ul>
+	</div>
+
+{% include "snip.fgcom_box.html" %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<h1>Aair Traffic Control</h1>
+
+<p>TODO</p>
+<table width="100%" class="listing">
+<tr>
+	<th>Callsign</th>
+	<th>Aircraft</th>
+	<th>Lat</th>
+	<th>Lng</th>
+	<th>Altitude</th>
+	<th>Heading</th>
+	<th>Server</th>
+</tr>
+{% for pilot in pilots_online %}
+	<tr class="hover">
+		<td><b>{{ pilot.callsign }}</a></td>
+		<td><a href="/aircraft/{{ pilot.aero }}/">{{ pilot.aero }}</a></td>
+		<td>{{ pilot.lat }}</td>
+		<td>{{ pilot.alt }}</td>	
+		<td>{{ pilot.heading }}</td>
+		<td>{{ pilot.lat }}</td>
+		<td>{{ pilot.server }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/atc/?do_refresh=1" class="refresh_button">Refresh</a></p>	
+{% endblock %}

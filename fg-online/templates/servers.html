@@ -1,0 +1,44 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<table width="100%" class="listing">
+<tr>
+	<th>No</th>
+	<th>Server</th>
+	<th>Status</th>
+	<th>Last Updated</th>
+	<th>Location</th>
+	<th style="text-align:right;">IP</th>
+	<th style="text-align:left;">Port</th>
+	<th align="center">Online</th>
+</tr>
+{% for server in app.mp_servers %}
+	<tr class="hover">
+		<td><a href="#">{{ server.no }}</a></td>
+		<td>{{ server.server }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+			</td>
+		<td>{{ server.status_updated|date:"Y-m-d H:i:s"|default:"&nbsp;" }}</td>
+		<td>{{ server.location }}</td>
+		<td align="right">{{ server.ip }}</td>
+		<td align="left">{{ server.port }}</td>
+		<td align="center">{{ server.pilots_count }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/servers/" class="refresh_button">Refresh</a></p>
+{% endblock %}
