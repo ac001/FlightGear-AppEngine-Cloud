@@ -75,7 +75,14 @@
 <div id="top_container">
 <div id="top_box">
 	<!-- Language Icons and links -->
-	
+		<ul id="sites_nav">
+			{% for site in app.sites_nav %}
+			<li><a href="{{ site.url }}" 
+					{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
+					>{{ site.label }}</a></li>
+			{% endfor %}
+
+		</ul>
 	<h1>{{ conf.SITE_HEADER }}</h1>
 	<table>
 	<tr>
@@ -87,47 +94,6 @@
 	</table>
 </div><!-- end top_box -->
 
-
-
-<div id="toolbar_box">
-<table>
-<tr>
-	<td><!-- Web Links -->
-		<ul id="top_nav">
-			<li><a href="http://wiki.flightgear.org">&nbsp;Wiki&nbsp;</a></li>
-			<li><a href="http://www.flightgear.org/forums/">Forums</a></li>
-			<li><a href="http://mpmap01.flightgear.org">MP Map #1</a></li>
-			<li><a href="http://mpmap02.flightgear.org">MP Map #2</a></li>
-		</ul>
-	</td>
-
-	<td><!-- TODO Google Search -->
-		<form action="http://www.google.com/cse" ssid="cse-search-box" class="toolbar_form">
-		<div>
-			<input type="hidden" name="cx" value="014455812952330413319:i-xxrdkrna4" />
-			<input type="hidden" name="ie" value="UTF-8" />
-			<input type="text" name="q" size="21" />
-			<input type="submit" name="sa" value="Search" />
-		</div>
-		</form>
-		<script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
-	</td>
-
-	<td style="text-align:right;"><!-- Profile +  Login/Out -->
-		<div class="account">
-		{% if conf.app_vars.nickname %}
-			<a href="/account/">{{ conf.app_vars.nickname }}</a><a href="{{ conf.app_vars.auth_url }}">Logout</a>
-		{% else %}
-			<a href="{{ conf.app_vars.auth_url }}">Login</a>
-		{% endif %}
-		</div>
-	</td>
-</tr>
-</table>
-
-
-
-</div>
 </div><!-- top container -->
 
 <!--######################################################-->

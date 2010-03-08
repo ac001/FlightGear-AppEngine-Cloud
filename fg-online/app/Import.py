@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import cgi
-import json
-
+from django.utils import simplejson as json
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 
@@ -45,4 +44,5 @@ class ImportHandler(webapp.RequestHandler):
 
 		
 		self.response.out.write(json.dumps(reply))
+
 

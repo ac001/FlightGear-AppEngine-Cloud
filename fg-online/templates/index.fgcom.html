@@ -1,0 +1,42 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+	<div class="panel_box">
+		<h3>ATC Wiki Links</h3>
+		<ul>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC">ATC basics</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_phraseology">Phraseology</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/Howto:_Be_a_controller">Be a controller</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_Tutorial">Tutorial</a></li>
+		</ul>
+	</div>
+
+{% include "snip.fgcom_box.html" %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block content %}
+
+<h2>FGCom</h2>
+<p><b>FGCom</b> is an addon for {{ conf.tm }}. With <b>FGCom</b> and the infrastructure behind it, {{ conf.tm }} now has a realtime voice communication system which enriches the {{ conf.tm }} capabilities, especially for Multiplayer events, such as:-</p>
+
+<ul>
+<li><p>Live <a href="/atc/">Air Traffic Control</a></p></li>
+<li><p>Flying in groups - see the <a href="http://flightgear.org/forums/viewforum.php?f=10">Multiplayer Events Forum</a> </p></li>
+
+<li><p>Invite friends to a guided sightseeing tour in your most beloved area</p></li>
+<li><p>Conduct military training like <i>Air-Air-Refuelling</i>, <i>Dog fights</i>, <i>Escort flights</i>, etc.</p></li>
+<li><p>offering additional services at an airport like ATC, Snowplows, Pushbacks, Racing-Events etc.</p></li>
+<li><p>Have a real time flight training e.g. a pilot in Hongkong with teacher in Sydney.</p></li> 
+<li><p>Glider-towing or just asking for on-line support during flight.</p></li> 
+<li><p>just ask somebody flying a plane of interest about specifics or e.g. just sit in a cockpit in Germany while  sightseeing San Francisco in a C172, voice-chatting with a Texan in a plane I dreamed of as a boy (Super Constellation), and both getting informations from a New Zealand guy (it shall be a wonderful island – but do real people live there? He said: Yes!!)</p></li>
+</ul>
+
+<p><b><a href="http://wiki.flightgear.org/index.php/Fgcom">FGCom Setup Instructions</a></b> on the wiki</p>
+{% endblock %}

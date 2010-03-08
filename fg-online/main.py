@@ -13,6 +13,7 @@ application = webapp.WSGIApplication([
 										('/update/', app.Handler.UpdateStatus),
 										('/import/', app.Import.ImportHandler),
 										('/rpc/', app.Handler.RPCHandler),
+										('/(.*)/(.*)/', app.Handler.HandlerPage),
 										('/(.*)/', app.Handler.HandlerPage),
 										('/', app.Handler.HandlerPage),
 										

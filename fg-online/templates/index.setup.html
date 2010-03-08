@@ -1,0 +1,57 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+	<div class="panel_box">
+		<h3>ATC Wiki Links</h3>
+		<img src="/images/missc/atc.png" style="float: right; margin: 10px;">
+		<ul>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC">ATC basics</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_phraseology">Phraseology</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/Howto:_Be_a_controller">Be a controller</a></li>
+		<li><a href="http://wiki.flightgear.org/index.php/ATC_Tutorial">Tutorial</a></li>
+		</ul>
+	</div>
+
+{% include "snip.fgcom_box.html" %}
+
+
+
+
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<h2>Using the Windows launcher / fgrun</h2>
+
+<p><img src="/images/mp_dialog.jpg"></p>
+<ul>
+<li><p>Select your aircraft and starting airport as normal in <b>Fgrun</b>.</p></li>
+
+<li><p>On the next screen, tick the <b>Multiplayer</b> checkbox.</p></li>
+<li><p>Also tick the <b>AI models</b> box or you will not be able to see the other aircraft.</p></li>
+<li><p>Enter the <b>callsign</b> of your choice, but check to see whether it is already in use or not. Do not pick a callsign that is already used as weird stuff happens.</p></li>
+
+<li><p>Pick and enter the <b>mpserver[n].flightgear.org</b> in the <b>Hostname</b> box. Please <b>avoid mpserver02</b> as this is often overloaded.</p></li>
+<li><p>Enter port <b>5000</b> into both the <b>in</b> and <b>out</b> boxes.</p></li>
+<li><p>Click <b>run</b> and you'll soon be flying with other pilots!</p></li>
+</ul>
+
+<p>To confirm that it's working, you can go to the multiplayer map at; http://mpmap02.flightgear.org/ (in Hong Kong). You will also notice chat messages that say "Hello" indicating pilots that are online and then as they join. You may wish to use a different server (i.e. "Hostname" entry);</p>
+<p>
+For more advanced settings, the Advanced > Network tab can be opened. You are able to remove the in or out lines only through this method for example.</p>
+
+<h2>Using fgfs from the command line</h2>
+
+First, for those who are very impatient and have a vague idea about what they're doing, the basic arguments to pass to fgfs for multiplayer are these;
+--multiplay=out,10,server.ip.address,portnumber
+--multiplay=in,10,your.ip.address,portnumber
+--callsign=anything 
+Where portnumber is usually 5000 and your.ip.address is the ip address of the network interface being used by FG to connect to the server - even if that's a local 192.168 type address. Please note that although this limitation has been removed in the most recent versions of the FG server; you should still specify a valid (non-loopback, i.e. not 127.0.0.1) IP address to keep the FG client happy.
+With the latest FlightGear (at least with OSG), you can also leave your.ip.address blank. FlightGear will then listen on all network interfaces:
+--multiplay=in,10,,5000
+
+{% endblock %}

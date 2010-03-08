@@ -8,7 +8,6 @@ from google.appengine.api import memcache
 
 
 from django.utils import simplejson as json
-#from libs.BeautifulSoup import BeautifulSoup 
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 

@@ -11,35 +11,12 @@ from django.utils import simplejson as json
 #from BeautifulSoup import BeautifulSoup 
 from google.appengine.api import urlfetch
 #import xml.dom.minidom
-"""
-import gdata.projecthosting.client
-import gdata.projecthosting.data
-import gdata.gauth
-import gdata.client
-import gdata.data
-import atom.http_core
-import atom.core
-"""
+
 import conf
-#from models.models import MPServer
 
-
-"""
-This is the main "Object" that is passed to the template
-
-A "function_call()" appears as "app.function_call"
-
-Its a pain in the ass that within a tempalte app.function_call("argument_with_django")
-is not allowed
-
-"""
-
-## Import main Calls
 import app.fetch
 
-##############################################################
-## App Calls Class
-##############################################################
+
 class FG_Online:
 
 
@@ -65,10 +42,23 @@ class FG_Online:
 			reply['servers'].append(dic)
 		return reply
 
+
+
+
+	def sites_nav(self):
+		return [ 
+			{'url': 'http://fg-www.appspot.com', 'label': 'www', 'id': 'fg-www'},
+			{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
+			{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},
+			{'url': 'http://wiki.flightgear.org', 'label': 'Wiki', 'id': 'wiki'},
+			{'url': 'http://www.flightgear.org/forums/', 'label': 'Forums', 'id': 'forums'}
+		]
 	
 	def nav(self):
 		"""Return navigation - used in tempalte """
 		return self._nav
+
+	
 
 	def title(self, path):
 		"""Return the title or label from path based lookup"""
@@ -93,14 +83,16 @@ class FG_Online:
 	def __init__(self):
 		"""Initialise Navigation and add navigations items"""
 		### TODO authenticated sections
+
+
 		self._nav = []
 		self._paths = {}
 
 		self.nav_append( {'path':'/index/', 'label': 'Online Multi Player'
 		, 			'subnav': [	
-							{'path':'/index/setup/', 'label': 'Fly Multiplayer'},
-							{'path':'/index/setup/', 'label': 'Voice Setup'},
-							{'path':'/index/mpserver/', 'label': 'MP Server'},
+							{'path':'/index/setup/', 'label': 'Aircraft Setup'},
+							{'path':'/index/fgcom/', 'label': 'Voice Setup'},
+							{'path':'/index/server_setup/', 'label': 'Create Server'},
 					]
 		})
 		
