@@ -522,11 +522,24 @@ llfloat: left;
 /********************************************************************/
 /** Video Box  ***/
 /********************************************************************/
+#content_box .video_table{
+	ssbackground-color: red;
+}
+
+#content_box .video_table th{
+	background-color: #efefef;
+	border: 1px solid #dddddd;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 12pt;
+	text-align: left;
+	padding: 5px;
+}
+
 #content_box .video_box{
 	padding: 10px;
 	margin: 20px 30px 10px 0px;
 	text-align: center;
-	ssbackground-color: #dddddd;
 	clear: right;
 	border-left: 1px solid #cccccc;
 	border-top: 1px solid #cccccc;

@@ -10,9 +10,8 @@
 
 {% block content %}
 
-<h1>Version Summary</h1>
 
-{% for ver in versions %}
+{% for ver in app.versions %}
 	<h3>{{ ver.version}}</h3>
 	<p>{{ ver.info }}</p>
 

@@ -15,14 +15,18 @@
 
 {% block content %}
 
-<h1>Videos</h1>
 
 
-<table><tr>
+<table class="video_table">
+
+<tr>
+	<th>Tutorials</th>
+	<th>How To's</th>
+</tr>
+<tr>
 <!--## Tutorials -->
 <td>
-	<h4>Tutorials</h4>
-	{% for vid in videos_tutorial %}
+	{% for vid in app.video_tutorials %}
 		<div class="video_box"><a href="#">
 			<img src="{{ vid.thumbnail }}"><p>{{ vid.title }}</p></a>
 		</div>
@@ -32,8 +36,7 @@
 
 <!--## How To's -->
 <td>
-	<h4>How To's</h4>
-	{% for vid in videos_howto %}
+	{% for vid in app.video_howtos %}
 		<div class="video_box"><a href="#">
 			<img src="{{ vid.thumbnail }}"><p>{{ vid.title }}</p></a>
 		</div>

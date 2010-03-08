@@ -15,8 +15,7 @@
 
 {% block content %}
 
-<h1>{{ title }}</h1>
-{% for img in gallery %}
+{% for img in app.gallery %}
 	<div class="gallery_thumb_box">
 	<a href="http://flightgear.org/Gallery-v2.0/images/{{ img }}" 
 		rel="lightbox"><img src="http://flightgear.org/Gallery-v2.0/thumbnails/{{ img }}"></a>

@@ -13,6 +13,12 @@ import urllib2
 
 import conf
 
+
+if "--live" in sys.argv:
+	WWW = "http://%s.appspot.com" % 'fg-online'
+else:
+	WWW = "http://localhost:8080"
+
 ## Ooen files from mpmap
 content = open(conf.FG_MAP_ROOT + "/fgmap.servers").read()
 lines = content.split("\n")
@@ -57,7 +63,7 @@ for line in lines:
 		#print dic
 		
 		#sys.exit(1)
-		url = conf.WWW + "/mpservers/import/"
+		url = WWW + "/import/"
 		if 1 == 1:
 			data = urllib.urlencode(dic)
 			#print url + "?" + data

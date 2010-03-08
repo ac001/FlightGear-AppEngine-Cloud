@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-
+APP_ID = 'fg-www'
 
 tm = "<span class='tm'>FlightGear&#0174;</span>"
 
-SITE_TITLE = "FlightGear Cloud Experiment"
+SITE_TITLE = "FlightGear www Cloud Experiment"
 
 GOOGLE_PROJECT = "flightgear-bugs"
 ISSUES_FEED = 'http://code.google.com/feeds/issues/p/flightgear-bugs/issues/full'
@@ -16,34 +16,6 @@ MP_STATUS_URL = "http://mpmap01.flightgear.org/mpstatus/"
 MP_PILOTS_URL = "http://mpmap02.flightgear.org/fg_server_xml.cgi?mpserver02.flightgear.org:5001"
 
 GIT_ATOM = "http://pigeond.net/git/?p=flightgear/flightgear.data.git;a=atom"
-
-"""
-user = users.get_current_user()
-if user:
-	nickname = user.nickname()
-	auth_url = users.create_logout_url("/")
-else:
-	nickname = None
-	auth_url = users.create_login_url("/")
-
-app_vars = { 'nickname': nickname, 'auth_url': auth_url,
-			'pilots_info': app.fetch.pilots_info(),
-			'mpservers_info': app.fetch.mpservers_info()
-}
-"""
-"""
-platforms = [	{'platform': 'windows', 'label': 'Windows'},
-				{'platform': 'linux', 'label': 'Linux'},
-				{'platform': 'mac', 'label': 'Mac OSX'},
-				{'platform': 'freebsd', 'label': 'Free BSD'},
-				{'platform': 'sgi', 'label': 'SGI'}
-]
-"""
-###############################################################################
-## Front Website Navigation
-###############################################################################
-
-
 
 ##########################################################
 ## Langs - TODO add links
