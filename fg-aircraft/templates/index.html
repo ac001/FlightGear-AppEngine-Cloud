@@ -1,0 +1,45 @@
+{% extends "MAIN.html" %}
+
+{% block side_box %}
+<h4>Servers</h4>
+<table width="100%" class="hover">
+<tr>
+	<th>Server</th>
+	<th>Status</th>
+
+</tr>
+{% for server in servers %}
+	<tr>
+		<td>{{ server.server }}</td>
+		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+			{% else %}<span class="status_down">Down</span>{% endifequal %}
+		</td>
+    </tr>
+{% endfor %}
+</table>
+<h4>TODO</h4>
+<p>something else here</p>
+{% endblock side_box %}
+
+
+
+
+{% block content %}
+
+{% include "git_table.html" %}
+
+<p>Welcome to a mashup. This is a little experiment with the Google App Engine, ie cloud. The idea is to reaseach using the Google App Engine, pulling data from various resources such as:
+</pre>
+<ul>
+<li>Aircraft data from *-set.xml files (processed local and pushed to cloud, soon on cron)</li>
+<li>CVS Logs and file updates (processed local and pushed to cloud, soon on cron)</li>
+<li>Pulls developers list from CVS logs</li>
+<li>Mapservers imported</li>
+<li>MP status update with some beautiful soup</li>
+<li>Latest issues from fliightgear-bugs</li>
+<li>Aircraft Details</li>
+</ul>
+
+<p>The code is available at github <a href="http://github.com/ac001/fg-aircraft">http://github.com/ac001/fg-aircraft</a></p>
+
+{% endblock %}
