@@ -21,5 +21,11 @@ The upload a site, you need developer access then execute
 == Notes ==
 The fg-master is definately research into using one server for shared
 logo and stylesheets etc, to check both loading times and the possibility
-or globally macking changes eg a "logo of the day"
+of globally making changes eg a "logo of the day"
+
+If you want to join in the fun then contact
+pete = ac0001 on the chat channel irc.flightgear.org#flightgear
+
+Wanted = Graphic Designer
+
 
