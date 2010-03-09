@@ -342,11 +342,14 @@ body{
 	margin-top: 0px;
 	background-color: #efefef;
 	margin-bottom: 10px;
-	padding: 10px;
 	border-left: 2px solid #99aacc;
 	border-right: 2px solid #99aacc;
 	border-bottom: 2px solid #99aacc;
 	width: 100%;
+}
+
+#top_box table#toolbar_box td{
+	padding: 10px;
 }
 
 #top_box table#toolbar_box .toolbar_form label{
@@ -496,6 +499,73 @@ body{
 	padding: 3px;
 	background-color: #efefef;
 }
+
+
+
+/********************************************************************/
+/** Video Box  ***/
+/********************************************************************/
+#content_box .video_table{
+
+}
+
+#content_box .video_table th{
+	background-color: #efefef;
+	border: 1px solid #dddddd;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 12pt;
+	text-align: left;
+	padding: 5px;
+}
+
+#content_box .video_box{
+	padding: 10px;
+	margin: 20px 30px 10px 0px;
+	text-align: center;
+	clear: right;
+	border-left: 1px solid #cccccc;
+	border-top: 1px solid #cccccc;
+	border-bottom: 1px solid white;
+	border-bottom: 1px solid white;
+	height: 120px;
+}
+#content_box .video_box:hover{
+	background-color: #eeeeee;
+	border: 1px solid #dddddd;
+}
+#content_box .video_box a{
+	
+	text-decoration: none;
+	display: block;
+	color: black;
+}
+#content_box .video_box img{
+	float: left;
+	margin-right: 10px;
+}
+#content_box .video_box p{
+
+	padding: 0px;
+	margin: 0px;
+	text-align: left;
+	ccbackground-color: blue;
+	height: 100;
+}
+
+/********************************************************************/
+/** Gallery Thinbmails ***/
+/********************************************************************/
+.gallery_thumb_box{
+	float: left;
+	border: 2px solid white;	
+}
+.gallery_thumb_box:hover{
+	border: 2px solid black;
+}
+
+
+
 
 /********************************************************/
 /** Footer **/
