@@ -6,35 +6,11 @@ import random
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
-
 from django.utils import simplejson as json
-#from BeautifulSoup import BeautifulSoup 
 from google.appengine.api import urlfetch
-#import xml.dom.minidom
-"""
-import gdata.projecthosting.client
-import gdata.projecthosting.data
-import gdata.gauth
-import gdata.client
-import gdata.data
-import atom.http_core
-import atom.core
-"""
+
+
 import conf
-#from models.models import MPServer
-
-
-"""
-This is the main "Object" that is passed to the template
-
-A "function_call()" appears as "app.function_call"
-
-Its a pain in the ass that within a tempalte app.function_call("argument_with_django")
-is not allowed
-
-"""
-
-## Import main Calls
 import app.fetch
 
 ##############################################################
