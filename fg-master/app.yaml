@@ -17,6 +17,8 @@ handlers:
   static_files: static/robots.txt
   upload: static/robots.txt
 
+- url: /relays/
+  script: relays.py
 - url: /.*
   script: main.py
 

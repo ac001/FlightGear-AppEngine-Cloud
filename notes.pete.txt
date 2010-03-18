@@ -1,0 +1,97 @@
+Pete's ramblings..
+
+Regarding the website and the future, here are some thoughts and notes about current development I'm working on to see if its works.
+The project code is available at http://github.com/ac001/FlightGear-AppEngine-Cloud
+
+The Google App Engine, I think its a great idea as deploying an application is quick and easy.
+
+Advantages
+* relies on Google infrastructure
+* does not require one to setup and maintain their own servers
+* can be coded in python or java
+* each application scales to three million page views a month or around 1.2 requests a second before it costs
+* can "switch" app versions at the click of a button
+* easy with more than one developer/maintainer/admin
+* memcached, cron, xmpp/chat and other services are built in and easy
+* easy to learn api
+* easy to deploy, built in django or any other python templating
+* uses googles bigtable to save data as objects
+* has SDK 
+
+Disadvantages
+* relies on Google infrastructure
+* 1000 files limit (although this can be assisted with webzip)
+* can only speak on port 80
+* cannot run some libs as a "normal" server would, and lacks some popular libs, eg lxml
+* has a 30 second (+1 to catch error) time limit per script
+* does not have a file system, for example scanning a /gallery/*.png directory for images is impossible
+* does not have a realational database as such
+* uses python 2.5 (a leap to 3 is expected as BDFL is at google)
+* requires SDK to develop
+
+So here's the idea in my head, and development is at the research stage at the moment, with bits an pieces
+coded to verify its possibilty, and the platform as it is new and a different way of doing things. 
+My feeling is that currently FlightGear is not "interlinked" enough and does not appear as a huge platfrom, which is what it is.
+
+Starting with a clean slate and the objective to being a very popular destination internationally. 
+None of the current site needs to be discarded, but rather restructured.
+
+Create a "coporate" image with a cool logo, and use this style and its various flavours across all domains and sites. Logo to of the day will be possible.
+
+Split flightgear into its various constituent web sites as a CDN with its own set of focused maintainers. with constant improvement.
+Each subdomain can have its own unique style, eg different color schema, icons, layout etc.
+This list of sites need to be links (at the top maybe) to "jump" between each subdomain seamlessly. demonstrated here >> http://fg-www.appspot.com/
+
+ * www.flightgear.org - main  website and landing page, news, downloads, documentation - http://fg-www.appspot.com/
+ * shop.flighgear.org - todo - buy the CD, tshirt, baseball cap + bat. contribute to quota. 
+ * wiki.flightgear.org - wiki - some pages can be moved from here to somewhere more official http://wiki.appspot.com/
+ * aircraft.flightgear.org - wip - aircraft  database,  links to hangers, downloads, repos, ranking, instructions, updates etc - http://fg-aircraft.appspot.com/
+ * online.flightgear.org - wip - mp/pilots/atc/servers site, relay status(memcached) needs to be pushed here and everyone else pulls from here - http://fg-online.appspot.com/ 
+ * liveries.flightgear.org - http://liveries.flightgear.org/
+ * scenery.flightgear.org - wip - how to download and install scenery, links to existing scenery, latest updates, how to terrasync
+ * scenemodels.flightgear.org - existing site, needs a revamp with some ajax interface for easy browsing (eg extjs) http://scenemodels.flightgear.org/
+ * nav.flightgear.org - navigation database for browsing and remote calls. wip http://fg-navdata.appspot.com/
+ * dev.flightgear.org - Developers zone, definitive how to compile, bugs list, dozygen docs,  links to libs 
+ * master.flightgear.org - Master CDN machine that contains the logo (of the day), ftp servers, stock libs/js/css, images shared data. http://fg-master.appspot.com/
+ * mpmap01/02.flightgear.org - These could be consolidated into online.flightgear.org
+ 
+ 
+### Gallery ####
+Currently the gallery exists as a set of images and thumnails, its assumed the size is consistent and there is a manual process to uplaod etc. 
+
+Presenting the images as a gallery is a simple listing of files in a directory.
+Implmenting this techniques on gae is not possible, as the images will need to be manually uploaded with an application upgrade, 
+or they need to be manually uploaded to a blob store. There's also the limit of 1000 files (everything) and the 30 second timeout for large iamges.
+
+A possibility is to have users upload their own images, but this requires user login and censorship just in case (maybe later), in adition to backend storage, resizing and generating thumbnails.
+
+One possible solution (as martin pointed out) is to use google's code/project hosting and svn service to store and maintain the image gallery.
+This would have the advantage of having easier administration and authentication as well as using google infrastructure for storage.
+This has been implemented here as a test http://code.google.com/p/flightgear-gallery/source/browse/#svn/trunk
+The feed is here http://flightgear-gallery.googlecode.com/svn/trunk/gallery.js
+The online webpage (tba)
+
+What is the licence these images are under ?
+
+### Aircraft Database ####
+http://fg-aircraft.appspot.com/
+I have started with this, but its in limbo as I need to research more information.
+
+There are a few ways of obtaining aircraft
+* Base package - the base package somes with a few core aircraft
+* Download from website
+* CVS 
+* Other sources eg independant hangers, git evn externals etc.
+
+Some of these released aircraft are under non GPL licences which means their not part of flightgear/cvs.
+
+The idea of the aircraft database is to have a list of all available aircraft.
+* This is currently being derived by walking a local cvs tree and pushing/updating the data (possibly via cron)
+* Some variables are possible eg, no of engines, engine type, length, width/height, flaps, gear, has primus.
+* tried to walk the cvs tree to get the current cvs changes, so update alerts can be on the website automatically.
+* Need a way to maybe classify the aircraft. Airliners, small props, heavy cargo etc (tags)
+* tips and tricks, feature requests, bug tracking embeded into aircraft page
+* each aircraft to have screenshot, paramaters, help (from set.xml), links, videos.
+* There could be mroe than one version of each aircraft.. eg olde cvs, and new git, even a .deb file
+* Users can rank aircraft, and ability to change rank 
+* list of the developers and their credits

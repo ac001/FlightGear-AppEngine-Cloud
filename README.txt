@@ -36,6 +36,3 @@ pete = ac0001 on the chat channel irc.flightgear.org#flightgear
 
 Most Wanted = Graphic Designer
 
-
-
-

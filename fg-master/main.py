@@ -9,8 +9,6 @@ import app.Handler
 
 
 application = webapp.WSGIApplication([	
-										#('/(.*)/(.*)/', app.Handler.HandlerPage),
-										#('/(.*)/', app.Handler.HandlerPage),
 										('/', app.Handler.HandlerPage),
 										
 									],
