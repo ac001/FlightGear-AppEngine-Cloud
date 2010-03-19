@@ -180,6 +180,7 @@ def git_feeds():
 ## MP Server Queries
 ####################################################
 def mp_servers():
+	return
 	data = memcache.get("mp_servers")
 	if data is not None:
 		return data
@@ -272,12 +273,8 @@ def gallery():
 			print "error" #TODO
 	return gallery
 
-		
-
 def gallery_random():
-	gallery = gallery()
-	randy = random.choice(gallery)
-	return randy
+	return random.choice( gallery() )
 
 
 #######################################################

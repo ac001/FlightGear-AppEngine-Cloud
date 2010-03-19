@@ -16,10 +16,16 @@
 {% block content %}
 
 {% for img in app.gallery %}
-	<div class="gallery_thumb_box">
+	<div class="gallery_thumb_box" id="gallery">
 	<a href="{{ img.image }}" 
 		rel="lightbox"><img src="{{ img.thumb }}"></a>
 	</div>
 {% endfor %}
+
+    <script type="text/javascript">
+    $(function() {
+        $('#gallery a').lightBox();
+    });
+    </script>
 
 {% endblock content %}

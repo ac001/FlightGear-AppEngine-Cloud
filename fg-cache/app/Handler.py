@@ -10,7 +10,7 @@ class HandlerPage(webapp.RequestHandler):
 
 	def get(self):
 	
-		template_vars = {}
+		template_vars = {'version':  os.environ.get('CURRENT_VERSION_ID', '1')}
 	
 
 		template_path = os.path.join(os.path.dirname(__file__), '../templates/%s' % "MAIN.html")
