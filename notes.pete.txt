@@ -94,6 +94,14 @@ The online webpage (tba)
 
 What is the licence these images are under ?
 
+### Videos
+Currently this is a feed from youtube searching for tutorial + howto to create two columns.
+
+* Extend to include a set eg there's a set on Landing with ILS, a set on VOR
+* Users can submit their own video link, vide.google, youtube, vimeo etc
+* This might need some moderation
+* Ability to tag videos, where this is done on youtube or on fg site needs to be addresses. 
+
 ================================================================ 
 Aircraft Database 
 ================================================================ 
@@ -119,7 +127,7 @@ The idea of the aircraft database is to have a list of all available aircraft au
 * Users can rank aircraft, and ability to change rank 
 * list of the developers and their credits
 * Users can submit photos
-* links to the liveries database
+* links to the liveries database, youtube vids and gallery
 
 
 ================================================================ 
