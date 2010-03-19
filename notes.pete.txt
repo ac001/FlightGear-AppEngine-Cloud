@@ -52,10 +52,24 @@ This list of sites need to be links (at the top maybe) to "jump" between each su
  * scenemodels.flightgear.org - existing site, needs a revamp with some ajax interface for easy browsing (eg extjs) http://scenemodels.flightgear.org/
  * nav.flightgear.org - navigation database for browsing and remote calls. wip http://fg-navdata.appspot.com/
  * dev.flightgear.org - Developers zone, definitive how to compile, bugs list, dozygen docs,  links to libs 
- * master.flightgear.org - Master CDN machine that contains the logo (of the day), ftp servers, stock libs/js/css, images shared data. http://fg-master.appspot.com/
+ * master.flightgear.org - Master CDN machine that contains the logo (of the day), ftp servers, stock libs/js/css, images shared data. http://fg-master.appspot.com/ (this is research)
  * mpmap01/02.flightgear.org - These could be consolidated into online.flightgear.org
  
- 
+======================================
+Main Website 
+====================================== 
+
+News
+* Annoucements needs to go into a database so they can be sorted, newest at top 
+* Current announcments need to be imported. A feature such as 5 years ago today.... 
+* newsletters, releases, general news, notams and events needs to go in here. 
+* Not necessarily the content, eg the newsletter could a short announcment and link to the wiki.
+* Generate an ATOM feed of the news/announcments
+* Create admin interface for news/announcmnets, inc publish button and publish until
+
+Calendar
+* the current calendar requires an emailt o curt who then updated the calendar on google.
+
 ### Gallery ####
 Currently the gallery exists as a set of images and thumnails, its assumed the size is consistent and there is a manual process to uplaod etc. 
 

@@ -12,10 +12,6 @@ from libs.BeautifulSoup import BeautifulSoup
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
-"""
-import gdata.projecthosting.client
-import gdata.projecthosting.data
-"""
 import gdata.youtube.service
 import gdata.gauth
 import gdata.client
@@ -25,9 +21,6 @@ import atom.core
 
 
 import conf
-from models.models import MPServer
-
-
 
 
 ####################################################
@@ -263,75 +256,26 @@ def mpservers_status_update():
 		return True
 
 
-def TODOissues(aero=None):
-	def all(self):
-		"""Retrieve all the issues in a project."""
-		#data = memcache.get("issues_all")
-		#if data is not None:
-		#	return data, True
-		client = gdata.projecthosting.client.ProjectHostingClient()
-		client.client_login(
-					conf.USER_NAME,
-					conf.USER_PASS,
-					source='flightgear-bot',
-					service='code')
-		feed = client.get_issues(conf.GOOGLE_PROJECT)
-		data = []
-		print sfeed
-		for issue in feed.entry:
-			dic = process_entry(issue)
-			data.append(dic)
-		if not memcache.set("issues_all", data, 60):
-			print "error"
-		return data
-
-def TODOprocess_issue_entry(issue):
-	dic = {}
-	dic['id'] = issue.id.text.split("/")[-1]
-	dic['title'] = issue.title.text
-	dic['labels'] = []
-	for label in issue.label:
-		dic['labels'].append(label.text)
-	if issue.owner:
-		#print issue.owner
-		if issue.owner.username.text.find('@') > 0:
-			dic['owner'] = issue.owner.username.text.split('@')[0]  #// take out email
-		else:
-			dic['owner'] = issue.owner.username.text
-	
-	dic['stars'] = issue.stars.text
-	dic['state'] = issue.state.text
-	dic['status'] = issue.status.text
-	return dic
 
 #######################################################
 ## Gallery
 #######################################################
-def gallery_thumbs():
-	gallery =	memcache.get("gallery_thumbs")
+def gallery():
+	gallery = memcache.get("gallery", namespace="gallery")
 	if gallery:
 		return gallery
-	gallery =  fetch_gallery_thumbs()
-	if not memcache.set("gallery_thumbs", gallery, 240):
-		print "error"
+	result = urlfetch.fetch("http://flightgear-gallery.googlecode.com/svn/trunk/gallery.js")
+	if result.status_code == 200:
+		gallery_dic = json.loads(result.content)
+		gallery = gallery_dic['gallery']
+		if not memcache.set("gallery", gallery, (60 * 60), namespace="gallery"): # every hour
+			print "error" #TODO
 	return gallery
 
-def fetch_gallery_thumbs():
-	## fetch content 
-	result = urlfetch.fetch("http://flightgear.org/Gallery-v2.0/thumbnails/")
-	if result.status_code == 200:
-			
-		soup = BeautifulSoup.BeautifulSoup(result.content)
-		links = soup.findAll('a')
-		images = []
-		for link in links:
-			
-			if link['href'].endswith(".jpg"):
-				images.append(link['href'])
-		return images #[0:5]
+		
 
 def gallery_random():
-	gallery = gallery_thumbs()
+	gallery = gallery()
 	randy = random.choice(gallery)
 	return randy
 

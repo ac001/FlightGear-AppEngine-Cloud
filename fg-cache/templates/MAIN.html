@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1;">
+<title>FlightGear CDN cache</title>
+
+<script type="text/javascript" src="http://fg-cache.appspot.com/js/jquery-1.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fg-cache.appspot.com/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="http://fg-master.appspot.com/style_sheets/global.1.css">
+
+</head> 
+<body> 
+
+
+<div id="main_container">
+
+<!--######################################################-->
+<!--### Left Block ###-->
+<!--######################################################-->
+<div id="left_box">
+
+	<!--## Logo ##-->
+	<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
+
+
+</div><!-- left_box -->
+
+
+
+<div id="middle_box">
+
+
+<!--######################################################-->
+<!-- ### Top Banner ###-->
+<!--######################################################-->
+<div id="top_box">
+
+
+		
+		
+		<h1>FlightGear CDN </h1>
+
+
+
+
+</div><!-- top box -->
+
+<!--######################################################-->
+<!-- ### Right Box ###-->
+<!--######################################################-->
+<div id="right_box">
+	{% block right_box %}
+
+	{% endblock right_box %}
+</div><!-- right box -->
+
+
+<div id="content_box">
+	<h1>Libs cache and static storage</h1>
+	{% block content %}
+	<p>View the content in the source at <br>
+	<a href="http://github.com/ac001/FlightGear-AppEngine-Cloud/tree/master/fg-cache/">http://github.com/ac001/FlightGear-AppEngine-Cloud/tree/master/fg-cache/</a></p>
+	{% endblock content %}
+</div><!-- content box -->
+
+</div><!-- middle box -->
+
+
+<div id="footer_box">
+
+<p>
+<a href="http://code.google.com/appengine/"><img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
+alt="Powered by Google App Engine" /></a> 
+
+&copy; 2010+ FlightGear - all right reserved etc<p>
+
+</div><!-- end footer-->
+
+</div><!-- end main_container -->
+
+
+</body> 
+</html>

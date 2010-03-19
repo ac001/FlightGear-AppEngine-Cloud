@@ -64,7 +64,7 @@ class FG_App:
 
 	## Gallery
 	def gallery(self):
-		return app.fetch.gallery_thumbs()
+		return app.fetch.gallery()
 
 	def random_image(self):
 		return app.fetch.gallery_random()

@@ -1,0 +1,15 @@
+application: fg-cache
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /images
+  static_dir: images
+- url: /js
+  static_dir: js
+
+- url: /.*
+  script: main.py
+
+
