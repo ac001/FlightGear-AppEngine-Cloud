@@ -30,8 +30,7 @@ class FG_App:
 	def users_mailing_list(self):
 		return mailing_list('flightgear-users@lists.sourceforge.net')
 
-	def mp_servers(self):
-		return app.fetch.mp_servers()
+
 
 	### Videos
 	def video_tutorials(self):
@@ -93,10 +92,15 @@ class FG_App:
 				self._paths[subpage['path']] = subpage
 
 
+	def mp_servers_info(self):
+		return app.fetch.mp_servers_info()
+
 
 	def __init__(self):
 		"""Initialise Navigation and add navigations items"""
 		### TODO authenticated sections
+		self._mp_servers_info = None
+
 		self._nav = []
 		self._paths = {}
 

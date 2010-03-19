@@ -3,7 +3,11 @@
 {% block right_box %}
 
 
-
+	<div class="panel_box">
+		<h3>Update</h3>
+		<p>The server status is processed from this <a href="http://mpmap01.flightgear.org/mpstatus/">/mpstatus/</a>  web page every minute.</p>
+		<p><input type="button" value="Update Now" onclick="location.href='/update/?return=yep'"></p>
+	</div>
 
 
 {% endblock %}
@@ -12,13 +16,14 @@
 
 {% block content %}
 
+<p>Last updated: {{ app.mp_servers_info.updated }}</p>
 
 <table width="100%" class="listing">
 <tr>
 	<th>No</th>
 	<th>Server</th>
 	<th>Status</th>
-	<th>Last Updated</th>
+	<th>Last Seen</th>
 	<th>Location</th>
 	<th style="text-align:right;">IP</th>
 	<th style="text-align:left;">Port</th>
@@ -28,10 +33,11 @@
 	<tr class="hover">
 		<td><a href="#">{{ server.no }}</a></td>
 		<td>{{ server.server }}</td>
-		<td>{% ifequal server.status "OK" %}<span class="status_up">Up</span>
+		<td class="{% ifequal server.status "OK" %}status_up{% else %}status_down{% endifequal %}">
+			{% ifequal server.status "OK" %}<span class="status_up">Up</span>
 			{% else %}<span class="status_down">Down</span>{% endifequal %}
-			</td>
-		<td>{{ server.status_updated|date:"Y-m-d H:i:s"|default:"&nbsp;" }}</td>
+		</td>
+		<td>{% ifequal server.status "OK" %}-{% else %}{{ server.status_updated|date:"Y-m-d H:i:s"|default:"unknown" }}{% endifequal %}</td>
 		<td>{{ server.location }}</td>
 		<td align="right">{{ server.ip }}</td>
 		<td align="left">{{ server.port }}</td>
@@ -40,5 +46,4 @@
 {% endfor %}
 </table>
 
-	<p style="text-align: right; margin-top: 10px; "><a href="/idea/multiplayer/servers/" class="refresh_button">Refresh</a></p>
 {% endblock %}

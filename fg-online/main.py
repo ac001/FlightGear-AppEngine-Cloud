@@ -9,16 +9,14 @@ import app.Handler
 import app.Import
 
 application = webapp.WSGIApplication([	
-										#('/(.*)/(.*)/', app.Handler.HandlerPage),
-										('/update/', app.Handler.UpdateStatus),
+										('/update/(.*)/', app.Handler.UpdateStatus),
 										('/import/', app.Import.ImportHandler),
-										('/rpc/', app.Handler.RPCHandler),
+										('/feed/(.*)/(.*)/', app.Handler.FeedHandler),
 										('/(.*)/(.*)/', app.Handler.HandlerPage),
 										('/(.*)/', app.Handler.HandlerPage),
 										('/', app.Handler.HandlerPage),
-										
 									],
-									debug=True)
+									debug=False)
 
 def main():
 	run_wsgi_app(application)

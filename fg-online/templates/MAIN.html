@@ -7,9 +7,9 @@
 <title>{{ title }} | {{ conf.SITE_TITLE }}</title>
 
 
-<script type="text/javascript" src="http://fg-master.appspot.com/js/jquery-1.4.2.min.js"></script>
-<link rel="stylesheet" type="text/css" href="http://fg-master.appspot.com/style_sheets/reset.css">
-<link rel="stylesheet" type="text/css" href="http://fg-master.appspot.com/style_sheets/global.1.css">
+<script type="text/javascript" src="http://fg-cache.appspot.com/js/jquery-1.4.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fg-cache.appspot.com/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="/style_sheets/global.1.css">
 
 </head> 
 <body> 
@@ -71,8 +71,8 @@
 			<tr>
 			<th><i>The World's Leading Open Source Flight Simulator<i>  </th>
 			<td><a href="/idea/multiplayer/pilots/">Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</a></td>
-			<td><a href="/idea/multiplayer/atc/">ATC: {{ conf.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
-			<td><a href="/idea/multiplayer/servers/">Servers: <span style="color: green">{{ conf.app_vars.mpservers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ conf.app_vars.mpservers_info.down|default:"--" }} down</span></a></td>
+			<td><a href="/idea/multiplayer/atc/">ATC: {{ a.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
+			<td><a href="/servers/">Servers: <span style="color: green">{{ app.mp_servers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ app.mp_servers_info.down|default:"--" }} down</span></a></td>
 			</tr>
 		</table>
 

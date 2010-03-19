@@ -1,6 +1,6 @@
 Pete's ramblings..
 
-Regarding the website and the future, here are some thoughts and notes about current development I'm working on to see if its works.
+Regarding the website and the future, here are some thoughts and notes about current and future development I'm working on to see if its works.
 The project code is available at http://github.com/ac001/FlightGear-AppEngine-Cloud
 
 The Google App Engine, I think its a great idea as deploying an application is quick and easy.
@@ -36,10 +36,12 @@ My feeling is that currently FlightGear is not "interlinked" enough and does not
 Starting with a clean slate and the objective to being a very popular destination internationally. 
 None of the current site needs to be discarded, but rather restructured.
 
-Create a "coporate" image with a cool logo, and use this style and its various flavours across all domains and sites. Logo to of the day will be possible.
+Create a "coporate" image with a cool logo, and use this style and its various flavours across all domains and sites. 
+Logo  of the day will be possible with a small change at one location.
 
-Split flightgear into its various constituent web sites as a CDN with its own set of focused maintainers. with constant improvement.
-Each subdomain can have its own unique style, eg different color schema, icons, layout etc.
+Split flightgear into its various constituent web sites as a CDN each with its own set of focused maintainers, with constant improvement.
+
+Each subdomain can have its own unique style, but based on a similar theme eg different color schema, icons, layout etc.
 This list of sites need to be links (at the top maybe) to "jump" between each subdomain seamlessly. demonstrated here >> http://fg-www.appspot.com/
 
  * www.flightgear.org - main  website and landing page, news, downloads, documentation - http://fg-www.appspot.com/
@@ -53,24 +55,29 @@ This list of sites need to be links (at the top maybe) to "jump" between each su
  * nav.flightgear.org - navigation database for browsing and remote calls. wip http://fg-navdata.appspot.com/
  * dev.flightgear.org - Developers zone, definitive how to compile, bugs list, dozygen docs,  links to libs 
  * master.flightgear.org - Master CDN machine that contains the logo (of the day), ftp servers, stock libs/js/css, images shared data. http://fg-master.appspot.com/ (this is research)
- * mpmap01/02.flightgear.org - These could be consolidated into online.flightgear.org
+ * mpmap01/02.flightgear.org - These could be consolidated into mpmap.flightgear.org
  
-======================================
+================================================================ 
 Main Website 
-====================================== 
+================================================================ 
+wip at http://fg-www.appsot.com
 
-News
+### News
 * Annoucements needs to go into a database so they can be sorted, newest at top 
 * Current announcments need to be imported. A feature such as 5 years ago today.... 
 * newsletters, releases, general news, notams and events needs to go in here. 
 * Not necessarily the content, eg the newsletter could a short announcment and link to the wiki.
-* Generate an ATOM feed of the news/announcments
-* Create admin interface for news/announcmnets, inc publish button and publish until
+* Generate an ATOM/JSON feed of the news/announcments 
+* Create admin interface for news/announcmnets, inc publish button and publish until x date, also sticky button.
 
-Calendar
-* the current calendar requires an emailt o curt who then updated the calendar on google.
+### Events Calendar
+* the current calendar requires an email to curt who then updated the calendar on google.
+* This needs to be changed into a submission process where anyone can login and submit. However
+  the appplication would need to allow "moderation" before things so public.
+* A Calendar neds to be created with the appropriate admin rights
+* GSoC notification
 
-### Gallery ####
+### Gallery 
 Currently the gallery exists as a set of images and thumnails, its assumed the size is consistent and there is a manual process to uplaod etc. 
 
 Presenting the images as a gallery is a simple listing of files in a directory.
@@ -87,8 +94,11 @@ The online webpage (tba)
 
 What is the licence these images are under ?
 
-### Aircraft Database ####
-http://fg-aircraft.appspot.com/
+================================================================ 
+Aircraft Database 
+================================================================ 
+wip at http://fg-aircraft.appspot.com/ 
+
 I have started with this, but its in limbo as I need to research more information.
 
 There are a few ways of obtaining aircraft
@@ -96,12 +106,11 @@ There are a few ways of obtaining aircraft
 * Download from website
 * CVS 
 * Other sources eg independant hangers, git evn externals etc.
+* Some of these released aircraft are under non GPL licences which means their not part of flightgear/cvs.
 
-Some of these released aircraft are under non GPL licences which means their not part of flightgear/cvs.
-
-The idea of the aircraft database is to have a list of all available aircraft.
-* This is currently being derived by walking a local cvs tree and pushing/updating the data (possibly via cron)
-* Some variables are possible eg, no of engines, engine type, length, width/height, flaps, gear, has primus.
+The idea of the aircraft database is to have a list of all available aircraft automagically updated.
+* This is currently being derived by walking a local cvs tree and pushing/updating the data from xml (possibly later via cron)
+* Some info are possible eg, no of engines, engine type, length, width/height, flaps, gear, has primus, etc
 * tried to walk the cvs tree to get the current cvs changes, so update alerts can be on the website automatically.
 * Need a way to maybe classify the aircraft. Airliners, small props, heavy cargo etc (tags)
 * tips and tricks, feature requests, bug tracking embeded into aircraft page
@@ -109,3 +118,12 @@ The idea of the aircraft database is to have a list of all available aircraft.
 * There could be mroe than one version of each aircraft.. eg olde cvs, and new git, even a .deb file
 * Users can rank aircraft, and ability to change rank 
 * list of the developers and their credits
+* Users can submit photos
+* links to the liveries database
+
+
+================================================================ 
+Online Multiplayer
+================================================================ 
+wip at http://fg-online.appspot.com/
+

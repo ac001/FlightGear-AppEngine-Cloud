@@ -17,13 +17,6 @@
 
 <script type="text/javascript" src="/js/front.js"></script>
 
-
-<!--
-<link rel="stylesheet" href="http://fg-cache.appspot.com/js/lightbox2.04/css/lightbox.css" type="text/css" media="screen" />
-<script src="http://fg-cache.appspot.com/js/lightbox2.04/js/prototype.js" type="text/javascript"></script>
-<script src="http://fg-cache.appspot.com/js/lightbox2.04/js/scriptaculous.js?load=effects,builder" type="text/javascript"></script>
-<script src="http://fg-cache.appspot.com/js/lightbox2.04/js/lightbox.js" type="text/javascript"></script>
--->
 </head> 
 <body> 
 
@@ -85,7 +78,8 @@
 			<th><i>The World's Leading Open Source Flight Simulator<i>  </th>
 			<td><a href="/idea/multiplayer/pilots/">Pilots: {{ conf.app_vars.pilots_info.pilots_count|default:"--" }}</a></td>
 			<td><a href="/idea/multiplayer/atc/">ATC: {{ conf.app_vars.pilots_info.atc_count|default:"--" }}</a></td>
-			<td><a href="/idea/multiplayer/servers/">Servers: <span style="color: green">{{ conf.app_vars.mpservers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ conf.app_vars.mpservers_info.down|default:"--" }} down</span></a></td>
+			<td><a href="http://fg-online.appspot.com/servers/">Servers: 
+				{{ app.mp_servers_info.total|default:"--" }} Nodes / <span style="color: green">{{ app.mp_servers_info.up|default:"--" }} Up</span> / <span style="color: red">{{ app.mp_servers_info.down|default:"--" }} down</span></a></td>
 			</tr>
 		</table>
 

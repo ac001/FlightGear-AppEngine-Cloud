@@ -1,0 +1,41 @@
+{% extends "MAIN.html" %}
+
+{% block right_box %}
+
+
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<p>Data can be  pulled from this site with the feeds below. Its only json at the moment with xml and atom coming soon.</p>
+
+<h3>Servers Info</h3>
+<input type="text" value="http://fg-online.appspot.com/feed/servers/info/" style="width: 90%">
+<iframe src="/feed/servers/info/" 
+	style="width: 100%; border: 1px solid black;"></iframe>
+
+<h3>Servers List</h3>
+<input type="text" value="http://fg-online.appspot.com/feed/servers/list/" style="width: 90%">
+<iframe src="/feed/servers/list/" 
+	style="width: 100%; border: 1px solid black;"></iframe>
+
+<h3>Pilots Info</h3>
+<input type="text" value="http://fg-online.appspot.com/feed/pilots/info/" style="width: 90%">
+<iframe src="/feed/pilots/info/" 
+	style="width: 100%; border: 1px solid black;"></iframe>
+
+<h3>Pilots List</h3>
+<input type="text" value="http://fg-online.appspot.com/feed/pilots/list/" style="width: 90%">
+<iframe src="/feed/pilots/list/" 
+	style="width: 100%; border: 1px solid black;"></iframe>
+
+<h3>ATC List</h3>
+<input type="text" value="http://fg-online.appspot.com/feed/atc/list/" style="width: 90%">
+<iframe src="/feed/atc/list/" 
+	style="width: 100%; border: 1px solid black;"></iframe>
+
+{% endblock %}

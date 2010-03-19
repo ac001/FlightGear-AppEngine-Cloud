@@ -2,14 +2,15 @@
 -- FlightGear Cloud Experiment --
 ==================================
 
-This is an experiment, R&D towards using the Google App Engine
-for FlightGear.
+This is an experiment and R+D towards using the Google App Engine for FlightGear.
 
-The project consists of:
-* fg-www.appspot.com      - Front end website
-* fg-aircraft.appspot.com - Aircraft database website
-* fg-online.appspot.com   - Multiplayer website
-* fg-master.appspot.com   - Shared CDN experimantal stuff
+The project currently consists of:
+
+* http://fg-www.appspot.com      - Front end website
+* http://fg-aircraft.appspot.com - Aircraft database website
+* http://fg-online.appspot.com   - Multiplayer website
+* http://fg-master.appspot.com   - Shared CDN experimantal stuff
+* http://fg-cache.appspot.com    - Shared CDN experimantal stuff
 
 -----------------------------
 Run local server

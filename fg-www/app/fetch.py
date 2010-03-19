@@ -190,13 +190,18 @@ def mp_servers():
 		print "error"
 	return data
 
-def mpservers_info():
-	info =	memcache.get("mpservers_info")
-	return info
-	last = info['updated']	
-	current = datetime.datetime.now()
-	info['ago'] =  last - current
-	return info
+def mp_servers_info():
+	mp_servers_info =	memcache.get("mp_servers_info", namespace="mp_servers")
+	if mp_servers_info:
+		return mp_servers_info['servers_info']
+	try:
+		result = urlfetch.fetch("http://fg-online.appspot.com/feed/servers/info/")
+	except:
+		return False
+	if result.status_code == 200:
+		mp_servers_info = json.loads(result.content)
+		memcache.set("mp_servers_info", mp_servers_info, (60), namespace="mp_servers")
+		return mp_servers_info['servers_info']
 
 def server_ip_lookup():
 	servers = mpservers()

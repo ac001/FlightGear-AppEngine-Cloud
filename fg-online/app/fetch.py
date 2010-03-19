@@ -11,6 +11,7 @@ from django.utils import simplejson as json
 from google.appengine.api import urlfetch
 import xml.dom.minidom
 
+from BeautifulSoup import BeautifulSoup 
 """
 import gdata.projecthosting.client
 import gdata.projecthosting.data
@@ -113,7 +114,7 @@ def get_pilots_feed():
 			## info 
 			info = {'pilots_count': len(pilots), 
 					'atc_count': len(atc),
-					'updated': datetime.datetime.now()
+					'updated': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 			}
 			if not memcache.set("pilots_info", info):
 				print "error"
@@ -126,7 +127,7 @@ def get_pilots_feed():
 
 			if not memcache.set("atc_online", atc):
 				print "error"
-			return pilots_sorted
+			return info
 
 
 
@@ -134,22 +135,28 @@ def get_pilots_feed():
 ## MP Server Queries
 ####################################################
 def mp_servers():
-	data = memcache.get("mp_servers")
-	if data is not None:
-		return data
+	#data = memcache.get("mp_servers")
+	#if data is not None:
+	#	return data
 	query = db.GqlQuery("SELECT * FROM MPServer order by no asc")
-	data = query.fetch(100)
-	if not memcache.set("mp_servers", data, 120):
-		print "error"
-	return data
+	servers = query.fetch(100)
+	reply = []
+	for server in servers:
+		dic = {	'no': server.no, 
+				'server': server.server, 
+				'location': server.location , 
+				'status': server.status, 
+				'status_updated': server.status_updated.strftime("%Y-%m-%d %H:%M:%S") if server.status_updated else None,
+				'port': server.port,
+				'host': server.host, 
+				'ip': server.ip
+		}
+		reply.append(dic)
+	return reply
+
 
 def mp_servers_info():
-	info =	memcache.get("mpservers_info")
-	return info
-	last = info['updated']	
-	current = datetime.datetime.now()
-	info['ago'] =  last - current
-	return info
+	return	memcache.get("mpservers_info")
 
 def server_ip_lookup():
 	servers = mp_servers()
@@ -168,12 +175,10 @@ def server_ip_lookup():
 ####################################################
 def mpservers_status_update():
 	""" Parses out the http://mpmap01.flightgear.org/mpstatus/ page """
-
 	## fetch content 
 	try:
 		result = urlfetch.fetch(conf.MP_STATUS_URL)
-		print result.content	
-	except:
+	except:#
 		return False
 	if result.status_code == 200:
 		#print result.content	
@@ -206,7 +211,9 @@ def mpservers_status_update():
 				else:
 					down += 1
 				
-		info = {'updated': datetime.datetime.now(), 'up': up, 'down': down, 'total': up + down}
-		memcache.set("mpservers_info", info)
-		return info
+		mpservers_info = {'updated': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), 
+				'up': up, 'down': down, 'total': up + down
+		}
+		memcache.set("mpservers_info", mpservers_info)
+		return mpservers_info
 

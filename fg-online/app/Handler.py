@@ -9,26 +9,55 @@ from django.utils import simplejson as json
 import conf
 import app.FG_Online
 
+## Updates the Server Status
 class UpdateStatus(webapp.RequestHandler):
 
 	def get(self, action=None):
+		
+		reply = {}
+		reply['action'] = action
 
-		app.fetch.mpservers_status_update()
-		if self.request.get("return"):
-			self.redirect("/servers/")
-		else:
-			self.response.out.write(json.dumps({'update': 'ok'}))
+		if action == 'servers':
+			reply['mp_servers_info'] = app.fetch.mpservers_status_update()
+			if self.request.get("return"):
+				self.redirect("/servers/")
+
+		elif action == 'pilots':
+			reply['pilots_info'] = app.fetch.get_pilots_feed()
+
+
+		self.response.headers['Content-Type'] = 'text/plain'
+		self.response.out.write(json.dumps(reply))
 
 		
 
-class RPCHandler(webapp.RequestHandler):
+class FeedHandler(webapp.RequestHandler):
 
-	def get(self, action=None):
+	def get(self, page=None, fetch=None):
 
 		fgOnline = app.FG_Online.FG_Online()
-
+		#print fgOnline.mp_servers_info()
 		reply = {'success': True} # this is always true for ext js
-		reply['data'] = fgOnline.mp_servers_json_feed()
+		#reply['fetch'] =  page + '_' + fetch
+
+		##############################
+		## Servers
+		if page == 'servers':
+			if fetch == 'info':
+				reply['servers_info'] = fgOnline.mp_servers_info()
+			elif fetch == 'list':
+				reply['servers'] = fgOnline.mp_servers()
+
+		##############################
+		## Pilots
+		if page == 'pilots':
+			if fetch == 'info':
+				reply['pilots_info'] = fgOnline.pilots_info()
+
+			elif fetch == 'list':
+				reply['pilots'] = fgOnline.pilots_online()
+
+		#reply['section'] =  section
 
 		self.response.headers['Content-Type'] = 'text/plain'
 		self.response.out.write( json.dumps(reply) )
@@ -36,7 +65,6 @@ class RPCHandler(webapp.RequestHandler):
 	
 
 class HandlerPage(webapp.RequestHandler):
-
 
 	def get(self, section=None, subpage=None):
 	
@@ -49,7 +77,6 @@ class HandlerPage(webapp.RequestHandler):
 		## Application Calls Object
 		fgOnline = app.FG_Online.FG_Online()
 		template_vars['app'] = fgOnline
-		print fgOnline.mp_servers_info()
 
 		## Set up the enviroment based on section/subpage eg /download/scenery/
 		if section == None:

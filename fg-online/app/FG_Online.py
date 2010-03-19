@@ -13,20 +13,17 @@ from google.appengine.api import urlfetch
 #import xml.dom.minidom
 
 import conf
-
 import app.fetch
 
 
 class FG_Online:
 
-
 	def mp_servers(self):
 		return app.fetch.mp_servers()
 
-	def mp_servers_json_feed(self):
+	def sssmp_servers(self):
 		
 		reply = {}
-
 		servers = app.fetch.mp_servers()
 		reply['servers'] = []
 		for server in servers:
@@ -43,7 +40,12 @@ class FG_Online:
 		return reply
 
 	def mp_servers_info(self):
-		return app.fetch.mp_servers_info()
+		if self._mpservers_info == None:
+			self._mpservers_info = app.fetch.mp_servers_info()
+		return self._mpservers_info
+
+	def pilots_info(self):
+		return app.fetch.pilots_info()
 
 	def pilots_online(self):
 		return app.fetch.pilots_online()
@@ -55,7 +57,6 @@ class FG_Online:
 		"""Return navigation - used in tempalte """
 		return self._nav
 
-	
 
 	def title(self, path):
 		"""Return the title or label from path based lookup"""
@@ -76,11 +77,10 @@ class FG_Online:
 				self._paths[subpage['path']] = subpage
 
 
-
 	def __init__(self):
 		"""Initialise Navigation and add navigations items"""
 		### TODO authenticated sections
-
+		self._mpservers_info = None
 
 		self._nav = []
 		self._paths = {}
@@ -100,8 +100,10 @@ class FG_Online:
 
 		servers = self.mp_servers()
 		servers_list = []
-		for server in self.mp_servers():
-			servers_list.append({	'path': '/servers/%s/' % server.server,
-									'label': server.server
+		for server in servers:
+			servers_list.append({	'path': '/servers/%s/' % server['server'],
+									'label': server['server']
 								})
 		self.nav_append( {'path':'/servers/', 'label': 'Servers', 'subnav': servers_list})
+
+		self.nav_append( {'path':'/feeds/', 'label': 'Feeds'})
