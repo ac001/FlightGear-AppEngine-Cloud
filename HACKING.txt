@@ -1,10 +1,14 @@
-* The site uses django templating. This should make it transportable (other templating engines should be easy to accomodate also)
-* Please try an code in a platfrom independant way as possible.
+These are very quick rought notes on the code structure.
+
+* The site uses django templating. This should make it transportable 
+  (other templating engines should be easy to accomodate also)
+
+* Please try and code in a "platform independant way" as possible.
 
 
 === fg-master ===
-Currently the logo and main stylesheet are served off the fg-maste domain. THis is experimental
-with the following objectives
+Currently the logo and main stylesheet are served off the fg-master domain. 
+This is experimental with the following objectives:-
 * makes the load faster as a browser can connect to different sources. 
   ( some browsers/servers only allow for example five connections per server, with
     more than one server, page elements can be downloaded in parallel)
@@ -15,12 +19,11 @@ with the following objectives
 This server has the wrong name and should be fg-libs or fg-stash
 
 Contains all the javascript libraries and any other third party stuff, this stuff
-is caches ie sends content-expires headers.
+is cached ie sends content-expires headers.
 
 
--------------------------------
 === fg-www ===
-app.yaml contains the "configuration" of the application
+app.yaml contains the "configuration" of the application.
 
 The main.py handles the incoming calls and passes them to the app/Handler.py class
 
@@ -30,18 +33,22 @@ eg
 /support/
 /support/docs/
 
-and display the secion.page.html document
+and display the "section.page.html" template.
 
 the html templates are in templates/ directory
-All (we'll 99%) of the templates inherit MAIN.html
+All (we'll 99%) of the templates extends "MAIN.html".
 
-The {% block content %} and {% block right_box %} are popualtes in each template.
+The {% block content %} and {% block right_box %} are populated in each template.
 
-The function calls to external resources is in app/fetch.py
+The function calls to external resources are in app/fetch.py
 
-The FG_App class is a "proxy" for fetch.py calls and is passed to the templating engine..
+The FG_App class is a "proxy" for fetch.py calls and is passed to the templating engine. 
+(Indeed fetch.py could be embedded in this class maybe)
+FG_App also contains the navigation, and probably needs 
+refactoring/restructuring to make it cleaner.
 
-eg
+eg example fetch
+
 ## fetch.py
 def fetch_pilots():
   ## code here
@@ -60,8 +67,6 @@ templates_vars['app'] = FG_App() # instance passed to template
 <ul>
 {% for pilot in app.fetch_pilots %}
 ....
-
-
 
 
 

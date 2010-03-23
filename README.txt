@@ -15,12 +15,12 @@ The project currently consists of:
 -----------------------------
 Run local server
 -----------------------------
-To run a  site locally in devel mode, from the directory this file is in run:
+To run a site locally in devel mode, from the directory this file is in run:
 
 ./google_appengine/dev_appserver.py SiteName
 
 where SiteName is for example fg-www, then point your browser
-as http://localhost:8080
+at http://localhost:8080
 
 -----------------------------
 Upload Site
@@ -33,7 +33,7 @@ The upload a site, you need developer access then execute
 -----------------------------
 Notes
 -----------------------------
-* The code is by means clean and tidy as yet.
+* The code is not clean, tidy or commented properly as yet.
 * The fg-master is research into using one server for shared
   logo and stylesheets etc, to check both loading times and the possibility
   of globally making changes eg a "logo of the day".
@@ -47,8 +47,8 @@ possible but this leads to unpredictable results for bitter experience.
 
 -----------------------------
 Development
------------------------------cd ..
-If you want to join in the fun then contact me
+-----------------------------
+If you want to join in the development fun/commit access etc then contact pete
 *  "ac0001" on the chat channel irc.flightgear.org#flightgear
 * ac001 at daffodil dot uk dot com
 
