@@ -33,8 +33,8 @@ The upload a site, you need developer access then execute
 -----------------------------
 Notes
 -----------------------------
-* The code is by not clean and tidy as yet.
-* The fg-master is definately research into using one server for shared
+* The code is by means clean and tidy as yet.
+* The fg-master is research into using one server for shared
   logo and stylesheets etc, to check both loading times and the possibility
   of globally making changes eg a "logo of the day".
 
@@ -55,4 +55,7 @@ If you want to join in the fun then contact me
 Most Wanted = Graphic Designer
 and any other mad ideas
 
-There's more notes in notes.pete.txt
+There's more dodgy documentation in HACKING.txt and pete's rambling in notes.pete.txt
+
+;-)
+

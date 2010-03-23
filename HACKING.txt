@@ -1,0 +1,68 @@
+* The site uses django templating. This should make it transportable (other templating engines should be easy to accomodate also)
+* Please try an code in a platfrom independant way as possible.
+
+
+=== fg-master ===
+Currently the logo and main stylesheet are served off the fg-maste domain. THis is experimental
+with the following objectives
+* makes the load faster as a browser can connect to different sources. 
+  ( some browsers/servers only allow for example five connections per server, with
+    more than one server, page elements can be downloaded in parallel)
+* Makes for changing the logo globally, or the style globally very easy
+* Downside is that its much more difficult to maintain
+
+=== fg-cache ===
+This server has the wrong name and should be fg-libs or fg-stash
+
+Contains all the javascript libraries and any other third party stuff, this stuff
+is caches ie sends content-expires headers.
+
+
+-------------------------------
+=== fg-www ===
+app.yaml contains the "configuration" of the application
+
+The main.py handles the incoming calls and passes them to the app/Handler.py class
+
+the calls are in the form 
+/section/page/
+eg
+/support/
+/support/docs/
+
+and display the secion.page.html document
+
+the html templates are in templates/ directory
+All (we'll 99%) of the templates inherit MAIN.html
+
+The {% block content %} and {% block right_box %} are popualtes in each template.
+
+The function calls to external resources is in app/fetch.py
+
+The FG_App class is a "proxy" for fetch.py calls and is passed to the templating engine..
+
+eg
+## fetch.py
+def fetch_pilots():
+  ## code here
+  return data
+
+## FG_App class
+class FG_Aircraft:
+  def fetch_pilots(self):
+	return app.fetch.fetch_pilots()
+
+## Handler
+templates_vars['app'] = FG_App() # instance passed to template
+
+## Html templates (note no () on function call (wish we could pass varibles, liek Smarty.php)
+
+<ul>
+{% for pilot in app.fetch_pilots %}
+....
+
+
+
+
+
+

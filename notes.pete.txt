@@ -27,6 +27,7 @@ Disadvantages
 * does not have a file system, for example scanning a /gallery/*.png directory for images is impossible
 * does not have a realational database as such
 * uses python 2.5 (a leap to 3 is expected as BDFL is at google)
+* cannot run a process eg a script to poll mpservers every few seconds
 * requires SDK to develop
 
 So here's the idea in my head, and development is at the research stage at the moment, with bits an pieces
@@ -134,4 +135,11 @@ The idea of the aircraft database is to have a list of all available aircraft au
 Online Multiplayer
 ================================================================ 
 wip at http://fg-online.appspot.com/
+
+The BIG issue with development of this site with GAE is that GAE can only speak port 80. So one idea would be
+to leave things as is, or find ways around the problem.
+
+* Currently the mpservers are updated by scraping the http://mpmap01.flightgear.org/mpstatus/ page
+* The pilots are updated by pulling from the mpmap02 pilots feed
+
 

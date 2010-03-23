@@ -9,7 +9,7 @@ from django.utils import simplejson as json
 import conf
 import app.FG_Online
 
-## Updates the Server Status
+## Pulls and updates Pilots and Servers
 class UpdateStatus(webapp.RequestHandler):
 
 	def get(self, action=None):

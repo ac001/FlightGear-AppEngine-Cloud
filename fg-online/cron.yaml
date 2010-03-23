@@ -1,0 +1,8 @@
+cron:
+- description: MP Server status update
+  schedule: every 1 minutes
+  url: /update/servers/
+- description: Pilots  update
+  schedule: every 1 minutes
+  url: /update/pilots/
+

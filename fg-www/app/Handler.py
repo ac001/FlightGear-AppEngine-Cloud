@@ -21,7 +21,7 @@ class HandlerPage(webapp.RequestHandler):
 		## Application Calls Object
 		fgApp = app.FG_App.FG_App()
 		template_vars['app'] = fgApp
-		print "##", fgApp.mp_servers_info()
+		#print "##", fgApp.mp_servers_info()
 
 		## Set up the enviroment based on section/subpage eg /download/scenery/
 		if section == None:
