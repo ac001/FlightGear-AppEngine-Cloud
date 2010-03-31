@@ -16,7 +16,7 @@
 <!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
 
 <link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
-<link rel="stylesheet" type="text/css" href="/style_sheets/global.1.css">
+<link rel="stylesheet" type="text/css" href="/style_sheets/global.2.css">
 
 <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="/js/front.js"></script>
@@ -33,68 +33,59 @@
 </head> 
 <body> 
 
+<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
 
 <div id="main_container">
 
 <!--######################################################-->
-<!--### Left Block ###-->
+<!--### Header ###-->
 <!--######################################################-->
-<div id="left_box">
 
-	<!--## Logo ##-->
-	<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
-
+<div id="sites_nav">
+	<ul>
+		{% for site in conf.sites_nav %}
+		<li><a href="{{ site.url }}" 
+				{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
+				>{{ site.label }}</a></li>
+		{% endfor %}
+	</ul>
 </div>
 
 
 
-<div id="middle_box">
-
-
 <!--######################################################-->
-<!-- ### Top Banner ###-->
+<!--### Middle ###-->
 <!--######################################################-->
-<div id="top_container">
-<div id="top_box">
-	<!-- Language Icons and links -->
-	
-	<h1>{{ conf.SITE_HEADER }}</h1>
-	
-</div><!-- end top_box -->
-
-
-
-
-</div>
-</div><!-- top container -->
-
-<!--######################################################-->
-<!-- ### Right Box ###-->
-<!--######################################################-->
-<div id="right_box">
-	{% block right_box %}
-
-	{% endblock right_box %}
-</div><!-- right box -->
-
-
 <div id="content_box">
-	{% block content %}
-	{% endblock content %}
+<h1>Centrum</h1>
+	<div class="feature_box">
+		<h2>Scenery</h2>
+		<ul>
+		<li><a href="http">Foobar</a></li>
+		<li><a href="http">Foobar</a></li>
+		</ul>
+	</div>
+	<div class="feature_box">
+		<h2>MP Maps</h2>
+		<ul>
+			<li><a href="http://mpmap01.flightgear.org">mpmap#01</a></li>
+			<li><a href="http://mpmap02.flightgear.org">mpmap#02</a></li>
+		<ul>
+	</div>
 </div><!-- content box -->
 
-</div><!-- midle box -->
-
-
+<!--######################################################-->
+<!--### Footer ###-->
+<!--######################################################-->
 <div id="footer_box">
 
-<p>
-<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
-<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a> - 
-<a href="http://localhost:8080">Local Site</a> - 
-<a href="http://localhost:8080/_ah/admin/">Local Admin</a> - 
+	<p>
+	<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
+	<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a> - 
+	<a href="http://localhost:8080">Local Site</a> - 
+	<a href="http://localhost:8080/_ah/admin/">Local Admin</a> - 
 
-&copy; 2010+ FlightGear - all right reserved etc<p>
+	&copy; 2010+ FlightGear - all right reserved etc<p>
 
 </div><!-- end footer-->
 

@@ -8,9 +8,7 @@ from google.appengine.api import memcache
 
 
 from django.utils import simplejson as json
-#from BeautifulSoup import BeautifulSoup 
 from google.appengine.api import urlfetch
-#import xml.dom.minidom
 
 import conf
 import app.fetch
@@ -101,8 +99,8 @@ class FG_Online:
 		servers = self.mp_servers()
 		servers_list = []
 		for server in servers:
-			servers_list.append({	'path': '/servers/%s/' % server['server'],
-									'label': server['server']
+			servers_list.append({	'path': '/servers/%s/' % server['name'],
+									'label': server['name']
 								})
 		self.nav_append( {'path':'/servers/', 'label': 'Servers', 'subnav': servers_list})
 

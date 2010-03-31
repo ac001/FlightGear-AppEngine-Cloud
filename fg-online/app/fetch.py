@@ -143,7 +143,7 @@ def mp_servers():
 	reply = []
 	for server in servers:
 		dic = {	'no': server.no, 
-				'server': server.server, 
+				'name': server.name, 
 				'location': server.location , 
 				'status': server.status, 
 				'status_updated': server.status_updated.strftime("%Y-%m-%d %H:%M:%S") if server.status_updated else None,
@@ -165,9 +165,9 @@ def server_ip_lookup():
 	for server in servers:
 		ret[server.ip] = server.server
 		if server.server == "mpserver02":
-			ret['LOCAL'] = server.server
+			ret['LOCAL'] = server.name
 		else:
-			ret[server.ip] = server.server
+			ret[server.ip] = server.name
 	return ret
 
 ####################################################

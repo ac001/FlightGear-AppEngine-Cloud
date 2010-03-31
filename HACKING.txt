@@ -1,4 +1,4 @@
-These are very quick rought notes on the code structure.
+These are very quick rough notes on the code structure.
 
 * The site uses django templating. This should make it transportable 
   (other templating engines should be easy to accomodate also)

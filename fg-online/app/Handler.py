@@ -30,6 +30,9 @@ class UpdateStatus(webapp.RequestHandler):
 		self.response.out.write(json.dumps(reply))
 
 		
+					
+
+
 
 class FeedHandler(webapp.RequestHandler):
 

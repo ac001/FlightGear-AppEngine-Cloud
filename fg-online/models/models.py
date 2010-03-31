@@ -2,14 +2,20 @@
 from google.appengine.ext import db
 
 class MPServer(db.Model):
-	no = db.StringProperty()
-	server = db.StringProperty(indexed=True)
-	description = db.StringProperty()
+	no = db.IntegerProperty()
+	name = db.StringProperty(indexed=True)
 	host= db.StringProperty()
-	port = db.StringProperty()
-	ip = db.StringProperty()
-	dev = db.BooleanProperty()
+	port = db.IntegerProperty()
+	ip = db.StringProperty(indexed=True)
+	dev = db.IntegerProperty()
 	location = db.StringProperty()
+	maintainer = db.StringProperty()
+	updated = db.DateTimeProperty()
 	status = db.StringProperty()
 	status_updated = db.DateTimeProperty()
+	
 
+class MPServerLog(db.Model):
+	server = db.ReferenceProperty(MPServer)
+	dated = db.DateTimeProperty(auto_now_add=True, indexed=True)
+	log = db.StringProperty(multiline=True)
