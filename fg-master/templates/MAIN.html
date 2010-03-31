@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/js/ext-3.1.1/ext-all.js"></script>-->
 <!--<script type="text/javascript" src="js/ext-3.1.0/ext-all.js"></script>-->
 
-<link rel="stylesheet" type="text/css" href="/style_sheets/reset.css">
+<link rel="stylesheet" type="text/css" href="http://fg-cache.appspot.com/style_sheets/reset.css">
 <link rel="stylesheet" type="text/css" href="/style_sheets/global.2.css">
 
 <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
@@ -33,23 +33,27 @@
 </head> 
 <body> 
 
-<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
+
 
 <div id="main_container">
+	<div id="left_box">
+		<div id="flightgear_logo"><img src="http://fg-master.appspot.com/images/fg2.png"></div>
 
-<!--######################################################-->
-<!--### Header ###-->
-<!--######################################################-->
+		<p>The FlightGear® flight simulator project is an open-source, multi-platform, cooperative flight simulator development project. Source code for the entire project is available and licensed under the GNU General Public License.</p>
+	</div>
+	<!--######################################################-->
+	<!--### Header ###-->
+	<!--######################################################-->
 
-<div id="sites_nav">
-	<ul>
-		{% for site in conf.sites_nav %}
-		<li><a href="{{ site.url }}" 
-				{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
-				>{{ site.label }}</a></li>
-		{% endfor %}
-	</ul>
-</div>
+	<div id="sites_nav">
+		<ul>
+			{% for site in conf.sites_nav %}
+			<li><a href="{{ site.url }}" 
+					{% ifequal site.id conf.APP_ID %}class="selected"{% endifequal %}
+					>{{ site.label }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
 
 
 
@@ -57,20 +61,114 @@
 <!--### Middle ###-->
 <!--######################################################-->
 <div id="content_box">
-<h1>Centrum</h1>
+	<h1>The World's Leading Open Source Flight Simulator</h1>
+
+
+	<div class="feature_box">
+		<h2>Download &amp; Install</h2>
+		<ul>
+			<li><a href="http://fg-www.appspot.com/download/">FlightGear for Linux</a></li>
+			<li><a href="http://fg-www.appspot.com/download/">FlightGear for Windows</a></li>
+			<li><a href="http://fg-www.appspot.com/download/scenery/">Download Scenery</a></li>
+			<li><a href="http://fg-www.appspot.com/download/scenery/">Download Aircraft</a></li>
+		</ul>
+	</div>
+
+	<div class="feature_box">
+		<h2>Aircraft</h2>
+		<ul>
+			<li><a href="http://fg-aircraft.appspot.com">Aircraft Database</a></li>
+			<li><a href="http://wiki.flightgear.org/index.php/Aircraft">Wiki Aircraft</a></li>
+			<li><a href="http://liveries.flightgear.org">Liveries</a></li>
+			<li><a href="#">Aircraft Design</a></li>
+		</ul>
+	</div>
+
+
+	<div class="feature_box">
+		<h2>Media</h2>
+		<ul>
+			<li><a href="http://fg-www.appspot.com/media/videos/">Videos</a></li>
+			<li><a href="http://fg-www.appspot.com/media/gallery/">Gallery</a></li>
+			<li><a href="#">Latest Dev Features</a></li>
+			<li><a href="#">Training Videos</a></li>
+		</ul>
+	</div>
+
+
+
+
 	<div class="feature_box">
 		<h2>Scenery</h2>
 		<ul>
-		<li><a href="http">Foobar</a></li>
-		<li><a href="http">Foobar</a></li>
+		<li><a href="#">Terra Sync</a></li>
+		<li><a href="http://fg-www.appspot.com/download/scenery/">Download Scenery</a></li>
+		<li><a href="#">Custom Scenery</a></li>
+		<li><a href="#">How to create Scenery</a></li>
+		<li><a href="http://mapserver.flightgear.org/">Map Server</a></li>
+		<li><a href="http://scenemodels.flightgear.org/">Scene Models</a></li>
 		</ul>
 	</div>
+
 	<div class="feature_box">
-		<h2>MP Maps</h2>
+		<h2>Multi Player</h2>
 		<ul>
-			<li><a href="http://mpmap01.flightgear.org">mpmap#01</a></li>
-			<li><a href="http://mpmap02.flightgear.org">mpmap#02</a></li>
+			<li><a href="http://fg-online.appspot.com/pilots/">Pilots</a></li>
+			<li><a href="http://fg-online.appspot.com/atc/">ATC</a></li>
+			<li><a href="http://mpmap01.flightgear.org/mpstatus/">MP Status</a></li>
+			<li><a href="http://mpmap01.flightgear.org">Map Server #01</a></li>
+			<li><a href="http://mpmap02.flightgear.org">Map Server #02</a></li>
+			<li><a href="http://flightgear.daffodil.uk.com">MP Map WebSocket Xperimental</a></li>
+
+
+		</ul>
+	</div>
+
+	<div class="feature_box">
+		<h2>Featured Hangars</h2>
 		<ul>
+			<li><a href="http://sydhangar.daffodil.uk.com">Syd Hangar</a></li>
+			<li><a href="#">Helijah FGFS Hangar</a></li>
+			<li><a href="#">David Culp Hangar</a></li>
+			<li><a href="#">DFaber Hangar</a></li>
+			
+			<li><a href="#">Hoerbird Hangar</a></li>
+			<li><a href="#">A-10 and A-6 stuff</a></li>
+		</ul>
+	</div>
+
+
+	<div class="feature_box">
+		<h2>Docs</h2>
+		<ul>
+			<li><a href="http://www.flightgear.org/Docs/FGShortRef.html">Quick Ref</a></li>
+			<li><a href="http://www.4p8.com/eric.brasseur/flight_simulator_tutorial.html">Tutorial</a></li>
+			<li><a href="http://www.flightgear.org/Docs/FAQ.shtml">FAQ with answers</a></li>
+
+			
+			<li><a href="http://wiki.flightgear.org/index.php/FlightGear_CVS">CVS</a></li>
+
+		</ul>
+	</div>
+
+	<div class="feature_box">
+		<h2>Developers</h2>
+		<ul>
+			<li><a href="http://fg-www.appspot.com/developers/src/">Source Code</a></li>
+			<li><a href="http://code.google.com/p/flightgear-bugs/issues/list">Issues List</a></li>
+			<li><a href="http://gitorious.org/fg">Gitorious</a></li>
+			<li><a href="http://wiki.flightgear.org/index.php/FlightGear_CVS">CVS</a></li>
+		</ul>
+	</div>
+
+	<div class="feature_box">
+		<h2>Merchandise &amp; Contact</h2>
+		<ul>
+			<li><a href="#">Buy DVD pack</a></li>
+			<li><a href="#">Mugs, shades, tshirts, etc</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
 	</div>
 </div><!-- content box -->
 
@@ -79,13 +177,10 @@
 <!--######################################################-->
 <div id="footer_box">
 
-	<p>
-	<a href="http://code.google.com/appengine/"><img src="/images/gae.png"  style="float:left; margin-right: 20px;">powered by Google App Engine</a> - 
-	<a href="https://appengine.google.com/dashboard?&app_id=fg-aircraft">Dashboard</a> - 
-	<a href="http://localhost:8080">Local Site</a> - 
-	<a href="http://localhost:8080/_ah/admin/">Local Admin</a> - 
+&copy; 2010+ FlightGearPosse - all right reserved etc-
 
-	&copy; 2010+ FlightGear - all right reserved etc<p>
+To add a link contact ac001 on irc.flightgear.org/flightgear
+
 
 </div><!-- end footer-->
 

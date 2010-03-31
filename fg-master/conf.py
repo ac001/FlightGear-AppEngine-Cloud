@@ -8,6 +8,7 @@ SITE_TITLE = "Portal"
 SITE_HEADER = 'Portal'
 
 sites_nav = [ 
+	{'url': 'http://fg-master.appspot.com', 'label': 'Portal', 'id': 'fg-master'},
 	{'url': 'http://fg-www.appspot.com', 'label': 'Website', 'id': 'fg-www'},
 	{'url': 'http://fg-aircraft.appspot.com', 'label': 'Aircraft', 'id': 'fg-aircraft'},
 	{'url': 'http://fg-online.appspot.com', 'label': 'Online', 'id': 'fg-online'},

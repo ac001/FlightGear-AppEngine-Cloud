@@ -1,0 +1,158 @@
+
+/**************************************************/
+/* Inter Site Navigation */
+/**************************************************/
+#sites_nav {
+	float: right;
+	height: 20px;
+}
+#sites_nav ul
+{
+	padding: 0px 1px 1px;
+	margin-left: 0px;
+	margin-top: 10px;
+	font: bold 12pt  sans-serif;
+	background-color: #035EAC;
+}
+
+#sites_nav li
+{
+	list-style: none;
+	margin: 0px;
+	display: inline;
+}
+
+#sites_nav li a
+{
+	padding: 2px 10px 2px 10px;
+	color: black;
+	background: #dddddd;
+	text-decoration: none;
+	border: 2px solid #8CB0DB;
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+	-webkit-border-radius: 7px;
+}
+
+
+#sites_nav li a:hover
+{
+	border-color: #ccccbb;
+	color: black;
+	background: #D6E7EB;
+}
+
+#sites_nav li a.selected{
+	border: 2px solid #134F8B;
+	background: #A0C9E9;
+}
+
+
+
+/***************************************/
+/* Containers */
+/***************************************/
+body{
+	background-color: white;
+	margin: 0px auto;
+}
+
+/******************************************/
+/** Main Container **/
+/******************************************/
+#main_container{
+
+	background-color: white;
+	padding: 50px;
+}
+
+
+#left_box{
+	float: left;
+	width: 160px;
+	padding: 0px;
+}
+#left_box p{
+	line-height: 140%;
+	padding: 20px;	
+	margin: 30px 0px 0px 20px;
+	color: #444444;
+	font-family: sans-serif;
+	font-size: 8pt;
+	padding: 0px;
+}
+#flightgear_logo img{
+	border: 1px outset #dddddd;
+	margin: 10px;
+	padding: 10px;
+	background-color: white;
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+	-webkit-border-radius: 7px;
+}
+
+#content_box{
+	margin: 50px 50px 0px 200px;
+}
+
+#content_box h1{
+	color: #666666;
+	font-family: sans-serif;
+	font-size: 10pt;
+	border-bottom: 1px solid #dddddd;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+
+
+.feature_box{
+	background-color: #efefef;
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	border: 1px outset #fefefe;
+	width: 250px;
+	border-radius: 7px;
+	-moz-border-radius: 7px; 
+	-webkit-border-radius: 7px;
+}
+.feature_box h2{
+	border-bottom: 1px solid #3887CE;
+	font-family: sans-serif;
+	font-size: 10pt;
+	padding: 5px;
+	margin: 0px;
+	color: #444444;
+}
+.feature_box ul{
+	list-style-type: none;
+	margin: 10px;
+}
+
+.feature_box li a{
+	display: block;
+	font-family: sans-serif;
+	font-size: 10pt;
+	padding: 4px;
+	text-decoration: none;
+	border-left: 3px solid #efefef;
+	border-right: 3px solid #efefef;
+}
+.feature_box li a:hover{
+	background-color: white;
+	color: blue;
+	text-decoration: none;
+	border-left: 3px solid #7195CC;
+	border-right: 3px solid #7195CC;
+}
+
+
+
+#footer_box{
+	background-color: white;
+	clear: both;
+	font-size: 7pt;
+	border-top: 1px solid #efefef;
+	margin-top: 50px;
+}
